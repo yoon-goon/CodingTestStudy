@@ -8,3 +8,15 @@ def solution(n):
 print(solution(12345))
 
 
+# 다른풀이
+def Altsolution(n):
+    answer = []
+
+    while n > 1:
+        answer.append(int(n % 10)) #12345 -> .append(5) , #1234 -> .append(4)
+        n /= 10 # 12345 -> 1234
+
+    return answer
+
+
+print(Altsolution(12345))
