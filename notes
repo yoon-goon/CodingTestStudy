@@ -1,0 +1,9 @@
+문제 풀이 중 새로 알게 되거나 기억할 내용을 적은 메모입니다.
+
+배열 내부에 특정 요소 있는지 확인 (없는 숫자 더하기 문제 풀이 중 검색) Source:https://stackoverflow.com/questions/604802/python-finding-an-element-in-a-list
+>>> li
+['a', 'b', 'new', 'mpilgrim', 'z', 'example', 'new', 'two', 'elements']
+>>> 'example' in li
+True
+>>> 'damn' in li
+False
