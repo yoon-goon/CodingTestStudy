@@ -3,7 +3,7 @@
 
 def solution(a, b):
     answer = 0
-    if a <= b:
+    if a <= b:  # b가 a보다 커서 for문이 의도와 다르게 작동하는걸 수정하기 위함
         x = a
         y = b
     else:
@@ -13,6 +13,7 @@ def solution(a, b):
         answer += i
     return answer
 
-print(solution(3,5))
-print(solution(3,3))
-print(solution(5,3))
+
+print(solution(3, 5))
+print(solution(3, 3))
+print(solution(5, 3))
