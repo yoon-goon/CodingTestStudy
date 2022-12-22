@@ -1,0 +1,7 @@
+list 원소 str -> int 변환 방법       Source: https://velog.io/@bae12/
+
+list comprehension
+
+stringArray = ['1', '2', '3']
+qw = [int(i) for i in stringArray]
+> [1, 2, 3]
