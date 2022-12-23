@@ -9,3 +9,4 @@ def solution(seoul):
 
 print(solution(["Jane", "Kim"]))
 
+# index 를 사용해 개선할 수 있을것
