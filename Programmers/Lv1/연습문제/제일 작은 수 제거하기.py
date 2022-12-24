@@ -16,7 +16,7 @@ def solution(arr):
 
 def solution(arr):
     x = min(arr)
-    while x in arr:
+    while x in arr: # 처음엔 for i in range로 작성했었으나 pop하면서 인덱스의 길이가 바뀌어버려 에러가 발생
         arr.remove(x)
     if arr == []:
         return [-1]
