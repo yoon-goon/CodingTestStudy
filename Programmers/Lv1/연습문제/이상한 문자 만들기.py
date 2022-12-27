@@ -11,7 +11,7 @@ def solution(s):
                 answer += i[j].lower()
         answer += ' '
 
-    return answer
+    return answer[:-1]
 
 
 print(solution("try hello world"))
