@@ -17,7 +17,7 @@ def solution(s):
 def solution2(s):  # 개선된 다른 풀이
     dic = {"zero": "0", "one": "1", "two": "2", "three": "3", "four": "4", "five": "5", "six": "6", "seven": "7",
            "eight": "8", "nine": "9"}
-    for i, y in dic.items():
+    for i, y in dic.items(): # items() - 사전 데이터(키와 값을 쌍)을 리턴 (dict_items)
         s = s.replace(i, y)
     return int(s)
 
