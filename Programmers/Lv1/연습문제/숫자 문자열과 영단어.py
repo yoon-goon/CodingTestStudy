@@ -13,5 +13,14 @@ def solution(s):
     s = s.replace("nine", "9")
     return int(s)
 
+
+def solution2(s): # 개선된 다른 풀이
+    dic = {"zero":"0","one":"1","two":"2","three":"3","four":"4","five":"5","six":"6","seven":"7","eight":"8","nine":"9"}
+    for i,y in dic.items():
+        s = s.replace(i,y)
+    return int(s)
+
 print(solution("one4seveneight"))
 print(solution("23four5six7"))
+print(solution2("one4seveneight"))
+print(solution2("23four5six7"))
