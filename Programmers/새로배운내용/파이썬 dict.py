@@ -15,4 +15,17 @@ dic02['id'] = 'jaemin'
 dic02['age'] = 13
 print('dic02:', dic02)
 
+
 # 가장 가까운 같은 글자 문제 풀이에 사용 브레이크포인트 걸어 분석
+
+
+def solution2(s):  # 숫자 문자열과 영단어 풀이에 사용된 예시
+    dic = {"zero": "0", "one": "1", "two": "2", "three": "3", "four": "4", "five": "5", "six": "6", "seven": "7",
+           "eight": "8", "nine": "9"}
+    for i, y in dic.items():
+        s = s.replace(i, y)
+    return int(s)
+
+
+print(solution2("one4seveneight"))
+print(solution2("23four5six7"))
