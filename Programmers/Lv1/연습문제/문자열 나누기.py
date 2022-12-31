@@ -18,7 +18,7 @@ def solution(s):
             count2 += 1
             answer = answer + s[i]
 
-    return answer + str(count3)
+    return answer + " " + str(count3)
 
 
 print(solution("banana"))
