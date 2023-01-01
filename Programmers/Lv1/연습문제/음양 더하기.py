@@ -33,10 +33,11 @@ def solution2(absolutes, signs):
 def solution3(absolutes, signs):
     answer = 0
     for i in range(len(absolutes)):
-        if signs[i] == False:
+        if signs[i] == False: # not signs[i]: 로 간략화 가능
             absolutes[i] = absolutes[i] * -1
 
     return sum(absolutes)
 
 
 print(solution3([4, 7, 12], [True, False, True]))
+print(solution3([1, 2, 3], [False, False, True]))
