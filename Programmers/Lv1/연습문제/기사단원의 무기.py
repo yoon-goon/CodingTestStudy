@@ -26,7 +26,7 @@ def solution2(number, limit, power):
     for i in range(1, number + 1): # i 는 기사의 번호
         count = 0
         for y in range(1, int(i ** (1 / 2)) + 1): # y는 1~ 기사번호제곱근 까지 for
-            if i % y == 0:
+            if i % y == 0: # 약수일경우 일단 1 카운트
                 count += 1
                 if y ** 2 != i: # 제곱이 되는 약수라면 중복됨으로 한번만 새야하고 아니라면 2번
                     count += 1
