@@ -4,13 +4,13 @@ def solution(n):
     answer = ''
     for i in range(1, n + 1):
         if i % 2 != 0:
-            answer = answer + ("수")
+            answer = answer + "수"
         else:
             answer = answer + "박"
     return answer
 
 
-def solution2(n):
+def solution2(n):  # 시간복잡도를 최소화한 코드
     return "수박" * (n // 2) + "수" * (n % 2)
 
 
