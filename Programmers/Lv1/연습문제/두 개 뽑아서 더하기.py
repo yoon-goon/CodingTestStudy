@@ -3,7 +3,7 @@
 def solution(numbers): #수정 필요
     answer = []
     for i in range(len(numbers)):
-        for y in numbers[i:]:
+        for y in numbers[i+1:]:
             answer.append(numbers[i] + y)
     return sorted(answer)
 
