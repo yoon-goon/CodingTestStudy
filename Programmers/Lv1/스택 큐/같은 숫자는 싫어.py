@@ -12,10 +12,10 @@ def solution(arr):
 '''
 
 
-def solution(arr): # 코드 실행은 됬지만 채점이 진행되지 않음 개선필요
+def solution(arr): # 코드 실행 및 채점완료 하지만 개선 가능해보임
     answer = []
     arr.append(10)
-    i = 1
+    i = 0
     while i < len(arr)-1:
         if arr[i] != arr[i+1]:
             answer.append(arr[i])
@@ -25,3 +25,4 @@ def solution(arr): # 코드 실행은 됬지만 채점이 진행되지 않음 �
 
 print(solution([1, 1, 3, 3, 0, 1, 1]))
 print(solution([4,4,4,3,3]))
+print(solution([4,4,4,3,3,3]))
