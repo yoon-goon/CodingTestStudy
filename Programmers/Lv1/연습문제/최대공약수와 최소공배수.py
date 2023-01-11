@@ -4,6 +4,8 @@ def solution(n, m):
     answer = []
     arr1 = []
     arr2 = []
+    div = []  # 약수
+    mult = []  # 배수
     for i in range(1, n + 1):  # 공약수를 구하는 과정
         if n % i == 0:
             arr1.append(i)
@@ -12,8 +14,8 @@ def solution(n, m):
             arr2.append(y)
     for x in arr1:
         if x in arr2:
-            answer.append(x)
-    answer.remove(1)
+            div.append(x)
+    answer.append(max(div))
 
     for i in range(1, 1000001):  # 공배수를 구하는 과정
         if i % n == 0 and i % m == 0:
