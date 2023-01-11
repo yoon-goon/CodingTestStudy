@@ -29,11 +29,11 @@ def better_sol(n, m):  # 개선 풀이
     smaller = min(n, m)
     multmax = n * m
 
-    for i in range(1, smaller + 1):  # 최대공약수
+    for i in range(smaller, 0, -1):  # 최대공약수
         if n % i == 0 and m % i == 0:
             answer.append(i)
             break
-            
+
     for y in range(1, multmax + 1):  # 최소공배수
         if y % n == 0 and y % m == 0:
             answer.append(y)
@@ -42,4 +42,4 @@ def better_sol(n, m):  # 개선 풀이
 
 
 print(solution(3, 12))
-print(better_sol(3, 12))
+print(better_sol(10, 20))
