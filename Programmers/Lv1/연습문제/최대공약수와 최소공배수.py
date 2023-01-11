@@ -4,8 +4,8 @@ def solution(n, m):
     answer = []
     arr1 = []
     arr2 = []
-    div = []  # 약수
-    mult = []  # 배수
+    large = []  # n,m중 큰수를 할당할것
+    mult = n*m  # 배수를 할당할것
     for i in range(1, n + 1):  # 공약수를 구하는 과정
         if n % i == 0:
             arr1.append(i)
@@ -14,10 +14,10 @@ def solution(n, m):
             arr2.append(y)
     for x in arr1:
         if x in arr2:
-            div.append(x)
-    answer.append(max(div))
+            large.append(x)
+    answer.append(max(large))
 
-    for i in range(1, 1000001):  # 공배수를 구하는 과정
+    for i in range(1, mult+1):  # 공배수를 구하는 과정
         if i % n == 0 and i % m == 0:
             answer.append(i)
             return answer
