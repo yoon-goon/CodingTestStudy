@@ -15,6 +15,10 @@ def solution(n, m):
             answer.append(x)
     answer.remove(1)
 
+    for i in range(1,1000001):
+        if i%n==0 and i%m ==0:
+            answer.append(i)
+            return answer
     return answer
 
 print(solution(3,12))
