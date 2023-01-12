@@ -3,10 +3,12 @@
 def solution(s, n):
     a = s.lower()
     answer = []
-    alphabet = "abcdefghijklmnopqrstuwxyz"
-    trans= alphabet[n:] + alphabet[:n]
+    alphabet = "abcdefghijklmnopqrstuwxyz" # ' ' 공백을 구현하기위해 앞에 띄어쓰기 추가
+    space = " abcdefghijklmnopqrstuwxyz"
+    trans= ' ' + alphabet[n+1:] + alphabet[:n+1] # 공백이 생긴만큼 abcdefghijklmnopqrstuwxyz a 로 되기때문에 +1
+    print(trans)
     for i in a:
-        loc = alphabet.index(i)
+        loc = space.index(i)
         answer.append(trans[loc])
 
     for y in range(len(s)):
