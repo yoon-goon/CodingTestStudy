@@ -3,21 +3,25 @@
 def solution(s, n):
     a = s.lower()
     answer = []
-    alphabet = "abcdefghijklmnopqrstuwxyz" # ' ' 공백을 구현하기위해 앞에 띄어쓰기 추가
-    space = " abcdefghijklmnopqrstuwxyz"
-    trans= ' ' + alphabet[n+1:] + alphabet[:n+1] # 공백이 생긴만큼 abcdefghijklmnopqrstuwxyz a 로 되기때문에 +1
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    trans = alphabet[n:] + alphabet[:n]
     print(trans)
     for i in a:
-        loc = space.index(i)
-        answer.append(trans[loc])
+        if i == ' ':
+            answer.append(' ')
+        else:
+            loc = alphabet.index(i)
+            answer.append(trans[loc])
 
-    for y in range(len(s)):
+    for y in range(len(s)):  # 대문자 체크
         if s[y] == s[y].upper():
             answer[y] = answer[y].upper()
+
     return ''.join(answer)
 
-print(solution("AB",1))
-print(solution("aB",1))
-print(solution("z",1))
-print(solution("a B z",4))
 
+print(solution("AB", 1))
+print(solution("aB", 1))
+print(solution("z", 1))
+print(solution("a B z", 4))
+print(solution("P", 15))
