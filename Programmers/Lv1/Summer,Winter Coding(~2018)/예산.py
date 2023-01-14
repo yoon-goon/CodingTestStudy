@@ -11,4 +11,4 @@ def solution(d, budget):
     return count
 
 
-print(solution([1,3,2,5,4],9))
+print(solution([1, 3, 2, 5, 4], 9))
