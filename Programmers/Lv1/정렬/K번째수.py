@@ -5,7 +5,6 @@ def solution(array, commands):
     temp = []
     for i in range(len(commands)):
         temp.append(sorted(array[commands[i][0]-1:commands[i][1]]))
-    for i in range(len(commands)):
         answer.append(temp[i][commands[i][2]-1])
 
     return answer
