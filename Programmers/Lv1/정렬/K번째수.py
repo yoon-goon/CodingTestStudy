@@ -4,10 +4,11 @@ def solution(array, commands):
     answer = []
     temp = []
     for i in range(len(commands)):
-        temp.append( array[commands[i][0]:commands[i][1]+1])
+        temp.append(sorted(array[commands[i][0]-1:commands[i][1]]))
+    for i in range(len(commands)):
+        answer.append(temp[i][commands[i][2]-1])
 
-        #print(temp[commands[i][2]])
-    return temp
+    return answer
 
 
-print(solution([1,5,2,6,3,7,4],[[2, 5, 3], [4, 4, 1], [1, 7, 3]]))
+print(solution([1, 5, 2, 6, 3, 7, 4], [[2, 5, 3], [4, 4, 1], [1, 7, 3]]))
