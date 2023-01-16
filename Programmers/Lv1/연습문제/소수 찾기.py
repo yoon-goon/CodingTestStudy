@@ -2,19 +2,18 @@
 
 def solution(n):
     answer = []
-    if n >= 2:
-        answer.append(2)
-
+    count = 0
     for i in range(1, n + 1):
-        for y in range(i-1, 1,-1):
+        for y in range(i, 1, -1):
             if i % y == 0:
-                break;
+                count += 1
+        if count == 1:
+            answer.append(i)
+        count = 0
 
-
-
-
-    return answer
+    return len(answer)
 
 
 print(solution(10))
+print(solution(7))
 print(solution(5))
