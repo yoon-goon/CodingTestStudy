@@ -11,13 +11,13 @@ def solution(strings, n):
 
     return answer
 
-#def solution2(strings,n): # key를 사용한 풀이
-#    def sortkey(x):
-#        return x[n]
-#    strings.sort(key=sortkey)
-#    return strings
+def solution2(strings,n): # key를 사용한 풀이
+    def sortkey(x):
+        return x[n]
+    strings.sort(key=sortkey)
+    return strings
 
 print(solution(["sun", "bed", "car"], 1))
 print(solution(["abce", "abcd", "cdx"], 2))
-#print(solution2(["sun", "bed", "car"], 1))
-#print(solution2(["abce", "abcd", "cdx"], 2))
+print(solution2(["sun", "bed", "car"], 1))
+print(solution2(["abce", "abcd", "cdx"], 2))
