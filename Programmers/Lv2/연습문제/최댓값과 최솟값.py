@@ -8,10 +8,11 @@ def solution(s):
 
     return str(min(numlist)) + " " + str(max(numlist))
 
-def solution2(s):
+
+def solution2(s):  # list 와 map 을 이용한 풀이
     answer = s.split(" ")
-    answer = list(map(int,answer))
-    return answer
+    answer = list(map(int, answer))
+    return str(min(answer)) + " " + str(max(answer))
 
 
 print(solution("1 2 3 4"))
