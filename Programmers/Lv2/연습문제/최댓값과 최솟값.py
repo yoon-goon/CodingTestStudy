@@ -1,11 +1,14 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/12939
 
 def solution(s):
+    numlist = []
     answer = s.split(" ")
-    #for i in range(len(answer)):
-    #    answer[i] = int(answer[i])
+    print(answer)
+    for i in answer:
+        numlist.append(int(i))
 
-    return min(answer)+" "+max(answer)
+
+    return min(numlist)+" "+max(numlist)
 
 
 print(solution("1 2 3 4"))
