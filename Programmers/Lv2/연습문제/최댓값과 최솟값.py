@@ -8,7 +8,7 @@ def solution(s):
         numlist.append(int(i))
 
 
-    return min(numlist)+" "+max(numlist)
+    return str(min(numlist))+" "+str(max(numlist))
 
 
 print(solution("1 2 3 4"))
