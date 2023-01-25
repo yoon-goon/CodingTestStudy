@@ -2,9 +2,9 @@
 
 
 def solution(n):
-    current, next = 0, 1
+    current, nextnum = 0, 1
     for i in range(n):
-        current, next = next, current + next
+        current, nextnum = nextnum, current + nextnum
     return current
 
 
