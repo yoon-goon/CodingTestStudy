@@ -1,6 +1,7 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/42842
 
-def solution(brown, yellow):
+'''
+def solution(brown, yellow): #잘못된 알고리즘, 새로 작성해야함
     answer = []
     all = brown + yellow
     width = 2
@@ -14,6 +15,7 @@ def solution(brown, yellow):
             continue
 
     return [max(width,length), min(width,length)]
+'''
 
 
 print(solution(10, 2))
