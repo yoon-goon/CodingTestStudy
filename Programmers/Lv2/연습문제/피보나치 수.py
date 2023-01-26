@@ -16,6 +16,7 @@ def better_solution(n):
 
 
 '''
+%1234567 에 관해
 https://mozzioi.tistory.com/147
 '''
 
