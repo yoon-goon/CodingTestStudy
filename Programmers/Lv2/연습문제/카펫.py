@@ -3,17 +3,15 @@
 def solution(brown, yellow):
     answer = []
     all = brown + yellow
-    width = 1
+    width = 2
     length = 0
     while width > length:
-        width = int(all / (length+1))
         length += 1
+        width = int(all / (length))
+
+    return [max(width,length), min(width,length)]
 
 
-
-    return [width,length]
-
-
-print(solution(10,2))
+print(solution(10, 2))
 print(solution(8,1))
 print(solution(24,24))
