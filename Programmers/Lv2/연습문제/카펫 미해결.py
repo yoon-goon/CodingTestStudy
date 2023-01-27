@@ -16,6 +16,10 @@ def solution(brown, yellow): #잘못된 알고리즘, 새로 작성해야함
 
     return [max(width,length), min(width,length)]
 '''
+def solution(brown, yellow):
+    answer = []
+    _all = brown+yellow
+
 
 
 print(solution(10, 2))
