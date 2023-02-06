@@ -3,7 +3,7 @@
 original = int(input())
 _num = original
 
-count =0
+count = 0
 while 1:
     if _num < 10:
         _num = ("0" + str(_num))
@@ -14,10 +14,10 @@ while 1:
     if int(_num) >= 10:
         _num = _num[1]
 
-    _num = later+str(_num)
+    _num = later + str(_num)
 
     _num = int(_num)
     count += 1
     if _num == original:
+        print(count)
         break
-    print(_num)
