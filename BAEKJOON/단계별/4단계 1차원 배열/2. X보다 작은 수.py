@@ -4,9 +4,10 @@ import sys
 
 total, _num = map(int,input().split())
 list = sys.stdin.readline().split()
-answer = []
+answer = ""
 
 for i in range(total):
-    if list[i] < _num:
-        
+    if int(list[i]) < _num:
+        answer += f"{list[i]} "
+print(answer)
 
