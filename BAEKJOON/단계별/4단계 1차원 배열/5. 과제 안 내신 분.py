@@ -6,6 +6,9 @@ answer = []
 for i in range(28):
     list.append(int(sys.stdin.readline()))
 
-for i in range(30):
-    if not i in list:
-        
+for y in range(1, 31):
+    if y not in list:
+        answer.append(y)
+
+print(min(answer))
+print(max(answer))
