@@ -19,3 +19,8 @@ set 집합 자료형을 사용하면 더 쉽게 풀이 할 수 있다.
 - 중복을 허용하지 않음
 - 순서가 없음
 '''
+
+numset = set()
+for i in range(10):
+    numset.add(int(sys.stdin.readline()) % 42)
+print(len(numset))
