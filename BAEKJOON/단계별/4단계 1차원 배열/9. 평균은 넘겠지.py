@@ -12,5 +12,3 @@ for i in range(cases):
             cnt += 1
 
     print(f"{cnt / (len(A) - 1) * 100:.3f}%")
-
-    print(avg)
