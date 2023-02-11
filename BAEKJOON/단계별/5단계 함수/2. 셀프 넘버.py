@@ -14,7 +14,5 @@ for z in range(1001, 10000):
     zx = str(z)
     ans.add(int(zx) + int(zx[0]) + int(zx[1]) + int(zx[2]) + int(zx[3]))
 
-for w in ans:
-    alist.remove(w)
 
-print(alist)
+print(sorted(set(alist) - set(ans)))
