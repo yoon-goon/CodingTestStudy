@@ -9,3 +9,11 @@ for i in (alphabet):
         print(S.index(i), end=" ")
     else:
         print("-1", end=" ")
+
+# find 함수를 사용해서 해결도 가능
+
+S2 = str(input())
+alist = 'abcdefghijklmnopqrstuvwxyz'
+for i in alist:
+    idx = S2.find(i)
+    print(idx, end=' ')
