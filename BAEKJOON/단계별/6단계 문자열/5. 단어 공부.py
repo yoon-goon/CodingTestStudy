@@ -1,13 +1,12 @@
 # https://www.acmicpc.net/problem/1157
 
 ans = list(str(input().upper()))
-anslist = []
-countlist = []
+set_ans = set(ans)
+cnt = []
+for i in set_ans:
+    cnt.append(ans.count(i))
 
-for i in ans:
-    if not i in anslist:
-        anslist.append(i)
-    else:
-        continue
 
-print(anslist)
+
+print(set_ans)
+print(cnt)
