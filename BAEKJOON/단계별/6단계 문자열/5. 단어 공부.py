@@ -2,10 +2,12 @@
 
 ans = list(str(input().upper()))
 anslist = []
+countlist = []
 
 for i in ans:
-    anslist.append(ans.count(i))
+    if not i in anslist:
+        anslist.append(i)
+    else:
+        continue
 
 print(anslist)
-print(max(anslist))
-print(anslist.index(max(anslist)))
