@@ -2,4 +2,8 @@
 import sys
 
 words = sys.stdin.readline().strip().split(" ")
-print(len(words))
+if words == ['']:
+    print('0')
+else:
+    print(len(words))
+
