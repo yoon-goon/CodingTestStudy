@@ -8,6 +8,6 @@ ans = 0
 for i in cro_alpha:
     if i in inp:
         ans += inp.count(i)
-        inp = inp.replace(i, '')
+        inp = inp.replace(i, ' ')
 
-print(ans+len(inp),inp)
+print(ans+len(inp.replace(' ','')))
