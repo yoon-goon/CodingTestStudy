@@ -20,3 +20,16 @@ for i in inp:
         ans += dlist.index(i)
 
 print(ans)
+
+# 개선된 풀이
+
+inp = input()
+alist = ['ABC', 'DEF', 'GHI', 'JKL', 'MNO', 'PQRS', 'TUV', 'WXYZ']
+ans = 0
+
+for i in inp:
+    for y in alist:
+        if i in y:
+            ans += alist.index(y) + 3
+
+print(ans)
