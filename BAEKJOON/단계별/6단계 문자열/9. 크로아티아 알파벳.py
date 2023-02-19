@@ -10,4 +10,4 @@ for i in cro_alpha:
         ans += inp.count(i)
         inp = inp.replace(i, ' ')
 
-print(ans+len(inp.replace(' ','')))
+print(ans + len(inp.replace(' ', '')))
