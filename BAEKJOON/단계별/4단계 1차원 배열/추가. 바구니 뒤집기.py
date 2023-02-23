@@ -8,7 +8,6 @@ for i in range(1, N + 1):
 
 for _ in range(M):
     i, j = map(int, sys.stdin.readline().split())
-    ans[i:j] = reversed(ans[i:j])
-    print(ans)
+    ans[i:j+1] = reversed(ans[i:j+1])
 
-print(ans)
+print(*ans[1:])
