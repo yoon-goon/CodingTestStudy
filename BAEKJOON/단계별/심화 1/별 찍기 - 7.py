@@ -3,4 +3,7 @@
 stars = int(input())
 
 for i in range(1, stars + 1):
-    print(' ' * (stars - i) + '*' * i)
+    if i == 1:
+        print(' ' * (stars - i) + '*')
+    else:
+        print(' ' * (stars - i) + '*'+'**' * (i-1))
