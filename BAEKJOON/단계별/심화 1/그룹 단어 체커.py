@@ -9,10 +9,9 @@ for _ in range(nums):
     words = sys.stdin.readline()
     for i in range(1, len(words)):
         if words[i] != words[i-1]:
-            if words[i-1] in word_list:
-                pass
-            else:
                 word_list.append(words[i-1])
+    if len(set(word_list)) == len(word_list):
+        cnt += 1
 
 
 
