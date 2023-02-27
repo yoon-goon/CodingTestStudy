@@ -12,11 +12,9 @@ for _ in range(nums):
             word_list.append(words[i - 1])
         if words[i] != words[i - 1]:
             word_list.append(words[i])
-        print(word_list)
 
     if len(set(word_list)) == len(word_list):
         cnt += 1
-    print(cnt)
 
 print(cnt)
 
