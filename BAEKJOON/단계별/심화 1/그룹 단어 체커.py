@@ -3,26 +3,22 @@ import sys
 
 nums = int(input())
 cnt = 0
-word_list = []
 
 for _ in range(nums):
+    word_list = []
     words = sys.stdin.readline()
     for i in range(1, len(words)):
-        if words[i] != words[i-1]:
-                word_list.append(words[i-1])
+        if i == 1:
+            word_list.append(words[i - 1])
+        if words[i] != words[i - 1]:
+            word_list.append(words[i])
+        print(word_list)
+
     if len(set(word_list)) == len(word_list):
         cnt += 1
-
-
+    print(cnt)
 
 print(cnt)
-
-
-
-
-
-
-
 
 '''
 for _ in range(nums):
@@ -33,4 +29,3 @@ for _ in range(nums):
         else:
             if words[i] == words[i-1]:
 '''
-
