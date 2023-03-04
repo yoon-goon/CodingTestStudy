@@ -8,6 +8,8 @@ dic01['name'] = '김철수'
 dic01['id'] = 'kim'
 dic01['age'] = 20
 print('dic01:', dic01)
+print(dic01['name'])
+print(dic01['id'])
 
 dic02 = dict()
 dic02['name'] = '유재민'
