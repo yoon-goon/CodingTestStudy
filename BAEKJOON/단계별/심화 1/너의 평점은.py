@@ -3,5 +3,8 @@ import sys
 
 total = 0
 
+
 for _ in range(20):
     name, score, achieve, = sys.stdin.readline().split()
+    print(name,score,achieve)
+    total += score *
