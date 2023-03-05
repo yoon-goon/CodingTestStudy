@@ -12,10 +12,7 @@ for _ in range(20):
         cnt += 1
         pass
     else:
-        print(total, score, score_dic[achieve])
         total += (float(score) * (score_dic[achieve]))
         total_score += float(score)
 
-print(total, cnt)
-
-print(total / total_score)
+print(round((total / total_score), 6))
