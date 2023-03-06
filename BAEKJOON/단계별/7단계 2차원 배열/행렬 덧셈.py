@@ -6,15 +6,12 @@ A = []
 B = []
 
 for _ in range(M):
-    A.append(sys.stdin.readline().rstrip().replace(' ', '', N))
+    A.append(sys.stdin.readline().rstrip().split())
 
 for _ in range(M):
-    B.append(sys.stdin.readline().rstrip().replace(' ', '', N))
-
-print(A, B)
+    B.append(sys.stdin.readline().rstrip().split())
 
 for i in range(N):
     for y in range(M):
-        print(int(A[i][y]) + int(B[i][y]))
-
-print(int(A[0][0]) + int(B[0][0]))
+        print(int(A[i][y]) + int(B[i][y]), end=' ')
+    print('')
