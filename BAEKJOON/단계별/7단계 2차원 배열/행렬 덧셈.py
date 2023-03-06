@@ -5,10 +5,10 @@ N, M = map(int, input().split())
 A = []
 B = []
 
-for _ in range(M):
+for _ in range(N):
     A.append(sys.stdin.readline().rstrip().split())
 
-for _ in range(M):
+for _ in range(N):
     B.append(sys.stdin.readline().rstrip().split())
 
 for i in range(N):
