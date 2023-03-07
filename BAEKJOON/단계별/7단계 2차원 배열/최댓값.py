@@ -3,10 +3,15 @@ import sys
 
 A = []
 C = []
-for i in range(9):
+for _ in range(9):
     B = sys.stdin.readline().split()
-    C.append(max(B))
     A.append(B)
+    C.append(max(B))
 
-print(A)
-print(max(C))
+print(C)
+
+for i in range(9):
+    for y in range(9):
+        if A[i][y] == max(C):
+            print(max(C))
+            print(i + 1, y + 1)
