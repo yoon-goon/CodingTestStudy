@@ -5,7 +5,7 @@ N, M = map(int, input().split())
 A = []
 B = []
 
-for _ in range(N):
+for _ in range(N):  # N과 M 햇갈리지 말것, 런타임에러 발생.
     A.append(sys.stdin.readline().rstrip().split())
 
 for _ in range(N):
