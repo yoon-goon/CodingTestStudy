@@ -2,12 +2,16 @@
 import sys
 
 A = []
+B = ''
 C = []
 
 for _ in range(9):
-    B = sys.stdin.readline().split()
+    B = list(map(int, sys.stdin.readline().split()))
     A.append(B)
     C.append(max(B))
+print(A)
+print(C)
+print(max(C))
 
 for i in range(9):
     for y in range(9):
