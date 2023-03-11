@@ -228,3 +228,18 @@ _deps
 *-prefix/
 
 # End of https://www.toptal.com/developers/gitignore/api/c
+cmake-build-debug/.cmake/api/v1/query/cache-v2
+cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1
+cmake-build-debug/.cmake/api/v1/query/codemodel-v2
+cmake-build-debug/.cmake/api/v1/query/toolchains-v1
+cmake-build-debug/.cmake/api/v1/reply/cache-v2-cda847049e8a165dea51.json
+cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-6a6485b7761301d7a16e.json
+cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-a6bbd0a363e262b9be3a.json
+cmake-build-debug/.cmake/api/v1/reply/directory-.-Debug-d0094a50bb2071803777.json
+cmake-build-debug/.cmake/api/v1/reply/index-2023-03-11T10-37-02-0073.json
+cmake-build-debug/.cmake/api/v1/reply/target-CodingTestStudy-Debug-a7f10d120cad979a7bc7.json
+cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-c2f4a846f85d67837f71.json
+cmake-build-debug/.ninja_deps
+cmake-build-debug/.ninja_log
+cmake-build-debug/build.ninja
+CMakeLists.txt
