@@ -1,6 +1,0 @@
-# ninja log v5
-1	146	7002354069192759	build.ninja	31a0cff66f7d28bc
-2	87	7002342290498547	CMakeFiles/CodingTestStudy.dir/C/BAEKJOON/steps/1._InputOutput_and_Quadratic_Calculation/1.Hello_World.c.obj	5b87ada7d98736ab
-273	476	7002353622066536	CodingTestStudy.exe	397b8d84b7bbdbc5
-0	273	7002353620040565	CMakeFiles/CodingTestStudy.dir/C/BAEKJOON/steps/1._InputOutput_and_Quadratic_Calculation/1._Hello_World.c.obj	c3e4a91f9a4c475e
-2	72	7002354112726418	CMakeFiles/CodingTestStudy.dir/C/BAEKJOON/steps/1._InputOutput_and_Quadratic_Calculation/2._A+B.c.obj	b3505fd96892b51d
