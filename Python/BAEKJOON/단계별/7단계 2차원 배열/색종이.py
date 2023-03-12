@@ -2,11 +2,15 @@
 import sys
 
 space = []
-for i in range(10):
+for i in range(100):
     space.append([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
-print(space[1][2])
 
 papers = int(input())
 for _ in range(papers):
     A, B = map(int, sys.stdin.readline().split())
+    for y in range(A,A+10):
+        space[B][y] = 1
+
+
+print(space)
