@@ -17,5 +17,3 @@ for x in range(100):
             cnt += 1
 
 print(cnt)
-
-print(space)
