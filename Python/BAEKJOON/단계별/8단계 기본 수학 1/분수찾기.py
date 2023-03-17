@@ -3,7 +3,7 @@
 
 x = int(input())
 
-row = 1
+row = 1  # 몇 번째 행에 속하는지
 while x > row:
     x -= row
     row += 1
