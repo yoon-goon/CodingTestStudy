@@ -20,7 +20,7 @@ if row % 2 == 0:  # A/B 형식으로 생각
     A = x
     B = row - x + 1 # A와B 의 합이 정해진 수치이니 빼서 B를 구함
 else:
-    A = row - x + 1
+    A = row - x + 1 # 홀수 행일경우 반대
     B = x
 '''
 
