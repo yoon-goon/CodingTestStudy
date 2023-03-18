@@ -25,7 +25,7 @@ print(day + 1)
 
 A, B, V = map(int, input().split())
 
-day = (V - B) / (A - B)
+day = (V - B) / (A - B)  # 달팽이가 정상에 도달하기 위해서는 V-B미터를 오르고, A-B미터를 올라가는 것을 하루에 반복
 if day == int(day):  # 남은 거리 없이 딱 들어맞는 경우
     day = int(day)
 else:
