@@ -22,3 +22,13 @@ while V > A:
     V = (V // A) * B + V % A
 print(day + 1)
 '''
+
+A, B, V = map(int, input().split())
+
+day = (V - B) / (A - B)
+if day == int(day):  # 남은 거리 없이 딱 들어맞는 경우
+    day = int(day)
+else:
+    day = int(day) + 1
+
+print(day)
