@@ -7,4 +7,7 @@ for i in range(1, N + 1):
     if N % i == 0:
         A.append(i)
 
-print(A[K])
+try:
+    print(A[K - 1])
+except IndexError:
+    print(0)
