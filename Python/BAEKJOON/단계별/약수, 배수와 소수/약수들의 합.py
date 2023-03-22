@@ -3,9 +3,11 @@ import sys
 
 N = 0
 
-while N != -1:
+while True:
     N = int(sys.stdin.readline())
     A = []
+    if N == -1:
+        break
 
     for i in range(1, N + 1):
         if N % i == 0:
