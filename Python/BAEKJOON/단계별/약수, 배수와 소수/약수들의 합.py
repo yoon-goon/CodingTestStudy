@@ -11,4 +11,10 @@ while N != -1:
         if N % i == 0:
             A.append(i)
 
-        print(A)
+    if sum(A[:-1]) == N:
+        print(N, "=", end=' ')
+        for y in A:
+            print(y, "+", end=' ')
+
+    else:
+        print(N, "is NOT perfect.")
