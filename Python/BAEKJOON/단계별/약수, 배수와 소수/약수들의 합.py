@@ -13,8 +13,9 @@ while N != -1:
 
     if sum(A[:-1]) == N:
         print(N, "=", end=' ')
-        for y in A:
+        for y in A[:-2]:
             print(y, "+", end=' ')
+        print(A[-2])
 
     else:
         print(N, "is NOT perfect.")
