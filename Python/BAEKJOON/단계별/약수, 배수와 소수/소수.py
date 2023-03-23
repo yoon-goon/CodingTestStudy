@@ -9,12 +9,13 @@ for i in range(M, N + 1):
     if i == 1:
         pass
     else:
-        for y in range(1, i + 1):
+        for y in range(1, int(i ** 0.5) + 1):  # 시간초과를 피하기 위해
             if i % y == 0:
                 A.append(y)
-    if len(A) == 2:
+    if len(A) == 1:  # int(i ** 0.5) 를 사용했기 때문에 2에서 1로 감소
         allMN.append(i)
 
+    print(allMN)
 if allMN == []:
     print(-1)
 else:
