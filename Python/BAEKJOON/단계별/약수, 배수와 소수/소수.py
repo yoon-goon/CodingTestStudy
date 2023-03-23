@@ -15,5 +15,8 @@ for i in range(M, N + 1):
     if len(A) == 2:
         allMN.append(i)
 
-print(sum(allMN))
-print(min(allMN))
+if allMN == []:
+    print(-1)
+else:
+    print(sum(allMN))
+    print(min(allMN))
