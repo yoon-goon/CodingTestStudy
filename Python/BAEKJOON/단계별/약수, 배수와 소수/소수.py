@@ -15,3 +15,5 @@ for i in range(M, N + 1):
     if len(A) == 2:
         allMN.append(i)
 
+print(sum(allMN))
+print(min(allMN))
