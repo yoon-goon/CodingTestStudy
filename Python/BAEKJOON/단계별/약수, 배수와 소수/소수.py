@@ -15,7 +15,7 @@ for i in range(M, N + 1):
     if len(A) == 1:  # int(i ** 0.5) 를 사용했기 때문에 2에서 1로 감소
         allMN.append(i)
 
-    print(allMN)
+    #print(allMN)
 if allMN == []:
     print(-1)
 else:
