@@ -15,8 +15,21 @@ if A == "실버" or A == "프렌즈" or A == "비회원":
             money = (B - 60) // 10 * 1000
         else:
             money = B // 10 * 1000
+    else:
+        if C >= 50000:
+            money = (B - 120) // 10 * 1000
+        elif C >= 30000:
+            money = (B - 60) // 10 * 1000
+        else:
+            money = B // 10 * 1000
+
 
 else:
     money = (B - 120) // 10 * 1000
 
-print(f"주차요금은 {money}원 입니다.")
+if money <= 0:
+    print(f"{A}등급 회원님의 {B}분 주차요금은 무료입니다.")
+else:
+    print(f"{A}등급 회원님의 {B}분 주차요금은 {money}원입니다.")
+
+wait = input()  # 창 닫히는거 방지용
