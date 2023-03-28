@@ -3,4 +3,8 @@
 A = int(input())
 B = int(input())
 
-print(A*B)
+print(A * B)
+
+# 간략화
+
+print(int(input()) * int(input()))
