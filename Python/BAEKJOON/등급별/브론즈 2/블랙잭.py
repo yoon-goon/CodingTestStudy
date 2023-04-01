@@ -1,20 +1,18 @@
 # https://www.acmicpc.net/problem/2798
-import sys
-
 N, M = map(int, input().split())
 sums = []
 
-print(N, M)
+# print(N, M)
 
 A = list(map(int, input().split()))
 
-print(A)
+# print(A)
 
-for i in A:
-    for j in (i + 1, A):
-        for k in j + 1, A:
-            print(i, j, k)
-            if (i + j + k) <= M:
-                sums.append(i + j + k)
+for i in range(len(A)):
+    for j in range(i + 1, len(A)):
+        for k in range(j + 1, len(A)):
+            # print(A[i], A[j], A[k])
+            if (A[i] + A[j] + A[k]) <= M:
+                sums.append(A[i] + A[j] + A[k])
 
 print(max(sums))
