@@ -6,7 +6,7 @@ if length != 14:
 
 middle = pnum.find('-')
 
-if middle != 6:
+if middle != 6: #
     pass
 
 year = int(pnum[:2])
