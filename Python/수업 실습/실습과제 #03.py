@@ -24,26 +24,25 @@ if month < 1 or month > 12:
 if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0):  # 윤년 계산
     Lunar = 1
 
-if month == 2:
-    if Lunar == 1:
-        if day > 29:
-            print("윤년에는 29일까지입니다. (일이 부적합합니다.)")
-            result = 0
-
-    else:
-        if day > 28:
-            print("윤년이 아닌 2월은 28일까지입니다. (일이 부적합합니다.)")
-            result = 0
+if day > 31:
+    print("31일이 넘는값을 입력했습니다. (일이 부적합합니다.)")
+    result = 0
 elif month in [4, 6, 9, 11]:
     if day > 30:
         print("30일까지만 있는 월입니다. (일이 부적합합니다.)")
         result = 0
 else:
-    if day > 31:
-        print("31일이 넘는값을 입력했습니다. (일이 부적합합니다.)") 
-        result = 0
+    if month == 2:
+        if Lunar == 1:
+            if day > 29:
+                print("윤년에는 29일까지입니다. (일이 부적합합니다.)")
+                result = 0
+        else:
+            if day > 28:
+                print("윤년이 아닌 2월은 28일까지입니다. (일이 부적합합니다.)")
+                result = 0
 
-if year >= 23:  # 수정필요 윤년계산도 추가해야함
+if year >= 23:  # 수정필요 추가해야함
     if pnum[7] == 3 or pnum[7] == 4:
         print("2000년 이전 출생자는 1,2로 시작해야합니다.")
         result = 0
