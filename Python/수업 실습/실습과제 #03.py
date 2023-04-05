@@ -12,7 +12,7 @@ result = 1
 if len(pnum) != 14:
     print("글자수가 부적합합니다.")
     result = 0
-if middle != 6:  
+if middle != 6:
     print("-의 위치가 부적합합니다.")
     result = 0
 if month < 1 or month > 12:
