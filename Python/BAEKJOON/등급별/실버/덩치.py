@@ -9,4 +9,12 @@ for i in range(N):
     e_list.append([A,B])
 
 
+for y in e_list:
+    rank = 1
+    for j in e_list:
+        if y[0] < j [0] and y[1] < j[1]:
+            rank += 1
+    print(rank)
+
 print(e_list)
+print(e_list[0][0])
