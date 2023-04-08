@@ -6,11 +6,11 @@ N = int(input())
 
 xlist = list(map(int, input().split()))
 
-
 print(xlist)
 
-for i in N:
+for i in xlist:
     cnt = 0
     for y in range(N):
         if i > xlist[y]:
             cnt += 1
+    print(cnt, end=' ')
