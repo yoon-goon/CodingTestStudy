@@ -5,18 +5,15 @@ N = int(sys.stdin.readline())
 
 # 자신보다 작은 수 갯수를 출력하면 됨
 
-xlist = list(map(int, sys.stdin.readline().split()))
-xset = list(set(xlist))
+xlist = list(sys.stdin.readline().split())
+xset = sorted(list(set(xlist)))
+
+print(xset)
 
 # print(xlist)
 
 for i in xlist:
-    cnt = 0
-    for y in range(len(xset)):
-        if i > xset[y]:
-            cnt += 1
-    print(cnt, end=' ')
-
+    print(xset.index(i),end=' ')
 
 
 
