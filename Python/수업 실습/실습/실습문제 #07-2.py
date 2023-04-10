@@ -13,7 +13,7 @@ def getSecondword(s):
     pos1 = s2.find(' ')
     pos2 = s2.find('\t')
     pos3 = s2.find('\n')
-    print(pos1,pos2,pos3)
+    print(pos1, pos2, pos3)
     p2 = max(pos1, pos2, pos3)
     print(p2)
     if p2 == -1:
@@ -24,5 +24,5 @@ def getSecondword(s):
     return s[p1:p2]
 
 
-print(getSecondword("What a beautiful day"))
-#print(getSecondword("Beautiful life"))
+# print(getSecondword("What a beautiful day"))
+print(getSecondword("Beautiful life"))
