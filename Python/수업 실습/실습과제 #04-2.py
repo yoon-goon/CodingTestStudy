@@ -2,11 +2,15 @@ t = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sagitt
 
 
 def getNextPeriodPos(txt, startPos):
-    print(txt[startPos])
-    print(txt)
+    # print(txt[startPos])
+    # print(txt)
     A = txt[startPos:]
     N = A.find(".")
     startPos += N
+    if N == -1:
+        return -1
+    print(startPos)
+    getNextPeriodPos(txt, startPos+1)
 
     return startPos
 
@@ -16,20 +20,21 @@ def getNextLine(txt):
 
 
 idx = getNextPeriodPos(t, 0)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-line = getNextLine(t)
-print(line)
+#idx = getNextPeriodPos(t, idx + 1)
+#print(idx)
+#idx = getNextPeriodPos(t, idx + 1)
+#print(idx)
+#idx = getNextPeriodPos(t, idx + 1)
+#print(idx)
+#idx = getNextPeriodPos(t, idx + 1)
+#print(idx)
+#idx = getNextPeriodPos(t, idx + 1)
+#print(idx)
+#idx = getNextPeriodPos(t, idx + 1)
+#print(idx)
+#idx = getNextPeriodPos(t, idx + 1)
+#print(idx)
+#idx = getNextPeriodPos(t, idx + 1)
+#print(idx)
+#line = getNextLine(t)
+#print(line)
