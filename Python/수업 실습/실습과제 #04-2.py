@@ -3,14 +3,15 @@ t = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sagitt
 
 def getNextPeriodPos(txt, startPos):
     print(txt[startPos])
-    txt = txt[startPos:]
     print(txt)
-    N = txt.find(".")
+    A = txt[startPos:]
+    N = A.find(".")
+    startPos += N
 
-    return N
+    return startPos
 
 
-def getNextLine(txt, startPos):
+def getNextLine(txt):
     return
 
 
@@ -18,3 +19,17 @@ idx = getNextPeriodPos(t, 0)
 print(idx)
 idx = getNextPeriodPos(t, idx + 1)
 print(idx)
+idx = getNextPeriodPos(t, idx + 1)
+print(idx)
+idx = getNextPeriodPos(t, idx + 1)
+print(idx)
+idx = getNextPeriodPos(t, idx + 1)
+print(idx)
+idx = getNextPeriodPos(t, idx + 1)
+print(idx)
+idx = getNextPeriodPos(t, idx + 1)
+print(idx)
+idx = getNextPeriodPos(t, idx + 1)
+print(idx)
+line = getNextLine(t)
+print(line)
