@@ -2,11 +2,16 @@ t = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sagitt
 
 
 def getNextPeriodPos(txt, startPos):
+    print(txt[startPos])
     txt = txt[startPos:]
-    N = txt.find('.')
+    print(txt)
+    N = txt.find(".")
 
     return N
 
+
+def getNextLine(txt, startPos):
+    return
 
 
 idx = getNextPeriodPos(t, 0)
