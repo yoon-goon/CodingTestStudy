@@ -18,13 +18,13 @@ def getNextPeriodPos(txt, startPos):
 def getNextLine(txt, startPos):
     A = txt[startPos:]
     N = A.find(".")
-    if txt[startPos:N] == :
-        return
-    print(txt[startPos:N + 1].strip())
-    print(startPos)
+    if N == -1:
+        return -1
+    print(txt[startPos:startPos+N+1].strip())
+    #print(startPos)
     startPos += N
     getNextLine(txt, startPos+1)
-    return
+    return startPos
 
 
 getNextPeriodPos(t, 0)
