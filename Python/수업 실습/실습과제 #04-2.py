@@ -15,7 +15,11 @@ def getNextPeriodPos(txt, startPos):
     return startPos
 
 
-def getNextLine(txt):
+def getNextLine(txt, startPos):
+    A = txt[startPos:]
+    N = A.find(".")
+    print(txt[startPos:N+1].strip())
+    print(startPos)
     return
 
 
@@ -36,5 +40,5 @@ idx = getNextPeriodPos(t, 0)
 #print(idx)
 #idx = getNextPeriodPos(t, idx + 1)
 #print(idx)
-#line = getNextLine(t)
+line = getNextLine(t, 0)
 #print(line)
