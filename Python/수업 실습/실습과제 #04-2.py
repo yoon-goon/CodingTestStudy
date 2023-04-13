@@ -10,7 +10,7 @@ def getNextPeriodPos(txt, startPos):
     if N == -1:
         return -1
     print(startPos)
-    getNextPeriodPos(txt, startPos+1)
+    getNextPeriodPos(txt, startPos + 1)
 
     return startPos
 
@@ -18,27 +18,14 @@ def getNextPeriodPos(txt, startPos):
 def getNextLine(txt, startPos):
     A = txt[startPos:]
     N = A.find(".")
-    print(txt[startPos:N+1].strip())
+    if txt[startPos:N] == :
+        return
+    print(txt[startPos:N + 1].strip())
     print(startPos)
+    startPos += N
+    getNextLine(txt, startPos+1)
     return
 
 
-idx = getNextPeriodPos(t, 0)
-#idx = getNextPeriodPos(t, idx + 1)
-#print(idx)
-#idx = getNextPeriodPos(t, idx + 1)
-#print(idx)
-#idx = getNextPeriodPos(t, idx + 1)
-#print(idx)
-#idx = getNextPeriodPos(t, idx + 1)
-#print(idx)
-#idx = getNextPeriodPos(t, idx + 1)
-#print(idx)
-#idx = getNextPeriodPos(t, idx + 1)
-#print(idx)
-#idx = getNextPeriodPos(t, idx + 1)
-#print(idx)
-#idx = getNextPeriodPos(t, idx + 1)
-#print(idx)
-line = getNextLine(t, 0)
-#print(line)
+getNextPeriodPos(t, 0)
+getNextLine(t, 0)
