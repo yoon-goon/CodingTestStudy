@@ -2,10 +2,9 @@
 import sys
 
 N = int(input())
-A = []
 
-for _ in range(N):
-    A.append(map(int,sys.stdin.readline()))
+
+A = list(map(int,sys.stdin.readline().split()))
 
 
 print(A)
