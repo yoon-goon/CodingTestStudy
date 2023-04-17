@@ -15,28 +15,58 @@ def getNextLine(txt, startpos):
     if startpos >= len(txt):
         return None
     idx = getNextPeriodPos(txt, startpos)
-    if idx == -1: # . 이 없어도 나머지 문자열을 출력하기위함
+    if idx == -1:  # . 이 없어도 나머지 문자열을 출력하기위함
+        return txt[startpos:]
+    else:
+        return txt[startpos:idx + 1]
 
 
+def main():
+    idx = 0
 
-idx = 0
-'''
-idx = getNextPeriodPos(t, idx)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-idx = getNextPeriodPos(t, idx + 1)
-print(idx)
-'''
+    idx = getNextPeriodPos(t, idx)
+    print(idx)
+    idx = getNextPeriodPos(t, idx + 1)
+    print(idx)
+    idx = getNextPeriodPos(t, idx + 1)
+    print(idx)
+    idx = getNextPeriodPos(t, idx + 1)
+    print(idx)
+    idx = getNextPeriodPos(t, idx + 1)
+    print(idx)
+    idx = getNextPeriodPos(t, idx + 1)
+    print(idx)
+    idx = getNextPeriodPos(t, idx + 1)
+    print(idx)
+    idx = getNextPeriodPos(t, idx + 1)
+    print(idx)
+    idx = getNextPeriodPos(t, idx + 1)  # -1
+    print(idx)
+
+    idx = 0
+    s = getNextLine(t, idx)
+    print(s)
+    idx += len(s)
+    s = getNextLine(t, idx)
+    print(s)
+    idx += len(s)
+    s = getNextLine(t, idx)
+    print(s)
+    idx += len(s)
+    s = getNextLine(t, idx)
+    print(s)
+    idx += len(s)
+    s = getNextLine(t, idx)
+    print(s)
+    idx += len(s)
+    s = getNextLine(t, idx)
+    print(s)
+    idx += len(s)
+    s = getNextLine(t, idx)
+    print(s)
+    idx += len(s)
+    s = getNextLine(t, idx)
+    print(s)
+
+
+main()
