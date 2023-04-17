@@ -17,8 +17,7 @@ def getNextLine(txt, startpos):
     idx = getNextPeriodPos(txt, startpos)
     if idx == -1:  # . 이 없어도 나머지 문자열을 출력하기위함
         return txt[startpos:]
-    else:
-        return txt[startpos:idx + 1]
+    return txt[startpos:idx + 1]
 
 
 def printNextPeriodPos(idx):
