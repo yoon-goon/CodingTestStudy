@@ -31,13 +31,12 @@ void swap(double v[], int i, int j)// 두 원소를 교환하는 swap 함수
 
 int main(void) {
         double array[] = {1.1, 9.9, 2.2, 8.8, 3.3, 7.7, 4.4, 6.6, 5.5, 0.0};
-        double len = sizeof(array) / sizeof(double);// len = 배열의 길이
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < ELEMENTS; i++){
             printf("%.1f ",array[i]); // 정리전 배열
         }
         printf("\n");
         qsort(array, 0, 9);
-        for (int i = 0; i < 10; i++){
+        for (int i = 0; i < ELEMENTS; i++){
             printf("%.1f ",array[i]); // 소트 후 배열
         }
 
