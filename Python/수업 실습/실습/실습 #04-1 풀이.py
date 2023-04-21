@@ -13,7 +13,7 @@ def getYear(numStr):
     year = 0
     if yStr.isdigit():
         year = int(yStr)
-        if year >= 0 and year <= 21:
+        if year >= 0 and year <= 21: #문제조건 년도 확인할것
             year = year + 2000
         else:
             year += 1900
