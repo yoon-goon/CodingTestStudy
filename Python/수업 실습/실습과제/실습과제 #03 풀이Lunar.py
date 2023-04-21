@@ -11,7 +11,7 @@ if len(s) == 14 and s[6] == '-':
             month = int(s[2:4])
             day = int(s[4:6])
             year += 2000
-        isLeapYear = year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+        isLeapYear = year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)# Lunar
         m29 = isLeapYear and month == 2 and day <= 29
         m28 = (isLeapYear == False) and month == 2 and day <= 28
         m31 = (month == 1 or month == 3 or month == 5 or month == 7 or month == 8 or month == 10 or month == 12) and day <= 31
