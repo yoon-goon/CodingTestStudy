@@ -19,46 +19,47 @@ def countWordsInLine(line):
     count = 0
     if line.find(' ' or '\t' or '\n'):
         count += 1
-    return count
+    return line.find(' ' or '\t' or '\n')
 
 def main():
     idx = 0
 
-    idx = getNextPeriodPos(t, idx)
-    print(idx)
-    idx = getNextPeriodPos(t, idx + 1)
-    print(idx)
-    idx = getNextPeriodPos(t, idx + 1)
-    print(idx)
-    idx = getNextPeriodPos(t, idx + 1)
-    print(idx)
-    idx = getNextPeriodPos(t, idx + 1)
-    print(idx)
-    idx = getNextPeriodPos(t, idx + 1)
-    print(idx)
-    idx = getNextPeriodPos(t, idx + 1)
-    print(idx)
-    idx = getNextPeriodPos(t, idx + 1)
-    print(idx)
-    idx = getNextPeriodPos(t, idx + 1)  # -1
-    print(idx)
+    # idx = getNextPeriodPos(t, idx)
+    # print(idx)
+    # idx = getNextPeriodPos(t, idx + 1)
+    # print(idx)
+    # idx = getNextPeriodPos(t, idx + 1)
+    # print(idx)
+    # idx = getNextPeriodPos(t, idx + 1)
+    # print(idx)
+    # idx = getNextPeriodPos(t, idx + 1)
+    # print(idx)
+    # idx = getNextPeriodPos(t, idx + 1)
+    # print(idx)
+    # idx = getNextPeriodPos(t, idx + 1)
+    # print(idx)
+    # idx = getNextPeriodPos(t, idx + 1)
+    # print(idx)
+    # idx = getNextPeriodPos(t, idx + 1)  # -1
+    # print(idx)
 
     idx = 0
     cnt = 0
     s = getNextLine(t, idx)
     print(s.strip())
+    print(countWordsInLine(s))
     cnt += (countWordsInLine(s.strip()))
-    print(cnt)
+    #print(cnt)
     idx += len(s)
     s = getNextLine(t, idx)
-    print(s.strip())
+    #print(s.strip())
     idx += len(s)
 
     s = getNextLine(t, idx)
-    print(s.strip())
+    #print(s.strip())
     idx += len(s)
     s = getNextLine(t, idx)
-    print(s.strip())
+    #print(s.strip())
 
 
 main()
