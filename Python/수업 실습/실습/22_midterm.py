@@ -6,6 +6,7 @@ def getNextPeriodPos(txt, startpos):
         return -1
     return txt.find('.', startpos, len(txt))
 
+
 def getNextLine(txt, startpos):
     if startpos >= len(txt):
         return ''
@@ -15,14 +16,30 @@ def getNextLine(txt, startpos):
     else:
         return txt[startpos:idx + 1]
 
-def countWordsInLine(line):
-    count = 0
-    if line.find(' ' or '\t' or '\n'):
-        count += 1
-    return line.find(' ' or '\t' or '\n')
 
+def countWordsInLine(line):
+    global count
+    global a
+    if a >= len(line):
+        count += 1
+        print("이 라인의 단어갯수",count)
+        return count
+    if line[a] == (' ' or '\t' or '\n'):
+        count += 1
+        a += 1
+    elif line[a] == '.':
+        count += 1
+        print("이 라인의 단어갯수",count)
+        return count
+    else:
+        a += 1
+
+count = 0
+a = 0
 def main():
     idx = 0
+    global count
+    global a
 
     # idx = getNextPeriodPos(t, idx)
     # print(idx)
@@ -47,19 +64,57 @@ def main():
     cnt = 0
     s = getNextLine(t, idx)
     print(s.strip())
-    print(countWordsInLine(s))
-    cnt += (countWordsInLine(s.strip()))
-    #print(cnt)
+    # print(cnt)
+    countWordsInLine(s)
+    countWordsInLine(s)
+    countWordsInLine(s)
     idx += len(s)
     s = getNextLine(t, idx)
-    #print(s.strip())
+    print(s.strip())
+    count = 0
+    a = 0
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
     idx += len(s)
+    s = getNextLine(t, idx)
+    print(s.strip())
+    count = 0
+    a = 0
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
+    countWordsInLine(s.strip())
 
-    s = getNextLine(t, idx)
-    #print(s.strip())
+
+
+
     idx += len(s)
     s = getNextLine(t, idx)
-    #print(s.strip())
+    print(s.strip())
+
+
+
+    count = 0
+    a = 0
+    # countWordsInLine("Hi.")
+    # countWordsInLine("Hi.")
+    # countWordsInLine("Hi.")
 
 
 main()
+
+
