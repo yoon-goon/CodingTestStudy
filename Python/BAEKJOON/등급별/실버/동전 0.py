@@ -12,7 +12,7 @@ for _ in range(kind):
 
 # print(coinL)
 
-while csum != 0: # 시간초과
+while csum != 0: # 시간초과 질문참고하기
 
     # print(i)
     i -= 1
