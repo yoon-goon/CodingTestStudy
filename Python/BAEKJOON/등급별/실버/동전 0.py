@@ -7,26 +7,25 @@ count = 0
 i = kind
 # print(kind, csum)
 
-for i in range(kind):
-    coinL.append(sys.stdin.readline().strip())
+for _ in range(kind):
+    coinL.append(int(sys.stdin.readline().strip()))
 
 # print(coinL)
 
-while csum != 0: # 반례 찾아야함
+while csum != 0: # 시간초과
 
     # print(i)
     i -= 1
     if csum - int(coinL[i]) >= 0:
         csum = csum - int(coinL[i])
-        # print("coin",coinL[i])
-        # print("csum",csum)
+        # print("coin", coinL[i])
+        # print("csum", csum)
         count += 1
         i = kind
-    if  i <= 0:
+    if i <= 0:
         i = kind
 
 print(count)
-
 
 """
 while csum != 0: # 시간초과 걸림
@@ -42,7 +41,6 @@ while csum != 0: # 시간초과 걸림
 print(count)
 
 """
-
 
 '''
 
