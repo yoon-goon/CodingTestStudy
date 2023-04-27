@@ -4,6 +4,7 @@ import sys
 kind, csum = map(int, input().split())
 coinL = []
 count = 0
+i = kind
 # print(kind, csum)
 
 for i in range(kind):
@@ -11,7 +12,23 @@ for i in range(kind):
 
 # print(coinL)
 
+while csum != 0: # 반례 찾아야함
 
+    # print(i)
+    i -= 1
+    if csum - int(coinL[i]) >= 0:
+        csum = csum - int(coinL[i])
+        # print("coin",coinL[i])
+        # print("csum",csum)
+        count += 1
+        i = kind
+    if  i <= 0:
+        i = kind
+
+print(count)
+
+
+"""
 while csum != 0: # 시간초과 걸림
     for i in range(kind - 1, -1, -1):
         # print(i)
@@ -21,8 +38,11 @@ while csum != 0: # 시간초과 걸림
             # print("csum",csum)
             count += 1
             break
-
+            
 print(count)
+
+"""
+
 
 '''
 
