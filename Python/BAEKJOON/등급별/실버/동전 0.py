@@ -3,45 +3,26 @@ import sys
 
 kind, csum = map(int, input().split())
 coinL = []
-sum = 0
 count = 0
-print(kind, csum)
+# print(kind, csum)
 
 for i in range(kind):
     coinL.append(sys.stdin.readline().strip())
 
-print(coinL)
+# print(coinL)
 
 
-
-
-while csum != 0:
+while csum != 0: # 시간초과 걸림
     for i in range(kind - 1, -1, -1):
-        print(i)
+        # print(i)
         if csum - int(coinL[i]) >= 0:
             csum = csum - int(coinL[i])
-            print("coin",coinL[i])
-            print("csum",csum)
+            # print("coin",coinL[i])
+            # print("csum",csum)
             count += 1
             break
 
-
 print(count)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 '''
 
