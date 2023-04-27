@@ -12,3 +12,10 @@ for i in range(1, len(A)):
         cnt += 1
 
 print(cnt)
+
+'''
+반례
+7
+70 30 50 60 70 0 10
+answer 4
+'''
