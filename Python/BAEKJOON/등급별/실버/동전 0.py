@@ -12,6 +12,39 @@ for i in range(kind):
 
 print(coinL)
 
+
+
+
+while csum != 0:
+    for i in range(kind - 1, -1, -1):
+        print(i)
+        if csum % int(coinL[i]) >= 0 and int(coinL[i]) <= csum :
+            csum = csum % int(coinL[i])
+            print("coin",coinL[i])
+            print("csum",csum)
+            count += 1
+            break
+
+
+print(count)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+
 for i in range(kind - 1, -1, -1):
     if sum == csum:
         break
@@ -24,4 +57,4 @@ for i in range(kind - 1, -1, -1):
     print(sum)
     print(i)
 
-print(count)
+print(count)'''
