@@ -15,7 +15,7 @@ for _ in range(kind):
 while csum != 0: # 시간초과 질문참고하기
 
     # print(i)
-    i -= 1
+    i -= 1 # 큰값부터 넣어야해서 줄여나가는 방식
     if csum - int(coinL[i]) >= 0:
         count += csum // int(coinL[i]) # 몫만큼 실행가능함으로 카운트에 더함
         # print("coin", coinL[i])
