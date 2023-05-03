@@ -20,7 +20,7 @@ int main(void)
                 p++;
         }
 
-	printf("\n");
+        printf("\n");
 
         return 0;
 }
