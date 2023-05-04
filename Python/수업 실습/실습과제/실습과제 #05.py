@@ -12,9 +12,9 @@ t = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sagitt
 
 def find(s, ss, pos):
     # a = s.find(ss, pos)
-    for i in len(s[pos:]):
-        if s[i] == ss:
-            return i
+    for i in range(len(s[pos:])):
+        if s[pos + i] == ss:
+            return int(i + pos)
 
 
 def getNextPeriodPos(txt, startpos):
