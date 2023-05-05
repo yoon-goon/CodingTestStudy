@@ -27,3 +27,32 @@ void month_day(int year, int yearday, int *pmonth, int *pday)
         *pmonth = i;
         *pday = yearday;
 }
+
+int main()
+{
+    int year, month, day, yearday;
+    int a;
+
+    year = 2022;
+    month = 5;
+    day = 5;
+    a = day_of_year(year, month, day);
+    printf("%d-%d-%d은 %d째 날입니다.\n", year, month, day, a);
+
+    year = 2014;
+    month = 5;
+    day = 5;
+    a = day_of_year(year, month, day);
+    printf("%d-%d-%d은 %d째 날입니다.\n", year, month, day, a);
+
+    year = 2022;
+    yearday = 200;
+    month_day(year, yearday, &month, &day);
+        printf("%d년의 %d째 날은 %d월 %d일입니다.\n",year, yearday, month, day);
+
+        year = 2000;
+    yearday = 300;
+    month_day(year, yearday, &month, &day);
+        printf("%d년의 %d째 날은 %d월 %d일입니다.\n",year, yearday, month, day);
+
+}
