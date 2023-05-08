@@ -16,6 +16,8 @@ def find(s, ss, pos):
         if s[pos + i] == ss:
             return int(i + pos)
 
+        # 개선된 풀이 존재, 3교시 강의영상 참고
+
 
 def getNextPeriodPos(txt, startpos):
     if startpos >= len(txt):
