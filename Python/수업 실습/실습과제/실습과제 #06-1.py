@@ -22,3 +22,10 @@
 main() 함수를 구현하고 이를 이용해서 전체 프로그
 램 실행
 '''
+
+
+A = [None,None]
+
+for i in range(3,101):
+    for y in range(1,i+1):
+        
