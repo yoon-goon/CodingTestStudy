@@ -26,6 +26,11 @@ main() 함수를 구현하고 이를 이용해서 전체 프로그
 
 A = [None,None]
 
-for i in range(3,101):
+for i in range(2,101):
+    B = []
     for y in range(1,i+1):
-        
+        if i % y == 0:
+            B.append(y)
+    A.append(B)
+
+print(A)
