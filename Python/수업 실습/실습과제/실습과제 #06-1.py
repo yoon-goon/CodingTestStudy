@@ -23,6 +23,13 @@ main() 함수를 구현하고 이를 이용해서 전체 프로그
 '''
 
 
+def getone(B):
+    C = [None, None]
+    for i in range(1, B + 1):
+        if B % i == 0:
+            C.append(i)
+    return C
+
 
 def getonetoall():
     A = [None, None]
@@ -34,5 +41,3 @@ def getonetoall():
         A.append(B)
     return A
 
-
-print(getonetoall())
