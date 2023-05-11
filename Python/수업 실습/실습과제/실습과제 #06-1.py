@@ -41,3 +41,10 @@ def getonetoall():
         A.append(B)
     return A
 
+
+def main():
+    a = int(input("약수를 구하고 싶은 정수를 입력하세요: "))
+    print(getone(a))
+    print(getonetoall())
+
+main()
