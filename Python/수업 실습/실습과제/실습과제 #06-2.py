@@ -15,7 +15,9 @@ empt = []
 for i in t:
     if i not in empt:
         empt.append([i,1])
-    if
+    else:
+        num = empt.find(i)
+        print(num)
 
 
 print(empt)
