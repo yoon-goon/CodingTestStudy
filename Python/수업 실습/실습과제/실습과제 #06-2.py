@@ -11,7 +11,27 @@ t = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sagitt
 [['l', 19], ['o', 14], ['r', 21], …, ['f', 2]]
 '''
 
+
 empt = []
+
+def findChar(cList, ch):
+    cnt = 0
+    for i in cList:
+        if i == ch:
+            cnt += 1
+    return cnt
+
+def countChars(txt):
+    alist = []
+    
+
+
+    if txt == '':
+        return None
+    for i in
+    findChar(txt)
+
+
 for i in t:
     if i not in empt:
         empt.append([i,1])
