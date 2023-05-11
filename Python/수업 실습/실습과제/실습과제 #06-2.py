@@ -11,9 +11,6 @@ t = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sagitt
 [['l', 19], ['o', 14], ['r', 21], …, ['f', 2]]
 '''
 
-empt = []
-
-
 def findChar(cList, ch):
     cnt = 0
     for i in cList:
@@ -34,14 +31,12 @@ def countChars(txt):
             blist.append([y, findChar(txt,y)])
     return blist
 
+def printList(cList):
+    for i in range(len(countChars(cList))):
+        print(countChars(cList)[i])
 
-# for i in t:
-#     if i not in empt:
-#         empt.append([i, 1])
-#     else:
-#         num = empt.find(i)
-#         print(num)
-#
-# print(empt)
 
-print(countChars(t))
+def main():
+    printList(t.lower())
+
+main()
