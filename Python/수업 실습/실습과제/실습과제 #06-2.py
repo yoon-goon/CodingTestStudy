@@ -10,3 +10,12 @@ t = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse sagitt
  리스트의 구성 예
 [['l', 19], ['o', 14], ['r', 21], …, ['f', 2]]
 '''
+
+empt = []
+for i in t:
+    if i not in empt:
+        empt.append([i,1])
+    if
+
+
+print(empt)
