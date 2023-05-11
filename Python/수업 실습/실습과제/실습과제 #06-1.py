@@ -11,7 +11,6 @@
  리스트의 101번째 요소(인덱스 100)에는 100의 약수를 리
 스트로 구성해서 넣을 것)
  리스트 구성 예: [None, None, [1, 2], [1, 3], [1, 2, 4], … ]
-실습과제 #06-1
  2~100사이의 정수 한 개를 입력으로 전달 받고 약
 수 리스트를 구성해서 반환하는 함수 구현
  2~100의 약수 리스트를 다시 리스트로 구성해서 반
@@ -24,13 +23,16 @@ main() 함수를 구현하고 이를 이용해서 전체 프로그
 '''
 
 
-A = [None,None]
 
-for i in range(2,101):
-    B = []
-    for y in range(1,i+1):
-        if i % y == 0:
-            B.append(y)
-    A.append(B)
+def getonetoall():
+    A = [None, None]
+    for i in range(2, 101):
+        B = []
+        for y in range(1, i + 1):
+            if i % y == 0:
+                B.append(y)
+        A.append(B)
+    return A
 
-print(A)
+
+print(getonetoall())
