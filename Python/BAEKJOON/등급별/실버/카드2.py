@@ -14,3 +14,5 @@ while len(alist) != 1:
     alist.remove(alist[0])
 
 print(*alist)
+
+# 시간 초과
