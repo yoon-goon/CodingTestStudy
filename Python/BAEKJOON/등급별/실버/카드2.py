@@ -1,7 +1,6 @@
 # https://www.acmicpc.net/problem/2164
 
 
-
 '''
 N = int(input())
 
@@ -23,12 +22,9 @@ print(*alist)
 
 N = int(input())
 
-alist = []
+alist = list(range(1, N + 1))
 
-for i in range(1, N + 1):
-    alist.append(i)
-
-while len(alist) != 1:
+while len(alist) != 1: # 시간초과발생 구하는 방법을 개선해야할 것으로 보임
     alist.remove(alist[0])
     alist.append(alist[0])
     alist.remove(alist[0])
