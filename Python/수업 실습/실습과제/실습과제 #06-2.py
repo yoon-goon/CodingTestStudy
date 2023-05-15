@@ -17,6 +17,8 @@ def findChar(cList, ch):
     for i in cList:
         if i == ch:
             cnt += 1
+    if cnt == 0:
+        return None
     return cnt
 
 
