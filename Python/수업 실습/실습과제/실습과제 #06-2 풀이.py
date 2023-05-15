@@ -17,20 +17,19 @@ def findChar(cList, ch):
         for lst in cList:
             if lst[0] == ch:
                 return lst
-        return None
+    return None
 
 
 def countChars(txt):
-    # txt = txt.lower()
-    alist = []
-    blist = []
-    if txt == '':
-        return None
-    for y in txt:
-        if y not in alist:
-            alist.append(y)
-            blist.append([y, findChar(txt, y)])
-    return blist
+    clist = []
+    txt = txt.lower()
+    for ch in txt:
+        lst = findChar(clist, ch)
+        if lst == None:
+            clist.append([ch, 1])
+        else:
+            lst[1] += 1
+    return clist
 
 
 def printList(cList):
