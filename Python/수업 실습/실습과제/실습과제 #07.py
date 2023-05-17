@@ -24,15 +24,20 @@ def printList(cList):
 
 def main():
     f = open("lorem.txt")
-    s = f.readline()
+    s = f.readline().rstrip("\n")
 
     global clist
     clist = []
 
     while s:
         print(s, end="")
-        #print(countChars(s))
-        s = f.readline()
+        countChars(s)
+        s = f.readline().rstrip("\n")
     f.close()
+
+    printList(countChars(s))
+
+
+
 
 main()
