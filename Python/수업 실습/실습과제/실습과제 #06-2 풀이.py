@@ -19,7 +19,6 @@ def findChar(cList, ch):
                 return lst
     return None
 
-
 def countChars(txt):
     clist = []
     txt = txt.lower()
@@ -31,14 +30,14 @@ def countChars(txt):
             lst[1] += 1
     return clist
 
-
 def printList(cList):
-    for i in range(len(countChars(cList))):
-        print(countChars(cList)[i])
+    for lst in cList:
+        print(f"{lst[0]}: {lst[1]}")
 
-
+#lst = countChars("Loreml")
+#printList(lst)
 def main():
-    printList(t.lower())
-
+    lst = countChars(t)
+    printList(lst)
 
 main()
