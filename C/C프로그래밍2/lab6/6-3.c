@@ -4,6 +4,7 @@
 
 #define MAXWORD 100
 #define NKEYS (sizeof keytab / sizeof(struct key))
+#define BUFSIZE 100
 
 struct key {
     char *word;
@@ -12,6 +13,8 @@ struct key {
 
 int getword(char *, int);
 struct key *binsearch(char *, struct key *, int);
+char buf[BUFSIZE];
+int bufp = 0;
 
 int main()
 {
@@ -28,7 +31,7 @@ int main()
     return 0;
 }
 
-int binsearch(char *word, struct key tab[], int n) // 포인터 버전
+struct key *binsearch(char *word, struct key *tab, int n) // 포인터 버전
 {
     int cond;
     struct key *low = &tab[0]; //시작
@@ -71,4 +74,18 @@ int getword( char *word, int lim)
     }
     *w = '\0';
     return word[0];
+}
+
+int getch(void)
+{
+        return (bufp > 0) ? buf[--bufp] : getchar();
+        // 0보다 크면 버퍼에 저장되어 있는 것, 저장된 문자 반환. 그렇지 않다면 getchar()로 새로운 문자를 입력, 반환
+}
+
+void ungetch(int c)
+{
+    if (bufp >= BUFSIZE)
+        printf("ungetch: too many characters\n");
+    else
+        buf[bufp++] = c;//버퍼에 문자 저장, bufp위치 증가
 }
