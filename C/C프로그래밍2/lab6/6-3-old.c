@@ -30,24 +30,24 @@ int main()
     return 0;
 }
 
-int binsearch(char *word, struct key tab[], int n) // 포인터 버전
+int binsearch(char *word, struct key tab[], int n)
 {
     int cond;
-    struct key *low = &tab[0]; //시작
-	struct key *high = &tab[n]; // 마지막
-    struct key *mid;
-	 
-    while( low < high) {
-        mid = low + (high-low) / 2;
-        if ((cond = strcmp(word, mid ->word)) < 0) {
-            high = mid;
+    int low, high, mid;
+     
+    low = 0;
+    high = n - 1;
+    while( low <= high) {
+        mid = (low+high) / 2;
+        if ((cond = strcmp(word, tab[mid].word)) < 0) {
+            high = mid - 1;
         } else if (cond > 0) {
             low = mid + 1;
         } else {
             return mid;
         }
     }
-    return NULL;
+    return -1;
 }
 
 int getword( char *word, int lim)
