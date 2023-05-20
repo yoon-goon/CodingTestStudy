@@ -28,10 +28,10 @@ int main()
         struct tnode *root;
         char word[MAXWORD];
 
-        root = NULL;
+        root = NULL; // 초기에 루트 노드를 NULL로 설정
         while(getword(word, MAXWORD) != EOF)
                 if(isalpha(word[0]))
-                        root = addtree(root, word);
+                        root = addtree(root, word); // 이진 트리에 단어 추가
         treeprint(root);
         return 0;
 }
@@ -65,16 +65,16 @@ int getword( char *word, int lim)
 struct tnode *addtree(struct tnode *p, char *w) {
 	int cond;
 
-	if(p == NULL) {                       
-		p = talloc();                        
+	if(p == NULL) {  // 새로운 단어가 도착한 경우                     
+		p = talloc(); // 새 노드를 만듦
 		p->word = strdup(w); // w 는 getword에서 나온 문자열
 		p->count = 1;
 		p->left = p->right = NULL;
  } 	else if((cond = strcmp(w, p->word)) == 0)
-		p->count++;                          
-	else if(cond < 0)                     /* less than into left subtree */
+		p->count++;  // 중복된 단어
+	else if(cond < 0)// 작은건 왼쪽 서브트리
 		p->left = addtree(p->left, w);
-	else                                  /* greater than into right subtree */
+	else// 큰건 오른쪽 서브트리
 		p->right = addtree(p->right, w);
 
 	return p;
@@ -84,22 +84,13 @@ struct tnode *talloc(void) {
 	return(struct tnode *)malloc(sizeof(struct tnode));
 }
 
-char *strdup(char *s)
-{
-	char *p
-	
-	p = (char *) malloc(strlen(s)+1);
-	if (p != NULL)
-		strcpy(p,s);
-	return p;
-}
 
 void treeprint(struct tnode *p) {
 	if(p != NULL) {
-	treeprint(p->left);
+	treeprint(p->left); // 왼쪽 서브트리를 순회하여 출력
 	printf("%4d %s\n", p->count, p->word);
-	treeprint(p->right);
-	}
+	treeprint(p->right); // 오른쪽 서브트리를 순회하여 출력
+	} 
 }
 
 // 이전 함수 재사용
