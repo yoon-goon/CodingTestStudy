@@ -65,13 +65,13 @@ int getword( char *word, int lim)
 struct tnode *addtree(struct tnode *p, char *w) {
 	int cond;
 
-	if(p == NULL) {                       /* a new word has arrived */
-		p = talloc();                        /* make a new node */
-		p->word = strdup(w); // getword에서 나온 문자열
+	if(p == NULL) {                       
+		p = talloc();                        
+		p->word = strdup(w); // w 는 getword에서 나온 문자열
 		p->count = 1;
 		p->left = p->right = NULL;
  } 	else if((cond = strcmp(w, p->word)) == 0)
-		p->count++;                          /* repeated word */
+		p->count++;                          
 	else if(cond < 0)                     /* less than into left subtree */
 		p->left = addtree(p->left, w);
 	else                                  /* greater than into right subtree */
@@ -82,6 +82,16 @@ struct tnode *addtree(struct tnode *p, char *w) {
 
 struct tnode *talloc(void) {
 	return(struct tnode *)malloc(sizeof(struct tnode));
+}
+
+char *strdup(char *s)
+{
+	char *p
+	
+	p = (char *) malloc(strlen(s)+1);
+	if (p != NULL)
+		strcpy(p,s);
+	return p;
 }
 
 void treeprint(struct tnode *p) {
