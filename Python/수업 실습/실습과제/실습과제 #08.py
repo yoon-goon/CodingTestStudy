@@ -9,7 +9,11 @@ def writeNew(s):
     with open(s, "w") as f1:
         idx = 0
         while idx < len(lst):
-            f1.write(lst[idx])
+            if "#" in lst[idx]:
+                print("주석감지")
+                f1.write(lst[idx])
+            else:
+                f1.write(lst[idx])
             idx += 1
 
 
