@@ -35,6 +35,7 @@ def main():
         s = f.readline().rstrip("\n")
     f.close()
 
+    print("")
     printList(countChars(s))
 
 
