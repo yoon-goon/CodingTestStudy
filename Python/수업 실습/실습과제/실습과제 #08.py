@@ -13,6 +13,7 @@ def writeNew(s):
             idx += 1
 
 
+
 try:
     with open(filename, encoding="utf-8") as f:
         lst = f.readlines()
@@ -21,4 +22,14 @@ try:
         writeNew(newfile)
 
 except FileNotFoundError:
-    filename = input("Couldn't find the file, input again: ")
+    try :
+        filename = input("Couldn't find the file, input again: ")
+        with open(filename, encoding="utf-8") as f:
+            lst = f.readlines()
+            print(lst)
+            newfile = "cr_" + filename
+            writeNew(newfile)
+    except FileNotFoundError:
+        pass
+
+#MP08data.py
