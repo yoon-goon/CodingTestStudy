@@ -2,7 +2,7 @@ import os
 
 print(os.getcwd())
 
-filename = input("input file name: ")
+filename = input("파일 이름을 입력해주세요: ")
 
 
 def writeNew(s):
@@ -10,30 +10,29 @@ def writeNew(s):
         idx = 0
         while idx < len(lst):
             if "#" in lst[idx]:
-                print("주석감지")
-                f1.write(lst[idx])
+                # print("주석감지")
+                location = lst[idx].find("#")
+                f1.write(lst[idx][:location] + "\n")
             else:
                 f1.write(lst[idx])
             idx += 1
-
+        print(s, "파일이 생성되었습니다.")
 
 
 try:
     with open(filename, encoding="utf-8") as f:
         lst = f.readlines()
-        print(lst)
+        # print(lst)
         newfile = "cr_" + filename
         writeNew(newfile)
 
 except FileNotFoundError:
-    try :
-        filename = input("Couldn't find the file, input again: ")
+    try:
+        filename = input("파일을 찾을 수 없습니다. 다시 입력해주세요: ")
         with open(filename, encoding="utf-8") as f:
             lst = f.readlines()
-            print(lst)
+            # print(lst)
             newfile = "cr_" + filename
             writeNew(newfile)
     except FileNotFoundError:
-        pass
-
-#MP08data.py
+        print("파일을 찾을 수 없습니다.")
