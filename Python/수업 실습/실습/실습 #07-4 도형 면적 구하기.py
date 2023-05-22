@@ -10,7 +10,9 @@ def inputRect2():
     t = tuple()
     lst = ["x1", "y1", "x2", "y2"]
     for i in lst:
-        int(input(i + " 입력: "))
+        n = int(input(i + " 입력: "))
+        t += (n,)
+    return t
 
 
 def inputTriangle():
@@ -24,4 +26,5 @@ def inputTriangle():
 
 
 # print(inputRect())
-print(inputTriangle())
+#print(inputTriangle())
+print(inputRect2())
