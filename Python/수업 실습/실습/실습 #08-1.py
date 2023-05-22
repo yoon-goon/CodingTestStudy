@@ -1,4 +1,4 @@
 import os
 
-lst = os.listdir()
+lst = os.listdir("c://temp//fakefolder")
 print(lst)
