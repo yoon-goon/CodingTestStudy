@@ -20,13 +20,27 @@ print(*alist)
 
 '''
 
+# N = int(input())
+# 
+# alist = list(range(1, N + 1))
+# 
+# while len(alist) != 1: # 시간초과발생 구하는 방법을 개선해야할 것으로 보임
+#     alist.remove(alist[0])
+#     alist.append(alist[0])
+#     alist.remove(alist[0])
+# 
+# print(*alist)
+
+
 N = int(input())
 
 alist = list(range(1, N + 1))
 
-while len(alist) != 1: # 시간초과발생 구하는 방법을 개선해야할 것으로 보임
+while len(alist) > 1:  # 시간초과발생 구하는 방법을 개선해야할 것으로 보임
     alist.remove(alist[0])
     alist.append(alist[0])
     alist.remove(alist[0])
 
-print(*alist)
+print(*alist) # unpack
+
+# 참고 https://my-coding-notes.tistory.com/83
