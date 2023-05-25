@@ -12,7 +12,7 @@ def writeNew(s):
             if "#" in lst[idx]:
                 # print("주석감지")
                 location = lst[idx].find("#")
-                f1.write(lst[idx][:location] + "\n")
+                f1.write(lst[idx][:location] + "\n") # '#'가 있는 인덱스까지 슬라이싱 하는걸로 구현
             else:
                 f1.write(lst[idx])
             idx += 1
