@@ -12,7 +12,7 @@ struct Contact {
 
 
 int main(int argc, char *argv[]) {
-    if (argc != 5) {
+    if (argc < 4 || argc > 5) {
         printf("잘못된 명령어입니다. 사용법: ./tel -a 이름 전화번호 메모(옵션)\n");
         return 1;
     }
@@ -29,6 +29,10 @@ int main(int argc, char *argv[]) {
         printf("파일을 열 수 없습니다.\n");
         return 1;
     }
+	
+	if (argc != 5) {
+		argv[4] = "";
+	}
 
     // 파일에 추가할 내용을 문자열로 생성
     char entry[MAX_Contacts];
