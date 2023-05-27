@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    if (strcmp(argv[1], "-a") != 0) {
+    if (strcmp(argv[1], "-a") != 0) { // 다른 명령도 수행하도록 수정해야함
         printf("잘못된 옵션입니다. -a 옵션을 사용하세요.\n");
         return 1;
     }
