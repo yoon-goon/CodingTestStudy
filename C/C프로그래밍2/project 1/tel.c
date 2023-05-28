@@ -85,11 +85,14 @@ int main(int argc, char *argv[]) {
                 found = 1;
 				order += 1;
             }
+			
         }
 
         if (!found) {
             printf("no match found.\n");
-        }
+        } else {
+			printf("match found.\n");
+		}
 
         fclose(file);
     }
