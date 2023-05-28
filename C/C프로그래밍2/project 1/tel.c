@@ -55,22 +55,26 @@ int main(int argc, char *argv[]) {
 			printf("저장하지 않고 프로그램을 종료합니다.\n");
 		}
 
-    //fclose(file);
+    fclose(file);
 	} 
 	else if (strcmp(argv[1], "-d") == 0) {
         if (argc != 3) {
-            printf("형식이 틀렸습니다. -d 옵션을 사용할 때는 이름or번호or메모를 입력하세요.\n");
+            printf("형식이 올바르지 않습니다. -d 옵션을 사용할 때는 이름, 번호, 또는 메모를 입력하세요.\n");
             return 1;
         }
 
-        char filename[] = "data.txt";
-        char *keyword = argv[2];
-
-        FILE *file = fopen(filename, "r");
-        FILE *tempFile = fopen("temp.txt", "w");
-
-        if (file == NULL || tempFile == NULL) {
+        // 파일 열기
+        FILE *file = fopen("data.txt", "r");
+        if (file == NULL) {
             printf("파일을 열 수 없습니다.\n");
+            return 1;
+        }
+
+        // 임시 파일 열기
+        FILE *tempFile = fopen("temp.txt", "w");
+        if (tempFile == NULL) {
+            printf("임시 파일을 열 수 없습니다.\n");
+            fclose(file);
             return 1;
         }
 
@@ -78,73 +82,42 @@ int main(int argc, char *argv[]) {
         int deleted = 0;
         int order = 0;
 
+        // 파일 내용 읽어오기
         while (fgets(line, sizeof(line), file) != NULL) {
             char *name = strtok(line, ":");
             char *phone = strtok(NULL, ":");
             char *memo = strtok(NULL, ":");
 
-            if (strstr(name, keyword) == NULL && strstr(phone, keyword) == NULL && strstr(memo, keyword) == NULL) {
+            if (strstr(name, argv[2]) == NULL && strstr(phone, argv[2]) == NULL && strstr(memo, argv[2]) == NULL) {
                 order++;
                 fprintf(tempFile, "%d:%s:%s:%s", order, name, phone, memo);
             } else {
                 deleted = 1;
-                printf("%d %s %s %s\n", order, name, phone, memo);
+                printf("%d %s %s %s\n", order + 1, name, phone, memo);
             }
         }
 
+        // 파일 닫기
         fclose(file);
         fclose(tempFile);
 
-        if (!deleted) {
+        if (deleted) {
+            // 기존 파일 삭제
+            if (remove("data.txt") != 0) {
+                printf("연락처를 삭제하는 중에 오류가 발생했습니다.\n");
+                return 1;
+            }
+
+            // 임시 파일 이름 변경
+            if (rename("temp.txt", "data.txt") != 0) {
+                printf("임시 파일을 원본 파일로 변경하는 중에 오류가 발생했습니다.\n");
+                return 1;
+            }
+
+            printf("연락처가 삭제되었습니다.\n");
+        } else {
             printf("일치하는 연락처가 없습니다.\n");
             remove("temp.txt");
-        } else {
-            printf("연락처를 삭제할 번호를 입력하세요 (0은 취소): ");
-            int choice;
-            scanf("%d", &choice);
-
-            if (choice > 0 && choice <= order) {
-                file = fopen("temp.txt", "r");
-                tempFile = fopen("newdata.txt", "w");
-
-                if (file == NULL || tempFile == NULL) {
-                    printf("파일을 열 수 없습니다.\n");
-                    return 1;
-                }
-
-                int currentContact = 0;
-                order = 0;
-
-                while (fgets(line, sizeof(line), file) != NULL) {
-                    char *number = strtok(line, ":");
-                    char *name = strtok(NULL, ":");
-                    char *phone = strtok(NULL, ":");
-                    char *memo = strtok(NULL, ":");
-
-                    currentContact++;
-                    if (currentContact != choice) {
-                        order++;
-                        fprintf(tempFile, "%s:%s:%s", name, phone, memo);
-                    }
-                }
-
-                fclose(file);
-                fclose(tempFile);
-
-                if (remove("data.txt") != 0) {
-                    printf("연락처를 삭제하는 중에 오류가 발생했습니다.\n");
-                    return 1;
-                }
-                if (rename("newdata.txt", "data.txt") != 0) {
-                    printf("임시 파일을 원본 파일로 변경하는 중에 오류가 발생했습니다.\n");
-                    return 1;
-                }
-
-                printf("연락처가 삭제되었습니다.\n");
-            } else {
-                printf("연락처 삭제를 취소합니다.\n");
-                remove("temp.txt");
-            }
         }
     }
 	
