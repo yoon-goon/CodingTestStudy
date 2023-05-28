@@ -72,12 +72,12 @@ int main(int argc, char *argv[]) {
 
         char line[MAX_Contacts];
         int found = 0;
+		int order = 1;
 
         while (fgets(line, sizeof(line), file) != NULL) {
             char *name = strtok(line, ":");
             char *phone = strtok(NULL, ":");
             char *memo = strtok(NULL, ":");
-			int order = 1;
 			
 
             if (strstr(phone, number) != NULL) {
@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
         }
 
         if (!found) {
-            printf("일치하는 정보가 없습니다.\n");
+            printf("no match found.\n");
         }
 
         fclose(file);
