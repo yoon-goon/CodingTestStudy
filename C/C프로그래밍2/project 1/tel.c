@@ -64,8 +64,7 @@ int main(int argc, char *argv[]) {
             return 1;
         }
 		char filename[] = "data.txt";
-        char keyword[40];
-        strcpy(keyword, argv[2]);
+        char *keyword = argv[2];
 		
 		FILE *file = fopen(filename, "r");
 		FILE *tempFile = fopen("temp.txt", "w");
@@ -86,19 +85,19 @@ int main(int argc, char *argv[]) {
 				order++;
 				printf("%d %s %s %s\n", order, name, phone, memo);
 			}
+			if (remove(filename) != 0) {
+				printf("연락처를 삭제하는 중에 오류가 발생했습니다.\n");
+				return 1;
+			}
+			if (rename("temp.txt", filename) != 0) {
+				printf("임시 파일을 원본 파일로 변경하는 중에 오류가 발생했습니다.\n");
+				return 1;
+		}
 		}
 		fclose(file);
 		fclose(tempFile);
 		
 		if(deleted) {
-			if (remove(filename) != 0) {
-				printf("연락처를 삭제하는 중에 오류가 발생했습니다.\n");
-				return;
-			}
-			if (rename("temp.txt", filename) != 0) {
-				printf("임시 파일을 원본 파일로 변경하는 중에 오류가 발생했습니다.\n");
-				return;
-			}
 			
 			printf("삭제할 연락처 번호를 입력하세요 (0은 취소): ");
 			int choice;
@@ -113,19 +112,24 @@ int main(int argc, char *argv[]) {
 					char *name = strtok(line, ":");
 					char *phone = strtok(NULL, ":");
 					char *memo = strtok(NULL, ":");
-	
-					if (strstr(name, keyword) == NULL && strstr(phone, keyword) == NULL && strstr(memo, keyword) == NULL) 
+				
+
+				if (strstr(name, keyword) == NULL && strstr(phone, keyword) == NULL && strstr(memo, keyword) == NULL) 
+				{
+					fputs(line, tempFile);
+				} 
+				else 
+				{
+					currentContact++;
+					if (currentContact != choice) 
 					{
 						fputs(line, tempFile);
-					} else {
-						currentContact++;
-						if (currentContact != choice) {
-							fputs(line, tempFile);
-						}
 					}
 				}
 				fclose(file);
 				fclose(tempFile);
+				
+				
 				printf("연락처가 삭제되었습니다.\n");
 				} else {
 					printf("연락처 삭제를 취소합니다.\n");
