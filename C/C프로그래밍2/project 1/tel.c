@@ -59,8 +59,8 @@ int main(int argc, char *argv[]) {
 	}
 	else{
 		// search 구현
-		char number[20];
-        strcpy(number, argv[1]);
+		char keyword[40];
+        strcpy(keyword, argv[1]);
 
         char filename[] = "data.txt";
         FILE *file = fopen(filename, "r");
@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
             char *memo = strtok(NULL, ":");
 			
 
-            if (strstr(phone, number) != NULL) {
+            if (strstr(name, keyword) != NULL || strstr(phone, keyword) != NULL) {
                 printf("%d %s %s %s\n", order, name, phone, memo);
                 found = 1;
 				order += 1;
