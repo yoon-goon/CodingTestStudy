@@ -13,13 +13,13 @@ struct Contact {
 
 int main(int argc, char *argv[]) {
     if (argc != 2 && (argc < 4 || argc > 5)) {
-        printf("사용법: 번호,이름 혹은 메모를 입력하면 일치하는 contacts를 찾습니다.\n 새로운 contacts 추가 : -a 이름 전화번호 메모(옵션)\n");
+        printf("사용법: 번호,이름 혹은 메모를 입력하면 일치하는 contacts를 찾습니다.\n새로운 contacts 추가 : -a 이름 전화번호 메모(옵션)\n");
         return 1;
     }
 
     if (strcmp(argv[1], "-a") == 0) {
         if (argc < 4 || argc > 5) {
-            printf("-a 옵션을 사용할 때는 이름, 전화번호, 메모(필수아님)를 입력하세요.\n");
+            printf("형식이 틀렸습니다. -a 옵션을 사용할 때는 이름, 전화번호, 메모(필수아님)를 입력하세요.\n");
             return 1;
         }
 
