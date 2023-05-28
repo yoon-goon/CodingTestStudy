@@ -13,7 +13,7 @@ struct Contact {
 
 int main(int argc, char *argv[]) {
     if (argc != 2 && (argc < 4 || argc > 5)) {
-        printf("잘못된 명령어입니다. 사용법: ./tel -a 이름 전화번호 메모(옵션)\n");
+        printf("사용법: 번호,이름 혹은 메모를 입력하면 일치하는 contacts를 찾습니다.\n 새로운 contacts 추가 : -a 이름 전화번호 메모(옵션)\n");
         return 1;
     }
 
@@ -80,7 +80,7 @@ int main(int argc, char *argv[]) {
             char *memo = strtok(NULL, ":");
 			
 
-            if (strstr(name, keyword) != NULL || strstr(phone, keyword) != NULL) {
+            if (strstr(name, keyword) != NULL || strstr(phone, keyword) != NULL || strstr(memo, keyword) != NULL) {
                 printf("%d %s %s %s\n", order, name, phone, memo);
                 found = 1;
 				order += 1;
