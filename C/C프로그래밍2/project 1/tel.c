@@ -90,10 +90,10 @@ int main(int argc, char *argv[]) {
 
             if (strstr(name, argv[2]) == NULL && strstr(phone, argv[2]) == NULL && strstr(memo, argv[2]) == NULL) {
                 order++;
-                fprintf(tempFile, "%d:%s:%s:%s", order, name, phone, memo);
+                fprintf(tempFile, "%s:%s:%s",  name, phone, memo);
             } else {
                 deleted = 1;
-                printf("%d %s %s %s\n", order + 1, name, phone, memo);
+                printf("%s %s %s\n", name, phone, memo);
             }
         }
 
