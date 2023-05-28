@@ -33,6 +33,8 @@ int main(int argc, char *argv[]) {
 	if (argc != 5) {
 		argv[4] = "";
 	}
+	
+	printf("%s %s %s\n", argv[2], argv[3], argv[4]);
 
     // 파일에 추가할 내용을 문자열로 생성
     char entry[MAX_Contacts];
