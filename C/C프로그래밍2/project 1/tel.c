@@ -35,15 +35,24 @@ int main(int argc, char *argv[]) {
 	}
 	
 	printf("%s %s %s\n", argv[2], argv[3], argv[4]);
+	
+	printf("add? [Y/N]: ");
+    char answer;
+    scanf(" %c", &answer);	
 
-    // 파일에 추가할 내용을 문자열로 생성
-    char entry[MAX_Contacts];
-    snprintf(entry, MAX_Contacts, "%s:%s:%s\n", argv[2], argv[3], argv[4]);
+	if (answer == 'Y' || answer == 'y') {
+		// 파일에 추가할 내용을 문자열로 생성
+		char entry[MAX_Contacts];
+		snprintf(entry, MAX_Contacts, "%s:%s:%s\n", argv[2], argv[3], argv[4]);
+	
+		// 파일에 내용 추가
+		fputs(entry, file);
 
-    // 파일에 내용 추가
-    fputs(entry, file);
-
-    printf("data.txt 파일에 추가되었습니다.\n");
+		printf("data.txt 파일에 추가되었습니다.\n");
+	}
+	else {
+		printf("저장하지 않고 프로그램을 종료합니다.\n");
+	}
 
     fclose(file);
 
