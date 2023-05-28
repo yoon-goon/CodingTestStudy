@@ -120,7 +120,7 @@ int main(int argc, char *argv[]) {
                     order++;
                     fprintf(tempFile, "%s:%s:%s", name, phone, memo);
                 } else {
-                    if (order == selectedContact) {
+                    if (order + 1 == selectedContact) {
                         deleted = 1;
                         printf("다음 연락처가 삭제되었습니다: %s %s %s\n", name, phone, memo);
                     } else {
