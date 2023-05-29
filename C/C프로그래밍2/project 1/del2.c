@@ -85,10 +85,11 @@ int main(int argc, char *argv[]) {
             char *name = strtok(line, ":");
             char *phone = strtok(NULL, ":");
             char *memo = strtok(NULL, ":");
-            order++;
+
             if (strstr(name, argv[2]) == NULL && strstr(phone, argv[2]) == NULL && strstr(memo, argv[2]) == NULL) {
                 fprintf(tempFile, "%s:%s:%s", name, phone, memo);
             } else {
+                order++; // 선택지 번호
                 deleted = 1;
                 printf("%d %s %s %s\n", order, name, phone, memo);
             }
