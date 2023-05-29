@@ -10,9 +10,15 @@ struct Contact {
     char memo[40];
 };
 
+int compare(const void *a, const void *b) {
+    struct Contact *contactA = (struct Contact *)a;
+    struct Contact *contactB = (struct Contact *)b;
+    return strcmp(contactA->name, contactB->name);
+}
+
 int main(int argc, char *argv[]) {
     if (argc != 2 && (argc < 3 || argc > 5)) {
-        printf("사용법: 번호,이름 혹은 메모를 입력하면 일치하는 contacts를 찾습니다.\n새로운 contacts 추가 : -a 이름 전화번호 메모(옵션)\n제거 : -d 이름 or 번호 or 메모.\n");
+        printf("사용법: 번호,이름 혹은 메모를 입력하면 일치하는 contacts를 찾습니다.\n새로운 contacts 추가 : -a 이름 전화번호 메모(옵션)\n제거 : -d 이름 or 번호 or 메모.\n알파벳 순 정렬 : -l\n");
         return 1;
     }
 
@@ -156,7 +162,44 @@ int main(int argc, char *argv[]) {
         // 파일 닫기
         fclose(file);
         fclose(tempFile);
-    } else {
+    }
+    else if (strcmp(argv[1], "-l") == 0) { // list
+        char filename[] = "data.txt";
+        FILE *file = fopen(filename, "r");
+
+        if (file == NULL) {
+            printf("파일을 열 수 없습니다.\n");
+            return 1;
+        }
+
+        struct Contact contacts[MAX_Contacts];
+        int count = 0;
+
+        char line[MAX_Contacts];
+        while (fgets(line, sizeof(line), file) != NULL) {
+            char *name = strtok(line, ":");
+            char *phone = strtok(NULL, ":");
+            char *memo = strtok(NULL, ":");
+
+            strcpy(contacts[count].name, name);
+            strcpy(contacts[count].phone, phone);
+            strcpy(contacts[count].memo, memo);
+            count++;
+        }
+
+        fclose(file);
+
+        if (count > 0) {
+            qsort(contacts, count, sizeof(struct Contact), compare);
+
+            for (int i = 0; i < count; i++) {
+                printf("%d %s %s %s\n", i + 1, contacts[i].name, contacts[i].phone, contacts[i].memo);
+            }
+        } else {
+            printf("연락처가 없습니다.\n");
+        }
+    }
+     else {
         // search 구현
         char keyword[40];
         strcpy(keyword, argv[1]);
