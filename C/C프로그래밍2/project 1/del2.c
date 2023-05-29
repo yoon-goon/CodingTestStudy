@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
 
         printf("%s %s %s\n", argv[2], argv[3], argv[4]);
 
-        printf("add? [Y/N]: ");
+        printf("add? [Y/N]: "); // 추가할지 Y/N 입력 받기
         char answer;
         scanf(" %c", &answer);
 
@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
             return 1;
         }
 
-        char line[90];
+        char line[90]; // name + number + memo
         int deleted = 0;
         int order = 0;
         int selectedContact = 0;
@@ -91,6 +91,8 @@ int main(int argc, char *argv[]) {
             char *name = strtok(line, ":");
             char *phone = strtok(NULL, ":");
             char *memo = strtok(NULL, ":");
+            // line 버퍼에 파일에서 읽어옴 sizeof(line)을 통해 파일의 끝에 도달하거나 읽을 줄이 없을 때까지 반복
+            // 읽어온 줄을 strtok 함수를 사용하여 콜론(:)으로 분리 첫 번째 이후 호출 시에는 NULL을 전달하여 이전 호출 위치에서부터 분리
 
             if (strstr(name, argv[2]) == NULL && strstr(phone, argv[2]) == NULL && strstr(memo, argv[2]) == NULL) {
                 fprintf(tempFile, "%s:%s:%s", name, phone, memo);
@@ -98,7 +100,8 @@ int main(int argc, char *argv[]) {
                 order++; // 선택지 번호
                 deleted = 1;
                 printf("%d %s %s %s\n", order, name, phone, memo);
-            }
+            } // 연락처에 대해 검색어와 일치하는 경우 deleted 1, order 증가(삭제 단계에서 선택 번호를 위함)
+            // 연락처에 대해 검색어와 일치하지 않는 경우 해당 연락처 정보를 tempFile에 그대로 기록(유지)
         }
 
         if (deleted) {
