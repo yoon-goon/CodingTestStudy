@@ -10,10 +10,10 @@ struct Contact {
     char memo[40];
 };
 
-int compare(const void *a, const void *b) {
+int compare(const void *a, const void *b) { // qsort에 사용될 비교 함수
     struct Contact *contactA = (struct Contact *)a;
     struct Contact *contactB = (struct Contact *)b;
-    return strcmp(contactA->name, contactB->name);
+    return strcmp(contactA->name, contactB->name); // 반환값에 따라 요소 순서 결정 (name)을 기준으로 정렬
 }
 
 int main(int argc, char *argv[]) {
@@ -22,8 +22,8 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    if (strcmp(argv[1], "-a") == 0) { //add
-        if (argc < 4 || argc > 5) {
+    if (strcmp(argv[1], "-a") == 0) { //add 옵션
+        if (argc < 4 || argc > 5) { // 입력 갯수 오류
             printf("형식이 틀렸습니다. -a 옵션을 사용할 때는 이름, 전화번호, 메모(필수아님)를 입력하세요.\n");
             return 1;
         }
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 
         if (argc != 5) {
             argv[4] = "";
-        }
+        } // 메모칸이 비어있는 경우 처리
 
         printf("%s %s %s\n", argv[2], argv[3], argv[4]);
 
@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
         scanf(" %c", &answer);
 
         if (answer == 'Y' || answer == 'y') {
-            // 파일에 추가할 내용을 문자열로 생성
+            // 문자열로 만든 후
             char entry[MAX_Contacts];
             snprintf(entry, MAX_Contacts, "%s:%s:%s\n", argv[2], argv[3], argv[4]);
 
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
         }
 
         fclose(file);
-    } else if (strcmp(argv[1], "-d") == 0) {
+    } else if (strcmp(argv[1], "-d") == 0) { // Delete 삭제 옵션
         if (argc != 3) {
             printf("형식이 올바르지 않습니다. -d 옵션을 사용할 때는 이름, 번호, 또는 메모를 입력하세요.\n");
             return 1;
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
             return 1;
         }
 
-        // 임시 파일 열기 (기존 파일을 초기화하기 위해 "w" 모드로 열기)
+        // 임시 파일 열기 (파일 초기화하기 위해 w 모드)
         FILE *tempFile = fopen("temp.txt", "w");
         if (tempFile == NULL) {
             printf("임시 파일을 열 수 없습니다.\n");
@@ -86,7 +86,7 @@ int main(int argc, char *argv[]) {
         int order = 0;
         int selectedContact = 0;
 
-        // 파일 내용 읽어오기
+        // 파일 읽어오기
         while (fgets(line, sizeof(line), file) != NULL) {
             char *name = strtok(line, ":");
             char *phone = strtok(NULL, ":");
@@ -114,7 +114,7 @@ int main(int argc, char *argv[]) {
                 return 1;
             }
 
-            // 파일 내용 읽어오기
+            // 파일 읽어오기
             rewind(file);
             order = 0;
             deleted = 0;
@@ -143,7 +143,7 @@ int main(int argc, char *argv[]) {
                     return 1;
                 }
 
-                // 임시 파일 이름 변경
+                // 임시 파일 대체
                 if (rename("temp.txt", "data.txt") != 0) {
                     printf("임시 파일을 원본 파일로 변경하는 중에 오류가 발생했습니다.\n");
                     return 1;
@@ -163,7 +163,7 @@ int main(int argc, char *argv[]) {
         fclose(file);
         fclose(tempFile);
     }
-    else if (strcmp(argv[1], "-l") == 0) { // list
+    else if (strcmp(argv[1], "-l") == 0) { // 알파벳순 정렬 후 list 출력
         char filename[] = "data.txt";
         FILE *file = fopen(filename, "r");
 
