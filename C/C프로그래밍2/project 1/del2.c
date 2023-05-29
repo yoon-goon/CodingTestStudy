@@ -81,7 +81,7 @@ int main(int argc, char *argv[]) {
             return 1;
         }
 
-        char line[90]; // name + number + memo
+        char line[93]; // name : number : memo
         int deleted = 0;
         int order = 0;
         int selectedContact = 0;
@@ -105,7 +105,7 @@ int main(int argc, char *argv[]) {
         }
 
         if (deleted) {
-            printf("지우려는 연락처의 번호를 선택하세요: ");
+            printf("which one?: ");
             scanf("%d", &selectedContact);
 
             // 파일 내용 읽어오기 (쓰기 모드로 열기)
@@ -118,8 +118,8 @@ int main(int argc, char *argv[]) {
             }
 
             // 파일 읽어오기
-            rewind(file);
-            order = 0;
+            rewind(file); // 포인터를 파일의 처음으로
+            order = 0; // 선택지 번호
             deleted = 0;
             while (fgets(line, sizeof(line), file) != NULL) {
                 char *name = strtok(line, ":");
@@ -152,7 +152,7 @@ int main(int argc, char *argv[]) {
                     return 1;
                 }
 
-                printf("연락처가 삭제되었습니다.\n");
+                printf("연락처가 삭제되었습니다.\n"); // 삭제작업 정상완료
             } else {
                 printf("선택한 연락처가 존재하지 않습니다.\n");
                 remove("temp.txt");
@@ -175,16 +175,16 @@ int main(int argc, char *argv[]) {
             return 1;
         }
 
-        struct Contact contacts[MAX_Contacts];
-        int count = 0;
+        struct Contact contacts[MAX_Contacts]; // 배열 contacts 선언
+        int count = 0; // 연락처 갯수
 
-        char line[MAX_Contacts];
+        char line[93]; //name : number : memo
         while (fgets(line, sizeof(line), file) != NULL) {
             char *name = strtok(line, ":");
             char *phone = strtok(NULL, ":");
             char *memo = strtok(NULL, ":");
 
-            strcpy(contacts[count].name, name);
+            strcpy(contacts[count].name, name); //contacts 배열에 복사
             strcpy(contacts[count].phone, phone);
             strcpy(contacts[count].memo, memo);
             count++;
@@ -193,18 +193,18 @@ int main(int argc, char *argv[]) {
         fclose(file);
 
         if (count > 0) {
-            qsort(contacts, count, sizeof(struct Contact), compare);
+            qsort(contacts, count, sizeof(struct Contact), compare); // qsort이용 정렬
 
             for (int i = 0; i < count; i++) {
                 printf("%d %s %s %s\n", i + 1, contacts[i].name, contacts[i].phone, contacts[i].memo);
-            }
+            } // 출력
         } else {
             printf("연락처가 없습니다.\n");
         }
     }
      else {
         // search 구현
-        char keyword[40];
+        char keyword[40]; // name or number or memo 에서 올 수 있는 최대 크기
         strcpy(keyword, argv[1]);
 
         char filename[] = "data.txt";
@@ -215,7 +215,7 @@ int main(int argc, char *argv[]) {
             return 1;
         }
 
-        char line[MAX_Contacts];
+        char line[93];
         int found = 0;
         int order = 1;
 
@@ -228,7 +228,7 @@ int main(int argc, char *argv[]) {
                 printf("%d %s %s %s\n", order, name, phone, memo);
                 found = 1;
                 order++;
-            }
+            } // 하나라도 keyword를 포함하면
         }
 
         if (!found) {
