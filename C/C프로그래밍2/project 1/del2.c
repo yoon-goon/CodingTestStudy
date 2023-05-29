@@ -120,11 +120,12 @@ int main(int argc, char *argv[]) {
                 if (strstr(name, argv[2]) == NULL && strstr(phone, argv[2]) == NULL && strstr(memo, argv[2]) == NULL) {
                     fprintf(tempFile, "%s:%s:%s", name, phone, memo);
                 } else {
-                    if (order + 1 == selectedContact) {
+                    order++; // 선택지 번호
+                    if (order != selectedContact) {
+                        fprintf(tempFile, "%s:%s:%s", name, phone, memo);
+                    } else {
                         deleted = 1;
                         printf("다음 연락처가 삭제되었습니다: %s %s %s\n", name, phone, memo);
-                    } else {
-                        fprintf(tempFile, "%s:%s:%s", name, phone, memo);
                     }
                 }
             }
