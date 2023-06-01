@@ -1,4 +1,10 @@
 import os
 
-lst = os.listdir("c://temp//fakefolder")
-print(lst)
+
+lst = input("경로를 입력하세요")
+trylist(lst)
+
+def trylist(lst):
+    print(os.listdir(lst))
+
+
