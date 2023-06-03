@@ -3,9 +3,11 @@ def readFile(fileName):
         with open(fileName) as f:
             strLst = f.readlines()
         floatlist = []
-        for s in strLst:
-            floatlist.append(float(s))
-        return floatlist
+        try:
+            for s in strLst:
+                floatlist.append(float(s))
+            return floatlist
+        except ValueError
     except FileNotFoundError:
         print(fileName + "을 찾을 수 없습니다.")
         return 0
