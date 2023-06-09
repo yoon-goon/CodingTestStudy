@@ -20,8 +20,13 @@ int compare(const void *a, const void *b) { // qsort에 사용될 비교 함수
 }
 
 int main(int argc, char *argv[]) {
-    initscr()
-    printw("Wellcome!!")
+    int press = 0;
+    initscr();
+    printw("Wellcome!!");
+    press = getch();
+    printw("%d",&press);
+    getch();
+    endwin();
     if (argc != 2 && (argc < 3 || argc > 5)) {
         printf("사용법: 번호,이름 혹은 메모를 입력하면 일치하는 contacts를 찾습니다.\n새로운 contacts 추가 : -a 이름 전화번호 메모(옵션)\n제거 : -d 이름 or 번호 or 메모.\n알파벳 순 정렬 : -l\n");
         return 1;
