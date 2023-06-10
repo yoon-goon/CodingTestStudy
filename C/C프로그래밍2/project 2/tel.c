@@ -173,10 +173,10 @@ int main() {
                 FILE *updatedTempFile = fopen(tempFilename, "w");
                 int currentContact = 0;
 
+                rewind(updatedFile);  // 파일 포인터를 다시 맨 앞으로 이동
+
                 while (fgets(line, sizeof(line), updatedFile) != NULL) {
                     if (strstr(line, keyword) == NULL) {
-                        fputs(line, updatedTempFile);
-                    } else {
                         currentContact++;
                         if (currentContact != selectedContact) {
                             fputs(line, updatedTempFile);
@@ -227,7 +227,7 @@ int main() {
             char *name = strtok(line, ":");
             char *phone = strtok(NULL, ":");
             char *memo = strtok(NULL, ":");
-            if (strstr(line, keyword) != NULL) {
+            if (strstr(name, keyword) != NULL || strstr(phone, keyword) != NULL || strstr(memo, keyword) != NULL) {
                 getyx(searchwin,cury,curx);
                 cury = cury + 1;
                 found = 1;
