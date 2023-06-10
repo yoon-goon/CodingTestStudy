@@ -27,6 +27,7 @@ int main() {
 
     char message[]="Phonebook management Program";
     int ymax,xmax;
+    int cury,curx;
     getmaxyx(stdscr,ymax,xmax);
 
 
@@ -42,18 +43,22 @@ int main() {
     mvprintw(ymax-1,0,"Press any key to continue.\n",ymax,xmax);
     refresh();
     getch();
-    mvprintw(ymax-12,0,"Select what you want.(Press Enter)\n");
+    mvprintw(ymax-12,5,"Select what you want.(Press Enter)\n");
     refresh();
     WINDOW *menuwin = newwin(7,xmax-12,ymax-7,0);
     box(menuwin,0,0);
     refresh();
     wrefresh(menuwin);
 
-    keypad(menuwin,true);
+    keypad(menuwin,TRUE);
 
     char *choices[5] = {"Search : by Name or Number or Memo","Add : new contact form is name number memo(optional)","Delete: Find it by Name or Number or Memo.","List : Alphabet order","Exit"};
     int choice;
     int highlight = 0;
+    char name[30];
+    char number[20];
+    char memo[40];
+    char keyword[40];
 
 
     while (1) {
@@ -84,13 +89,12 @@ int main() {
                 break;
     }
     //printw("Your choice is %s",choices[highlight]);
-
-    getch();
-    endwin();
+//    wclear(menuwin);
 
 
 
-    if (highlight == 1) { //add 기능 구현
+
+    if (highlight == 1) { //        add 기능 구현
         WINDOW *addwin = newwin(10, 50, 2, 2);
         box(addwin, 0, 0);
         refresh();
@@ -99,22 +103,21 @@ int main() {
         echo();
         mvwprintw(addwin, 1, 2, "name: ");
         mvwprintw(addwin, 2, 2, "number: ");
-        mvwprintw(addwin, 3, 2, "memo (optional): ");
-        mvwprintw(addwin, 4, 2, "Enter to save and exit.");
+        mvwprintw(addwin, 3, 2, "memo (You can leave empty if you want.):");
+        mvwprintw(addwin, 7, 2, "Enter to save and exit.");
 
-        char name[30];
-        char number[20];
-        char memo[40];
 
-        mvwgetnstr(addwin, 1, 10, name, 30);
-        mvwgetnstr(addwin, 2, 13, number, 20);
-        mvwgetnstr(addwin, 3, 20, memo, 40);
+
+        mvwgetnstr(addwin, 1, 8, name, 30);
+        mvwgetnstr(addwin, 2, 10, number, 20);
+        mvwgetnstr(addwin, 4, 2, memo, 40);
 
         char filename[] = "data.txt";
         FILE *file = fopen(filename, "a");
 
         // 입력 받은 정보 파일에 저장
         fprintf(file, "%s:%s:%s\n", name, number, memo);
+
 
         fclose(file);
 
@@ -124,225 +127,53 @@ int main() {
         endwin();
         refresh();
         }
+        //                          검색기능
+    if (highlight == 0){
+        WINDOW *searchwin = newwin(ymax-2, xmax, 2, 0);
+        box(searchwin, 0, 0);
+        mvwprintw(searchwin,2,2,"Input keyword you want to find:");
+        wrefresh(searchwin);
+        echo();
+        mvwgetnstr(searchwin, 3, 2, keyword, 40);
 
-//        if (argc < 4 || argc > 5) { // 입력 갯수 오류
-//            printf("형식이 틀렸습니다. -a 옵션을 사용할 때는 이름, 전화번호, 메모(필수아님)를 입력하세요.\n");
-//            return 1;
-//        }
-//
-//
-//
-//        if (file == NULL) {
-//            printf("파일을 열 수 없습니다.\n");
-//            return 1;
-//        }
-//
-//        if (argc != 5) {
-//            argv[4] = "";
-//        } // 메모칸이 비어있는 경우 처리
-//
-//        printf("%s %s %s\n", argv[2], argv[3], argv[4]);
-//
-//        printf("add? [Y/N]: "); // 추가할지 Y/N 입력 받기
-//        char answer;
-//        scanf(" %c", &answer);
-//
-//        if (answer == 'Y' || answer == 'y') {
-//            // 문자열로 만든 후
-//            char entry[MAX_Contacts];
-//            snprintf(entry, MAX_Contacts, "%s:%s:%s\n", argv[2], argv[3], argv[4]);
-//
-//            // 파일에 내용 추가
-//            fputs(entry, file);
-//
-//            printf("data.txt 파일에 추가되었습니다.\n");
-//        } else {
-//            printf("저장하지 않고 프로그램을 종료합니다.\n");
-//        }
-//
-//        fclose(file);
-//
-//
-//
-//    } else if (strcmp(argv[1], "-d") == 0) { // Delete 삭제 옵션
-//        if (argc != 3) {
-//            printf("형식이 올바르지 않습니다. -d 옵션을 사용할 때는 이름, 번호, 또는 메모를 입력하세요.\n");
-//            return 1;
-//        }
-//
-//        // 파일 열기
-//        FILE *file = fopen("data.txt", "r");
-//        if (file == NULL) {
-//            printf("파일을 열 수 없습니다.\n");
-//            return 1;
-//        }
-//
-//        // 임시 파일 열기 (파일 초기화하기 위해 w 모드)
-//        FILE *tempFile = fopen("temp.txt", "w");
-//        if (tempFile == NULL) {
-//            printf("임시 파일을 열 수 없습니다.\n");
-//            fclose(file);
-//            return 1;
-//        }
-//
-//        char line[93]; // name : number : memo
-//        int deleted = 0;
-//        int order = 0;
-//        int selectedContact = 0;
-//
-//        // 파일 읽어오기
-//        while (fgets(line, sizeof(line), file) != NULL) {
-//            char *name = strtok(line, ":");
-//            char *phone = strtok(NULL, ":");
-//            char *memo = strtok(NULL, ":");
-//            // line 버퍼에 파일에서 읽어옴 sizeof(line)을 통해 파일의 끝에 도달하거나 읽을 줄이 없을 때까지 반복
-//            // 읽어온 줄을 strtok 함수를 사용하여 콜론(:)으로 분리 첫 번째 이후 호출 시에는 NULL을 전달하여 이전 호출 위치에서부터 분리
-//
-//            if (strstr(name, argv[2]) == NULL && strstr(phone, argv[2]) == NULL && strstr(memo, argv[2]) == NULL) {
-//                fprintf(tempFile, "%s:%s:%s", name, phone, memo);
-//            } else {
-//                order++; // 선택지 번호
-//                deleted = 1;
-//                printf("%d %s %s %s\n", order, name, phone, memo);
-//            } // 연락처에 대해 검색어와 일치하는 경우 deleted 1, order 증가(삭제 단계에서 선택 번호를 위함)
-//            // 연락처에 대해 검색어와 일치하지 않는 경우 해당 연락처 정보를 tempFile에 그대로 기록(유지)
-//        }
-//
-//        if (deleted) {
-//            printf("which one?: ");
-//            scanf("%d", &selectedContact);
-//
-//            // 파일 내용 읽어오기 (쓰기 모드로 열기)
-//            fclose(tempFile);
-//            tempFile = fopen("temp.txt", "w");
-//            if (tempFile == NULL) {
-//                printf("임시 파일을 열 수 없습니다.\n");
-//                fclose(file);
-//                return 1;
-//            }
-//
-//            // 파일 읽어오기
-//            rewind(file); // 포인터를 파일의 처음으로
-//            order = 0; // 선택지 번호
-//            deleted = 0;
-//            while (fgets(line, sizeof(line), file) != NULL) {
-//                char *name = strtok(line, ":");
-//                char *phone = strtok(NULL, ":");
-//                char *memo = strtok(NULL, ":");
-//
-//                if (strstr(name, argv[2]) == NULL && strstr(phone, argv[2]) == NULL && strstr(memo, argv[2]) == NULL) {
-//                    fprintf(tempFile, "%s:%s:%s", name, phone, memo);
-//                } else {
-//                    order++; // 선택지 번호
-//                    if (order != selectedContact) {
-//                        fprintf(tempFile, "%s:%s:%s", name, phone, memo);
-//                    } else {
-//                        deleted = 1;
-//                        printf("다음 연락처가 삭제되었습니다: %s %s %s\n", name, phone, memo);
-//                    }
-//                }
-//            }
-//
-//            if (deleted) {
-//                // 기존 파일 삭제
-//                if (remove("data.txt") != 0) {
-//                    printf("연락처를 삭제하는 중에 오류가 발생했습니다.\n");
-//                    return 1;
-//                }
-//
-//                // 임시 파일 대체
-//                if (rename("temp.txt", "data.txt") != 0) {
-//                    printf("임시 파일을 원본 파일로 변경하는 중에 오류가 발생했습니다.\n");
-//                    return 1;
-//                }
-//
-//                printf("연락처가 삭제되었습니다.\n"); // 삭제작업 정상완료
-//            } else {
-//                printf("선택한 연락처가 존재하지 않습니다.\n");
-//                remove("temp.txt");
-//            }
-//        } else {
-//            printf("일치하는 연락처가 없습니다.\n");
-//            remove("temp.txt");
-//        }
-//
-//        // 파일 닫기
-//        fclose(file);
-//        fclose(tempFile);
-//    }
-//    else if (strcmp(argv[1], "-l") == 0) { // 알파벳순 정렬 후 list 출력
-//        char filename[] = "data.txt";
-//        FILE *file = fopen(filename, "r");
-//
-//        if (file == NULL) {
-//            printf("파일을 열 수 없습니다.\n");
-//            return 1;
-//        }
-//
-//        struct Contact contacts[MAX_Contacts]; // 배열 contacts 선언
-//        int count = 0; // 연락처 갯수
-//
-//        char line[93]; //name : number : memo
-//        while (fgets(line, sizeof(line), file) != NULL) {
-//            char *name = strtok(line, ":");
-//            char *phone = strtok(NULL, ":");
-//            char *memo = strtok(NULL, ":");
-//
-//            strcpy(contacts[count].name, name); //contacts 배열에 복사
-//            strcpy(contacts[count].phone, phone);
-//            strcpy(contacts[count].memo, memo);
-//            count++;
-//        }
-//
-//        fclose(file);
-//
-//        if (count > 0) {
-//            qsort(contacts, count, sizeof(struct Contact), compare); // qsort이용 정렬
-//
-//            for (int i = 0; i < count; i++) {
-//                printf("%d %s %s %s\n", i + 1, contacts[i].name, contacts[i].phone, contacts[i].memo);
-//            } // 출력
-//        } else {
-//            printf("연락처가 없습니다.\n");
-//        }
-//    }
-//     else {
-//        // search 구현
-//        char keyword[40]; // name or number or memo 에서 올 수 있는 최대 크기
-//        strcpy(keyword, argv[1]);
-//
-//        char filename[] = "data.txt";
-//        FILE *file = fopen(filename, "r");
-//
-//        if (file == NULL) {
-//            printf("파일을 열 수 없습니다.\n");
-//            return 1;
-//        }
-//
-//        char line[93];
-//        int found = 0;
-//        int order = 1;
-//
-//        while (fgets(line, sizeof(line), file) != NULL) {
-//            char *name = strtok(line, ":");
-//            char *phone = strtok(NULL, ":");
-//            char *memo = strtok(NULL, ":");
-//
-//            if (strstr(name, keyword) != NULL || strstr(phone, keyword) != NULL || strstr(memo, keyword) != NULL) {
-//                printf("%d %s %s %s\n", order, name, phone, memo);
-//                found = 1;
-//                order++;
-//            } // 하나라도 keyword를 포함하면
-//        }
-//
-//        if (!found) {
-//            printf("no match found.\n");
-//        } else {
-//            printf("match found.\n");
-//        }
-//
-//        fclose(file);
-//    }
+
+
+        char filename[] = "data.txt";
+        int found = 0;
+        int order = 1;
+        FILE *file = fopen(filename, "r");
+        char line[93];
+        while (fgets(line, sizeof(line), file) != NULL) {
+        // 파일에서 데이터를 읽어와서 검색어와 일치하는지 확인
+            char *name = strtok(line, ":");
+            char *phone = strtok(NULL, ":");
+            char *memo = strtok(NULL, ":");
+            if (strstr(line, keyword) != NULL) {
+                getyx(searchwin,cury,curx);
+                cury = cury + 1;
+                found = 1;
+                mvwprintw(searchwin,cury,2, "%d %s %s %s",order,name,phone,memo);
+                wrefresh(searchwin);
+                order = order + 1;
+
+            }
+
+
+        }
+        if (found != 1) {
+            mvwprintw(searchwin,9,2, "There is none of that");
+            wrefresh(searchwin);
+        }
+        getyx(searchwin,cury,curx);
+        mvwprintw(searchwin,cury+1,2, "Press any key to Exit");
+        wrefresh(searchwin);
+
+
+    fclose(file);
+
+
+
+    getch();
     delwin(menuwin);
     endwin();
     return 0;
