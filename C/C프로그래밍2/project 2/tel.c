@@ -13,6 +13,7 @@ struct Contact {
     char memo[40];
 };
 
+
 int compare(const void *a, const void *b) { // qsort에 사용될 비교 함수
     struct Contact *contactA = (struct Contact *)a;
     struct Contact *contactB = (struct Contact *)b;
@@ -127,8 +128,21 @@ int main() {
         endwin();
         refresh();
         }
+
+    else if (highlight == 2) { //       Delete 기능 구현
+        WINDOW *delwin = newwin(ymax-2, xmax, 2, 0);
+        box(delwin, 0, 0);
+        mvwprintw(delwin,2,2,"Input keyword you want to find to Delete:");
+        wrefresh(delwin);
+        echo();
+        mvwgetnstr(delwin, 3, 2, keyword, 40);
+
+
+        }
+
+
         //                          검색기능
-    if (highlight == 0){
+    else if (highlight == 0){
         WINDOW *searchwin = newwin(ymax-2, xmax, 2, 0);
         box(searchwin, 0, 0);
         mvwprintw(searchwin,2,2,"Input keyword you want to find:");
@@ -170,6 +184,7 @@ int main() {
 
 
     fclose(file);
+    }
 
 
 
