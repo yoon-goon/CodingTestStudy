@@ -130,15 +130,80 @@ int main() {
         }
 
     else if (highlight == 2) { //       Delete 기능 구현
-        WINDOW *delwin = newwin(ymax-2, xmax, 2, 0);
-        box(delwin, 0, 0);
-        mvwprintw(delwin,2,2,"Input keyword you want to find to Delete:");
-        wrefresh(delwin);
+        WINDOW *delewin = newwin(ymax-2, xmax, 2, 0);
+        box(delewin, 0, 0);
+        mvwprintw(delewin,2,2,"Input keyword you want to find to Delete:");
+        wrefresh(delewin);
         echo();
-        mvwgetnstr(delwin, 3, 2, keyword, 40);
+        mvwgetnstr(delewin, 3, 2, keyword, 40);
+        char filename[] = "data.txt";
+        char tempFilename[] = "temp.txt";
+        FILE *file = fopen(filename, "r");
+        FILE *tempFile = fopen(tempFilename, "w");
+        int found = 0;
 
-
+        char line[93];
+        int contactCount = 0;
+        while (fgets(line, sizeof(line), file) != NULL) {
+            if (strstr(line, keyword) == NULL) {
+                fputs(line, tempFile);
+            } else {
+                found = 1;
+                contactCount++;
+                mvprintw(contactCount, 5, "%d. %s", contactCount, line);
+            }
         }
+
+        fclose(file);
+        fclose(tempFile);
+
+        // 원본 파일을 삭제하고 임시 파일을 원본 파일로 이름 변경
+        remove(filename);
+        rename(tempFilename, filename);
+
+        if (found) {
+            mvprintw(ymax-5, 5, "Contact(s) found. Enter the number to delete: ");
+            refresh();
+
+            int selectedContact;
+            scanw("%d", &selectedContact);
+
+            if (selectedContact >= 1 && selectedContact <= contactCount) {
+                FILE *updatedFile = fopen(filename, "r");
+                FILE *updatedTempFile = fopen(tempFilename, "w");
+                int currentContact = 0;
+
+                while (fgets(line, sizeof(line), updatedFile) != NULL) {
+                    if (strstr(line, keyword) == NULL) {
+                        fputs(line, updatedTempFile);
+                    } else {
+                        currentContact++;
+                        if (currentContact != selectedContact) {
+                            fputs(line, updatedTempFile);
+                        }
+                    }
+                }
+
+                fclose(updatedFile);
+                fclose(updatedTempFile);
+
+                remove(filename);
+                rename(tempFilename, filename);
+
+                mvprintw(ymax-3, 5, "Selected contact deleted successfully.");
+            } else {
+                mvprintw(ymax-3, 5, "Invalid selection. No contact deleted.");
+            }
+        } else {
+            mvprintw(ymax-5, 5, "Contact not found.");
+        }
+
+        mvprintw(ymax-1, 5, "Press any key to continue.");
+        refresh();
+        getch();
+        delwin(delewin);
+    }
+
 
 
         //                          검색기능
