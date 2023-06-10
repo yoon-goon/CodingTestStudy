@@ -29,18 +29,18 @@ int main() {
     int ymax,xmax;
 
     getmaxyx(stdscr,ymax,xmax);
-    WINDOW *menuwin = newwin(6,xmax-12,ymax-8,5);
+    WINDOW *menuwin = newwin(7,xmax-12,ymax-7,5);
     box(menuwin,0,0);
     refresh();
     wrefresh(menuwin);
 
     keypad(menuwin,true);
 
-    char *choices[4] = {"Search","Add","Delete","List"};
+    char *choices[5] = {"Search","Add","Delete","List","Exit"};
     int choice;
     int highlight = 0;
     while (1) {
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
                 if (i == highlight) {
                     wattron(menuwin,A_REVERSE); // 선택된 항목을 강조
                 }
@@ -52,13 +52,13 @@ int main() {
             switch (choice) {
                 case KEY_UP:
                     highlight--;
-                    if (highlight == -1)
+                    if (highlight <= -1)
                         highlight = 0;
                     break;
                 case KEY_DOWN:
                     highlight++;
-                    if (highlight == 4)
-                        highlight = 3;
+                    if (highlight >= 5)
+                        highlight = 4;
                     break;
                 default:
                     break;
