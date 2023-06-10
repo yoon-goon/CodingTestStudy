@@ -90,12 +90,13 @@ int main() {
 
 
 
-    if (highlight == 1) { //add 옵션
+    if (highlight == 1) { //add 기능 구현
         WINDOW *addwin = newwin(10, 50, 2, 2);
         box(addwin, 0, 0);
         refresh();
 
         // 입력 필드 생성
+        echo();
         mvwprintw(addwin, 1, 2, "name: ");
         mvwprintw(addwin, 2, 2, "number: ");
         mvwprintw(addwin, 3, 2, "memo (optional): ");
@@ -118,6 +119,7 @@ int main() {
         fclose(file);
 
         // 종료
+        noecho();
         delwin(addwin);
         endwin();
         refresh();
@@ -341,6 +343,7 @@ int main() {
 //
 //        fclose(file);
 //    }
-
+    delwin(menuwin);
+    endwin();
     return 0;
 }
