@@ -331,7 +331,7 @@ int main() {
 
         }
         if (found != 1) {
-            mvwprintw(searchwin,9,2, "There is none of that");
+            mvwprintw(searchwin,9,2, "No matching contacts found.");
             wrefresh(searchwin);
         }
         getyx(searchwin,cury,curx);
