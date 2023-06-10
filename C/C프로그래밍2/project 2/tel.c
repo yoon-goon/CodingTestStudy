@@ -1,5 +1,3 @@
-// Ncurses를 이용한 구현
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -24,6 +22,7 @@ int main() {
     initscr();
     cbreak();
     noecho();
+    curs_set(0);
 
 
     char message[]="Phonebook management Program";
@@ -37,15 +36,17 @@ int main() {
 
     attron(COLOR_PAIR(1));
     attron(A_BOLD);
-    mvprintw(ymax/2,(xmax-strlen(message))/2,"%s",message);
+    mvprintw(ymax/2-2,(xmax-strlen(message))/2,"%s",message);
     attroff(COLOR_PAIR(1));
-    attroff(A_BOLD);
+
 
     mvprintw(ymax-1,0,"Press any key to continue.\n",ymax,xmax);
     refresh();
     getch();
+
     mvprintw(ymax-12,5,"Select what you want.(Press Enter)\n");
     refresh();
+    attroff(A_BOLD);
     WINDOW *menuwin = newwin(7,xmax-12,ymax-7,0);
     box(menuwin,0,0);
     refresh();
@@ -65,10 +66,10 @@ int main() {
     while (1) {
         for (int i = 0; i < 5; i++) {
                 if (i == highlight) {
-                    wattron(menuwin,A_REVERSE); // 선택된 항목을 강조
+                    wattron(menuwin,A_REVERSE|A_BLINK); // 선택된 항목을 강조
                 }
                 mvwprintw(menuwin, i+1, 1, choices[i]);
-                wattroff(menuwin,A_REVERSE);
+                wattroff(menuwin,A_REVERSE|A_BLINK);
             }
             choice = wgetch(menuwin);
 
@@ -89,16 +90,12 @@ int main() {
             if (choice == 10)
                 break;
     }
-    //printw("Your choice is %s",choices[highlight]);
-//    wclear(menuwin);
-
-
-
 
     if (highlight == 1) { //        add 기능 구현
         WINDOW *addwin = newwin(10, 50, 2, 2);
         box(addwin, 0, 0);
         refresh();
+        curs_set(1);
 
         // 입력 필드 생성
         echo();
@@ -123,8 +120,13 @@ int main() {
         fclose(file);
 
         // 종료
+        WINDOW *saddwin = newwin(5, 55, ymax/2-2, xmax/2-27);
+        box(saddwin, 0, 0);
+        curs_set(0);
+        mvwprintw(saddwin,2,3,"Successfully Added! (press any key to continue)");
+        wrefresh(saddwin);
+        getch();
         noecho();
-        delwin(addwin);
         endwin();
         refresh();
         }
@@ -163,7 +165,7 @@ int main() {
         fclose(file);
 
         if (found) {
-            mvwprintw(delewin, 5, 2, "Matching contacts found. Select a contact to delete:");
+            mvwprintw(delewin, 5, 2, "Matching contacts found. Select a contact and Enter to delete:");
             int highlight = 0;
             int choice;
             keypad(delewin, TRUE);
@@ -171,10 +173,10 @@ int main() {
             while (1) {
                 for (int i = 0; i < numContacts; i++) {
                     if (i == highlight) {
-                        wattron(delewin, A_REVERSE); // 선택된 항목을 강조
+                        wattron(delewin, A_REVERSE|A_BLINK); // 선택된 항목을 강조
                     }
                     mvwprintw(delewin, i + 6, 2, "%d %s %s %s", i + 1, contacts[i].name, contacts[i].phone, contacts[i].memo);
-                    wattroff(delewin, A_REVERSE);
+                    wattroff(delewin, A_REVERSE|A_BLINK);
                 }
                 choice = wgetch(delewin);
 
@@ -195,8 +197,15 @@ int main() {
                 if (choice == 10)
                     break;
             }
-            mvwprintw(delewin, ymax - 4, 2, "Contact deleted: %s %s %s", contacts[highlight].name, contacts[highlight].phone, contacts[highlight].memo);
-            wrefresh(delewin);
+            // 종료
+            WINDOW *sdelwin = newwin(10, 55, ymax/2-2, xmax/2-27);
+            box(sdelwin, 0, 0);
+            mvwprintw(sdelwin,4,55/2-16,"Successfully Deleted %s %s", contacts[highlight].name, contacts[highlight].phone);
+            mvwprintw(sdelwin,6,55/2-10,"Press any key to Exit");
+            wrefresh(sdelwin);
+
+
+
 
             if (highlight >= 0 && highlight < numContacts) {
 
@@ -236,7 +245,7 @@ int main() {
         else {
             mvwprintw(delewin, 5, 2, "No matching contacts found.");
         }
-
+        getch();
         wrefresh(delewin);
         delwin(delewin);
         noecho();
