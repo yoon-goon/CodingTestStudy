@@ -242,6 +242,47 @@ int main() {
         noecho();
 
     }
+    else if (highlight == 3) { // List 기능 구현
+        WINDOW *listwin = newwin(ymax-2, xmax, 2, 0);
+        box(listwin, 0, 0);
+        mvwprintw(listwin, 2, 2, "Contacts in alphabetical order:");
+
+        char filename[] = "data.txt";
+        FILE *file = fopen(filename, "r");
+        char line[93];
+        struct Contact contacts[MAX_Contacts];
+        int numContacts = 0;
+
+        // 파일에서 데이터를 읽어와 구조체 배열에 저장
+        while (fgets(line, sizeof(line), file) != NULL) {
+            char *name = strtok(line, ":");
+            char *phone = strtok(NULL, ":");
+            char *memo = strtok(NULL, ":");
+
+            strcpy(contacts[numContacts].name, name);
+            strcpy(contacts[numContacts].phone, phone);
+            strcpy(contacts[numContacts].memo, memo);
+            numContacts++;
+        }
+
+        fclose(file);
+
+        // 구조체 배열을 알파벳 순으로 정렬
+        qsort(contacts, numContacts, sizeof(struct Contact), compare);
+
+        // 정렬된 결과를 출력
+        for (int i = 0; i < numContacts; i++) {
+            mvwprintw(listwin, i + 4, 2, "%d %s %s %s", i + 1, contacts[i].name, contacts[i].phone, contacts[i].memo);
+        }
+        getyx(listwin,cury,curx);
+        mvwprintw(listwin,cury+1,2,"Done, press any key to exit");
+
+
+        wrefresh(listwin);
+        getch();
+        delwin(listwin);
+        endwin();
+    }
 
 
 
@@ -289,12 +330,20 @@ int main() {
 
 
     fclose(file);
+    getch();
+    }
+    // EXIT 기능
+    else if (highlight == 4){
+    WINDOW *exwin = newwin(5, 55, ymax/2-2, xmax/2-27);
+        box(exwin, 0, 0);
+        mvwprintw(exwin,2,2,"Exit without running (press any key to continue)");
+        wrefresh(exwin);
+        getch();
+        endwin();
     }
 
 
 
-    getch();
-    delwin(menuwin);
     endwin();
     return 0;
 }
