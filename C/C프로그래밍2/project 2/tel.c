@@ -36,11 +36,9 @@ int main(int argc, char *argv[]) {
     mvprintw(row-1,0,"Press any key to continue.\n",row,col);
     refresh();
     getch();
+    mvprintw(0,0,"Search by Name or Number or Memo\nAdd new contact:  name number memo(optional)\nDelete : name or number or memo.\nList: Alphabet order\n");
+    getch();
     endwin();
-    if (argc != 2 && (argc < 3 || argc > 5)) {
-        printf("사용법: 번호,이름 혹은 메모를 입력하면 일치하는 contacts를 찾습니다.\n새로운 contacts 추가 : -a 이름 전화번호 메모(옵션)\n제거 : -d 이름 or 번호 or 메모.\n알파벳 순 정렬 : -l\n");
-        return 1;
-    }
 
     if (strcmp(argv[1], "-a") == 0) { //add 옵션
         if (argc < 4 || argc > 5) { // 입력 갯수 오류
