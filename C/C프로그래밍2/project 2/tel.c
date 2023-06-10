@@ -24,7 +24,7 @@ int main() {
     noecho();
     curs_set(0);
 
-
+    //타이틀 출력
     char message[]="Phonebook management Program";
     int ymax,xmax;
     int cury,curx;
@@ -32,8 +32,8 @@ int main() {
 
 
     start_color();
-    init_pair(1,COLOR_GREEN,COLOR_WHITE);
-
+    init_pair(1,COLOR_GREEN,COLOR_WHITE); // 컬러페어
+    //att 설정
     attron(COLOR_PAIR(1));
     attron(A_BOLD);
     mvprintw(ymax/2-2,(xmax-strlen(message))/2,"%s",message);
@@ -44,7 +44,7 @@ int main() {
     refresh();
     getch();
 
-    mvprintw(ymax-12,5,"Select what you want.(Press Enter)\n");
+    mvprintw(ymax-12,5,"Select what you want.(Press Enter)\n"); // 선택 안내
     refresh();
     attroff(A_BOLD);
     WINDOW *menuwin = newwin(7,xmax-12,ymax-7,0);
@@ -58,7 +58,7 @@ int main() {
     int choice;
     int highlight = 0;
     char name[30];
-    char number[20];
+    char phone[20];
     char memo[40];
     char keyword[40];
 
@@ -107,14 +107,14 @@ int main() {
 
 
         mvwgetnstr(addwin, 1, 8, name, 30);
-        mvwgetnstr(addwin, 2, 10, number, 20);
+        mvwgetnstr(addwin, 2, 10, phone, 20);
         mvwgetnstr(addwin, 4, 2, memo, 40);
 
         char filename[] = "data.txt";
         FILE *file = fopen(filename, "a");
 
         // 입력 받은 정보 파일에 저장
-        fprintf(file, "%s:%s:%s\n", name, number, memo);
+        fprintf(file, "%s:%s:%s\n", name, phone, memo);
 
 
         fclose(file);
@@ -243,7 +243,8 @@ int main() {
             }
         }
         else {
-            mvwprintw(delewin, 5, 2, "No matching contacts found.");
+            mvwprintw(delewin, 5, 2, "No matching contacts found. press any key to Exit");
+            wrefresh(delewin);
         }
         getch();
         wrefresh(delewin);
