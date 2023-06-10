@@ -54,6 +54,7 @@ int main() {
 
     keypad(menuwin,TRUE);
 
+    //선택지
     char *choices[5] = {"Search : by Name or Number or Memo","Add : new contact form is name number memo(optional)","Delete: Find it by Name or Number or Memo.","List : Alphabet order","Exit"};
     int choice;
     int highlight = 0;
@@ -62,11 +63,11 @@ int main() {
     char memo[40];
     char keyword[40];
 
-
+    //방향표를 이용한 선택 구현
     while (1) {
         for (int i = 0; i < 5; i++) {
                 if (i == highlight) {
-                    wattron(menuwin,A_REVERSE|A_BLINK); // 선택된 항목을 강조
+                    wattron(menuwin,A_REVERSE|A_BLINK); // 선택된 항목을 강조,점멸
                 }
                 mvwprintw(menuwin, i+1, 1, choices[i]);
                 wattroff(menuwin,A_REVERSE|A_BLINK);
@@ -97,8 +98,8 @@ int main() {
         refresh();
         curs_set(1);
 
-        // 입력 필드 생성
-        echo();
+        // 입력 창 생성
+        echo(); //입력위치를 보기위해 다시 활성화
         mvwprintw(addwin, 1, 2, "name: ");
         mvwprintw(addwin, 2, 2, "number: ");
         mvwprintw(addwin, 3, 2, "memo (You can leave empty if you want.):");
@@ -119,7 +120,7 @@ int main() {
 
         fclose(file);
 
-        // 종료
+        // 성공적 수행 안내문 윈도우
         WINDOW *saddwin = newwin(5, 55, ymax/2-2, xmax/2-27);
         box(saddwin, 0, 0);
         curs_set(0);
@@ -143,15 +144,19 @@ int main() {
         char filename[] = "data.txt";
         int found = 0;
         int order = 1;
-        FILE *file = fopen(filename, "r");
-        char line[93];
+        FILE *file = fopen(filename, "r"); // 파일열기
+        char line[93]; // name : number : memo
         struct Contact contacts[MAX_Contacts];
         int numContacts = 0;
 
+        //파일 읽어오기
         while (fgets(line, sizeof(line), file) != NULL) {
             char *name = strtok(line, ":");
             char *phone = strtok(NULL, ":");
             char *memo = strtok(NULL, ":");
+
+            // sizeof(line)을 통해 파일의 끝에 도달하거나 읽을 줄이 없을 때까지 반복
+            // 읽어온 줄을 strtok 함수를 사용하여 콜론(:)으로 분리 첫 번째 이후 호출 시에는 NULL을 전달하여 이전 호출 위치에서부터 분리
 
             if (strstr(name, keyword) != NULL || strstr(phone, keyword) != NULL || strstr(memo, keyword) != NULL) {
                 strcpy(contacts[numContacts].name, name);
@@ -160,20 +165,24 @@ int main() {
                 numContacts++;
                 found = 1;
             }
+            // 연락처에 대해 검색어와 일치하는 경우 found =  1, numContacts 증가(삭제 단계에서 선택 번호를 위함)
+            // 연락처에 대해 검색어와 일치하지 않는 경우 해당 연락처 정보를 tempFile에 그대로 기록(유지)
         }
 
         fclose(file);
 
+        //삭제할 내용이 있을 경우 선택지 기능구현
         if (found) {
             mvwprintw(delewin, 5, 2, "Matching contacts found. Select a contact and Enter to delete:");
             int highlight = 0;
             int choice;
             keypad(delewin, TRUE);
 
+            // 방향표로 선택구현
             while (1) {
                 for (int i = 0; i < numContacts; i++) {
                     if (i == highlight) {
-                        wattron(delewin, A_REVERSE|A_BLINK); // 선택된 항목을 강조
+                        wattron(delewin, A_REVERSE|A_BLINK); // 선택된 항목을 강조, 점멸
                     }
                     mvwprintw(delewin, i + 6, 2, "%d %s %s %s", i + 1, contacts[i].name, contacts[i].phone, contacts[i].memo);
                     wattroff(delewin, A_REVERSE|A_BLINK);
@@ -183,7 +192,7 @@ int main() {
                 switch (choice) {
                     case KEY_UP:
                         highlight--;
-                        if (highlight < 0)
+                        if (highlight < 0) // 범위를 벗어나지 못하도록
                             highlight = 0;
                         break;
                     case KEY_DOWN:
@@ -197,7 +206,7 @@ int main() {
                 if (choice == 10)
                     break;
             }
-            // 종료
+            // 성공적 수행 후 안내문 출력
             WINDOW *sdelwin = newwin(10, 55, ymax/2-2, xmax/2-27);
             box(sdelwin, 0, 0);
             mvwprintw(sdelwin,4,55/2-16,"Successfully Deleted %s %s", contacts[highlight].name, contacts[highlight].phone);
@@ -205,9 +214,7 @@ int main() {
             wrefresh(sdelwin);
 
 
-
-
-            if (highlight >= 0 && highlight < numContacts) {
+            if (highlight >= 0 && highlight < numContacts) { // 삭제할내용이 있었을시
 
                 // 삭제 작업 수행
                 FILE *tempFile = fopen("temp.txt", "w");
@@ -221,7 +228,8 @@ int main() {
                 }
 
                 file = fopen(filename, "r");
-                order = 0;
+                order = 0; // 선택지 번호
+                // 기존 파일에서 한 줄씩 읽어와서 검색한 연락처와 일치하지 않는 경우에만 임시 파일에 쓰기
                 while (fgets(line, sizeof(line), file) != NULL) {
                     char *name = strtok(line, ":");
                     char *phone = strtok(NULL, ":");
@@ -238,11 +246,12 @@ int main() {
                 remove(filename);
                 rename("temp.txt", filename);
             }
-            else {
+            else { // 에러처리
                 mvwprintw(delewin, ymax - 4, 2, "Invalid selection. Contact not deleted.");
+                wrefresh(delewin);
             }
         }
-        else {
+        else { //에러처리
             mvwprintw(delewin, 5, 2, "No matching contacts found. press any key to Exit");
             wrefresh(delewin);
         }
@@ -257,7 +266,7 @@ int main() {
         box(listwin, 0, 0);
         mvwprintw(listwin, 2, 2, "Contacts in alphabetical order:");
 
-        char filename[] = "data.txt";
+        char filename[] = "data.txt"; // 파일 열기
         FILE *file = fopen(filename, "r");
         char line[93];
         struct Contact contacts[MAX_Contacts];
@@ -284,7 +293,7 @@ int main() {
         for (int i = 0; i < numContacts; i++) {
             mvwprintw(listwin, i + 4, 2, "%d %s %s %s", i + 1, contacts[i].name, contacts[i].phone, contacts[i].memo);
         }
-        getyx(listwin,cury,curx);
+        getyx(listwin,cury,curx); // 정렬 포맷을 위함
         mvwprintw(listwin,cury+1,2,"Done, press any key to exit");
 
 
@@ -330,7 +339,7 @@ int main() {
 
 
         }
-        if (found != 1) {
+        if (found != 1) { // 검색어를 만족하는 내용이 없는경우
             mvwprintw(searchwin,9,2, "No matching contacts found.");
             wrefresh(searchwin);
         }
