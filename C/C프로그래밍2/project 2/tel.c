@@ -42,12 +42,9 @@ int main() {
     mvprintw(ymax-1,0,"Press any key to continue.\n",ymax,xmax);
     refresh();
     getch();
-    mvprintw(ymax-12,5,"Select what you want.\n");
+    mvprintw(ymax-12,0,"Select what you want.(Press Enter)\n");
     refresh();
-    getch();
-
-
-    WINDOW *menuwin = newwin(7,xmax-12,ymax-7,5);
+    WINDOW *menuwin = newwin(7,xmax-12,ymax-7,0);
     box(menuwin,0,0);
     refresh();
     wrefresh(menuwin);
@@ -86,24 +83,52 @@ int main() {
             if (choice == 10)
                 break;
     }
-    printw("Your choice is %s",choices[highlight]);
+    //printw("Your choice is %s",choices[highlight]);
 
     getch();
     endwin();
 
-    return 0;
 
 
-//    endwin();
-//
-//    if (strcmp(argv[1], "-a") == 0) { //add 옵션
+    if (highlight == 1) { //add 옵션
+        WINDOW *addwin = newwin(10, 50, 2, 2);
+        box(addwin, 0, 0);
+        refresh();
+
+        // 입력 필드 생성
+        mvwprintw(addwin, 1, 2, "name: ");
+        mvwprintw(addwin, 2, 2, "number: ");
+        mvwprintw(addwin, 3, 2, "memo (optional): ");
+        mvwprintw(addwin, 4, 2, "Enter to save and exit.");
+
+        char name[30];
+        char number[20];
+        char memo[40];
+
+        mvwgetnstr(addwin, 1, 10, name, 30);
+        mvwgetnstr(addwin, 2, 13, number, 20);
+        mvwgetnstr(addwin, 3, 20, memo, 40);
+
+        char filename[] = "data.txt";
+        FILE *file = fopen(filename, "a");
+
+        // 입력 받은 정보 파일에 저장
+        fprintf(file, "%s:%s:%s\n", name, number, memo);
+
+        fclose(file);
+
+        // 종료
+        delwin(addwin);
+        endwin();
+        refresh();
+        }
+
 //        if (argc < 4 || argc > 5) { // 입력 갯수 오류
 //            printf("형식이 틀렸습니다. -a 옵션을 사용할 때는 이름, 전화번호, 메모(필수아님)를 입력하세요.\n");
 //            return 1;
 //        }
 //
-//        char filename[] = "data.txt";
-//        FILE *file = fopen(filename, "a");
+//
 //
 //        if (file == NULL) {
 //            printf("파일을 열 수 없습니다.\n");
@@ -134,6 +159,9 @@ int main() {
 //        }
 //
 //        fclose(file);
+//
+//
+//
 //    } else if (strcmp(argv[1], "-d") == 0) { // Delete 삭제 옵션
 //        if (argc != 3) {
 //            printf("형식이 올바르지 않습니다. -d 옵션을 사용할 때는 이름, 번호, 또는 메모를 입력하세요.\n");
@@ -313,6 +341,6 @@ int main() {
 //
 //        fclose(file);
 //    }
-//
-//    return 0;
+
+    return 0;
 }
