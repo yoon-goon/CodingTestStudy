@@ -27,8 +27,26 @@ int main() {
 
     char message[]="Phonebook management Program";
     int ymax,xmax;
-
     getmaxyx(stdscr,ymax,xmax);
+
+
+    start_color();
+    init_pair(1,COLOR_GREEN,COLOR_WHITE);
+
+    attron(COLOR_PAIR(1));
+    attron(A_BOLD);
+    mvprintw(ymax/2,(xmax-strlen(message))/2,"%s",message);
+    attroff(COLOR_PAIR(1));
+    attroff(A_BOLD);
+
+    mvprintw(ymax-1,0,"Press any key to continue.\n",ymax,xmax);
+    refresh();
+    getch();
+    mvprintw(ymax-12,5,"Select what you want.\n");
+    refresh();
+    getch();
+
+
     WINDOW *menuwin = newwin(7,xmax-12,ymax-7,5);
     box(menuwin,0,0);
     refresh();
@@ -36,9 +54,11 @@ int main() {
 
     keypad(menuwin,true);
 
-    char *choices[5] = {"Search","Add","Delete","List","Exit"};
+    char *choices[5] = {"Search : by Name or Number or Memo","Add : new contact form is name number memo(optional)","Delete: Find it by Name or Number or Memo.","List : Alphabet order","Exit"};
     int choice;
     int highlight = 0;
+
+
     while (1) {
         for (int i = 0; i < 5; i++) {
                 if (i == highlight) {
@@ -73,21 +93,7 @@ int main() {
 
     return 0;
 
-//    start_color();
-//    init_pair(1,COLOR_GREEN,COLOR_WHITE);
-//
-//    attron(COLOR_PAIR(1));
-//    attron(A_BOLD);
-//    mvprintw(row/2,(col-strlen(message))/2,"%s",message);
-//    attroff(COLOR_PAIR(1));
-//    attroff(A_BOLD);
-//
-//    mvprintw(row-1,0,"Press any key to continue.\n",row,col);
-//    refresh();
-//    getch();
-//    mvprintw(0,0,"Search by Name or Number or Memo\nAdd new contact: name number memo(optional)\nDelete : name or number or memo.\nList: Alphabet order\n");
-//    refresh();
-//    getch();
+
 //    endwin();
 //
 //    if (strcmp(argv[1], "-a") == 0) { //add 옵션
