@@ -20,15 +20,21 @@ int compare(const void *a, const void *b) { // qsort에 사용될 비교 함수
 }
 
 int main(int argc, char *argv[]) {
-    char message[]="Phonebook management Program.";
+    char message[]="Phonebook management Program";
     int row,col;
     initscr();
     getmaxyx(stdscr,row,col);
-    mvprintw(row/2,(col-strlen(message))/2,"%s",message);
-    mvprintw(row-2,0,"This screen has %d row and %d col\n",row,col);
-    printw("try resizing!");
-    refresh();
+    start_color();
+    init_pair(1,COLOR_GREEN,COLOR_WHITE);
 
+    attron(COLOR_PAIR(1));
+    attron(A_BOLD);
+    mvprintw(row/2,(col-strlen(message))/2,"%s",message);
+    attroff(COLOR_PAIR(1));
+    attroff(A_BOLD);
+
+    mvprintw(row-1,0,"Press any key to continue.\n",row,col);
+    refresh();
     getch();
     endwin();
     if (argc != 2 && (argc < 3 || argc > 5)) {
