@@ -20,7 +20,7 @@ int compare(const void *a, const void *b) { // qsort에 사용될 비교 함수
 }
 
 int main(int argc, char *argv[]) {
-    char message[]="Hello. Choose what you want.";
+    char message[]="Phonebook management Program.";
     int row,col;
     initscr();
     getmaxyx(stdscr,row,col);
