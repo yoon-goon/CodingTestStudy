@@ -24,6 +24,42 @@ int main(int argc, char *argv[]) {
     int row,col;
     initscr();
     getmaxyx(stdscr,row,col);
+    WINDOW *menuwin = newwin(6,row-12,col-8,5);
+    box(menuwin,0,0);
+    refresh();
+    wrefresh();
+    keypad(menuwin,true);
+
+    char *choices[4] = {"Search","Add","Delete","List"};
+    int choice;
+    int highlight = 0;
+    while (1) {
+        for (int i = 0; i < 3; i++) {
+                if (i == highlight) {
+                    wattron(menuwin,A_REVERSE); // 선택된 항목을 강조
+                }
+                mvwprintw(menuwin, i+1, 1, choices[i]);
+                wattroff(menuwin,A_REVERSE);
+            }
+            choice = wgetch(menuwin);
+
+            switch (choice) {
+                case KEY_UP:
+                    highlight--;
+                    break;
+                case KEY_DOWN:
+                    highlight++;
+                    break;
+                default:
+                    break;
+                }
+            if (choice == 10)
+                break;
+    }
+    printw("Your choice is %s",choices[highlight]);
+
+    getch();
+
     start_color();
     init_pair(1,COLOR_GREEN,COLOR_WHITE);
 
@@ -36,7 +72,8 @@ int main(int argc, char *argv[]) {
     mvprintw(row-1,0,"Press any key to continue.\n",row,col);
     refresh();
     getch();
-    mvprintw(0,0,"Search by Name or Number or Memo\nAdd new contact:  name number memo(optional)\nDelete : name or number or memo.\nList: Alphabet order\n");
+    mvprintw(0,0,"Search by Name or Number or Memo\nAdd new contact: name number memo(optional)\nDelete : name or number or memo.\nList: Alphabet order\n");
+    refresh();
     getch();
     endwin();
 
