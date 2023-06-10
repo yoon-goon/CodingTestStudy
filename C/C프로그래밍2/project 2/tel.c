@@ -129,80 +129,120 @@ int main() {
         refresh();
         }
 
-    else if (highlight == 2) { //       Delete 기능 구현
+    else if (highlight == 2) { // Delete 기능 구현
         WINDOW *delewin = newwin(ymax-2, xmax, 2, 0);
         box(delewin, 0, 0);
-        mvwprintw(delewin,2,2,"Input keyword you want to find to Delete:");
+        mvwprintw(delewin, 2, 2, "Input keyword you want to find to Delete:");
         wrefresh(delewin);
         echo();
         mvwgetnstr(delewin, 3, 2, keyword, 40);
-        char filename[] = "data.txt";
-        char tempFilename[] = "temp.txt";
-        FILE *file = fopen(filename, "r");
-        FILE *tempFile = fopen(tempFilename, "w");
-        int found = 0;
+        noecho();
 
+        char filename[] = "data.txt";
+        int found = 0;
+        int order = 1;
+        FILE *file = fopen(filename, "r");
         char line[93];
-        int contactCount = 0;
+        struct Contact contacts[MAX_Contacts];
+        int numContacts = 0;
+
         while (fgets(line, sizeof(line), file) != NULL) {
-            if (strstr(line, keyword) == NULL) {
-                fputs(line, tempFile);
-            } else {
+            char *name = strtok(line, ":");
+            char *phone = strtok(NULL, ":");
+            char *memo = strtok(NULL, ":");
+
+            if (strstr(name, keyword) != NULL || strstr(phone, keyword) != NULL || strstr(memo, keyword) != NULL) {
+                strcpy(contacts[numContacts].name, name);
+                strcpy(contacts[numContacts].phone, phone);
+                strcpy(contacts[numContacts].memo, memo);
+                numContacts++;
                 found = 1;
-                contactCount++;
-                mvprintw(contactCount, 5, "%d. %s", contactCount, line);
             }
         }
 
         fclose(file);
-        fclose(tempFile);
-
-        // 원본 파일을 삭제하고 임시 파일을 원본 파일로 이름 변경
-        remove(filename);
-        rename(tempFilename, filename);
 
         if (found) {
-            mvprintw(ymax-5, 5, "Contact(s) found. Enter the number to delete: ");
-            refresh();
+            mvwprintw(delewin, 5, 2, "Matching contacts found. Select a contact to delete:");
+            int highlight = 0;
+            int choice;
+            keypad(delewin, TRUE);
 
-            int selectedContact;
-            scanw("%d", &selectedContact);
+            while (1) {
+                for (int i = 0; i < numContacts; i++) {
+                    if (i == highlight) {
+                        wattron(delewin, A_REVERSE); // 선택된 항목을 강조
+                    }
+                    mvwprintw(delewin, i + 6, 2, "%d %s %s %s", i + 1, contacts[i].name, contacts[i].phone, contacts[i].memo);
+                    wattroff(delewin, A_REVERSE);
+                }
+                choice = wgetch(delewin);
 
-            if (selectedContact >= 1 && selectedContact <= contactCount) {
-                FILE *updatedFile = fopen(filename, "r");
-                FILE *updatedTempFile = fopen(tempFilename, "w");
-                int currentContact = 0;
+                switch (choice) {
+                    case KEY_UP:
+                        highlight--;
+                        if (highlight < 0)
+                            highlight = 0;
+                        break;
+                    case KEY_DOWN:
+                        highlight++;
+                        if (highlight >= numContacts)
+                            highlight = numContacts - 1;
+                        break;
+                    default:
+                        break;
+                }
+                if (choice == 10)
+                    break;
+            }
+            mvwprintw(delewin, ymax - 4, 2, "Contact deleted: %s %s %s", contacts[highlight].name, contacts[highlight].phone, contacts[highlight].memo);
+            wrefresh(delewin);
 
-                rewind(updatedFile);  // 파일 포인터를 다시 맨 앞으로 이동
+            if (highlight >= 0 && highlight < numContacts) {
 
-                while (fgets(line, sizeof(line), updatedFile) != NULL) {
-                    if (strstr(line, keyword) == NULL) {
-                        currentContact++;
-                        if (currentContact != selectedContact) {
-                            fputs(line, updatedTempFile);
-                        }
+                // 삭제 작업 수행
+                FILE *tempFile = fopen("temp.txt", "w");
+                if (tempFile == NULL) {
+                    mvwprintw(delewin, ymax - 4, 2, "Error deleting contact.");
+                    wrefresh(delewin);
+                    getch();
+                    delwin(delewin);
+                    endwin();
+                    return 1;
+                }
+
+                file = fopen(filename, "r");
+                order = 0;
+                while (fgets(line, sizeof(line), file) != NULL) {
+                    char *name = strtok(line, ":");
+                    char *phone = strtok(NULL, ":");
+                    char *memo = strtok(NULL, ":");
+
+                    if (strcmp(name, contacts[highlight].name) != 0 || strcmp(phone, contacts[highlight].phone) != 0 || strcmp(memo, contacts[highlight].memo) != 0) {
+                        fprintf(tempFile, "%s:%s:%s", name, phone, memo);
+                        order++;
                     }
                 }
 
-                fclose(updatedFile);
-                fclose(updatedTempFile);
-
+                fclose(file);
+                fclose(tempFile);
                 remove(filename);
-                rename(tempFilename, filename);
-
-                mvprintw(ymax-3, 5, "Selected contact deleted successfully.");
-            } else {
-                mvprintw(ymax-3, 5, "Invalid selection. No contact deleted.");
+                rename("temp.txt", filename);
             }
-        } else {
-            mvprintw(ymax-5, 5, "Contact not found.");
+            else {
+                mvwprintw(delewin, ymax - 4, 2, "Invalid selection. Contact not deleted.");
+            }
+        }
+        else {
+            mvwprintw(delewin, 5, 2, "No matching contacts found.");
         }
 
-        mvprintw(ymax-1, 5, "Press any key to continue.");
-        refresh();
-        getch();
+        wrefresh(delewin);
         delwin(delewin);
+        noecho();
+
     }
+
 
 
 
