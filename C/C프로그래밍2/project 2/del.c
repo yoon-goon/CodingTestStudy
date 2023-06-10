@@ -129,19 +129,110 @@ int main() {
         refresh();
         }
 
-    else if (highlight == 2) { //       Delete 기능 구현
+    else if (highlight == 2) { // Delete 기능 구현
         WINDOW *delewin = newwin(ymax-2, xmax, 2, 0);
         box(delewin, 0, 0);
         mvwprintw(delewin,2,2,"Input keyword you want to find to Delete:");
         wrefresh(delewin);
         echo();
         mvwgetnstr(delewin, 3, 2, keyword, 40);
-        // delete 코드를 완성해야하는 부분
+        // delete 코드 추가
 
-        refresh();
+        char filename[] = "data.txt";
+        int deleted = 0;
+        int order = 0;
+        int selectedContact = 0;
+        FILE *file = fopen(filename, "r");
+        FILE *tempFile = fopen("temp.txt", "w");
+        if (file == NULL || tempFile == NULL) {
+            mvwprintw(delewin, 5, 2, "Error: Failed to open files.");
+            wrefresh(delewin);
+            getch();
+            fclose(file);
+            fclose(tempFile);
+            delwin(delewin);
+            return 1;
+        }
+
+        char line[93]; // name : number : memo
+
+        // 파일 읽어오기
+        while (fgets(line, sizeof(line), file) != NULL) {
+            char *name = strtok(line, ":");
+            char *phone = strtok(NULL, ":");
+            char *memo = strtok(NULL, ":");
+
+            if (strstr(name, keyword) == NULL && strstr(phone, keyword) == NULL && strstr(memo, keyword) == NULL) {
+                fprintf(tempFile, "%s:%s:%s", name, phone, memo);
+            } else {
+                order++; // 선택지 번호
+                deleted = 1;
+                mvwprintw(delewin, order+4, 2, "%d %s %s %s", order, name, phone, memo);
+                wrefresh(delewin);
+            }
+        }
+
+        if (deleted) {
+            mvwprintw(delewin, ymax-2, 2, "which one?: ");
+            wrefresh(delewin);
+            scanw("%d", &selectedContact);
+
+            // 파일 내용 읽어오기 (쓰기 모드로 열기)
+            fclose(tempFile);
+            tempFile = fopen("temp.txt", "w");
+            if (tempFile == NULL) {
+                mvwprintw(delewin, 5, 2, "Error: Failed to open temp file.");
+                wrefresh(delewin);
+                getch();
+                fclose(file);
+                fclose(tempFile);
+                delwin(delewin);
+                return 1;
+            }
+
+            // 파일 읽어오기
+            rewind(file); // 포인터를 파일의 처음으로
+            order = 0; // 선택지 번호
+            deleted = 0;
+            while (fgets(line, sizeof(line), file) != NULL) {
+                char *name = strtok(line, ":");
+                char *phone = strtok(NULL, ":");
+                char *memo = strtok(NULL, ":");
+
+                if (strstr(name, keyword) == NULL && strstr(phone, keyword) == NULL && strstr(memo, keyword) == NULL) {
+                    fprintf(tempFile, "%s:%s:%s", name, phone, memo);
+                } else {
+                    order++; // 선택지 번호
+                      if (order != selectedContact) {
+                        fprintf(tempFile, "%s:%s:%s", name, phone, memo);
+                    } else {
+                        deleted = 1;
+                    }
+                }
+            }
+
+            fclose(file);
+            fclose(tempFile);
+
+            if (deleted) {
+                remove(filename);
+                rename("temp.txt", filename);
+                mvwprintw(delewin, ymax-2, 2, "Contact deleted successfully.");
+            } else {
+                remove("temp.txt");
+                mvwprintw(delewin, ymax-2, 2, "No matching contact found.");
+            }
+        } else {
+            mvwprintw(delewin, 5, 2, "No matching contact found.");
+        }
+
+        wrefresh(delewin);
         getch();
         delwin(delewin);
+        noecho();
+
     }
+
 
 
 
