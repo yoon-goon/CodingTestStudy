@@ -1,4 +1,4 @@
 f = open("convert.ini")
 s = f.read()
-print(s)
+print(s, end="")
 f.close()
