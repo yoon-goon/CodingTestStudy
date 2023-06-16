@@ -1,3 +1,0 @@
-C:/temp
-jpg
-png
