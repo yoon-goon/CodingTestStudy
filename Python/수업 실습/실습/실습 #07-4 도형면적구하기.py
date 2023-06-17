@@ -18,11 +18,10 @@
 def tup_input_rect():
     t1 = tuple()
     lst = ["x1", "y1", "x2", "y2"]
-    l1 = ["사각형"]
     for s in lst:
         n = int(input(s + " 입력: "))
         t1 += (n,)
-    return l1.append(t1)
+    return t1
 
 
 def tup_input_tri():
@@ -45,12 +44,21 @@ def tup_input_circle():
 
 for i in range(5):
     shape = input("도형의 종류를 입력하세요: ")
+    lst = []
     if shape == "사각형":
         t = tup_input_rect()
-        print(t)
+        lst.append(shape)
+        lst.append(t)
+        print(lst)
         size = (t[0] - t[2]) * (t[1] - t[3])
         print(size)
     elif shape == "삼각형":
-        print(tup_input_tri())
+        t = tup_input_tri()
+        lst.append(shape)
+        lst.append(t)
+        print(lst)
     elif shape == "원":
-        print(tup_input_circle())
+        t = tup_input_circle()
+        lst.append(shape)
+        lst.append(t)
+        print(lst)
