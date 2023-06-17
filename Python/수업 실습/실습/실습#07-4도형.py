@@ -1,3 +1,6 @@
+# 미완
+
+
 # def input_rectangle():
 #     x1 = int(input("x1좌표"))
 #     y1 = int(input("y1좌표"))
@@ -54,18 +57,22 @@ for i in range(5):
         t = tup_input_rect()
         lst.append(shape)
         lst.append(t)
-        print(lst)
+        # print(lst)
         size = (t[2] - t[0]) * (t[1] - t[3])
         print(size)
     elif shape == "삼각형":
         t = tup_input_tri()
         lst.append(shape)
         lst.append(t)
-        print(lst)
-        size = math.sqrt()
+        # print(lst)
+        size = math.sqrt(1) # 임시값
     elif shape == "원":
         t = tup_input_circle()
         lst.append(shape)
         lst.append(t)
-        print(lst)
+        # print(lst)
         size = t[2] * t[2] * math.pi
+print(lst)
+
+for i in range(0,len(lst),2):
+    print(f"모양:{lst[i]}")

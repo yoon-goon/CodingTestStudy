@@ -91,7 +91,7 @@ lst = createShapeList(5)
 print(lst)
 for i in range(0, len(lst), 2):
     if lst[i] == "사각형":
-        area = getAreaOfRect(lst[i + 1])
+        area = getAreaOfRect(lst[i + 1]) # 사각형이랑 써있는 다음 부분의 튜플
     elif lst[i] == "삼각형":
         area = getAreaOfTriangle(lst[i + 1])
     elif lst[i] == "원":
