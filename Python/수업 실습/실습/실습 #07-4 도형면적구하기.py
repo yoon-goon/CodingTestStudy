@@ -13,6 +13,7 @@
 #     x3 = int(input("x3좌표"))
 #     y3 = int(input("y3좌표"))
 #     return (x1, y1, x2, y2, x3, y3)
+import math
 
 
 def tup_input_rect():
@@ -42,23 +43,25 @@ def tup_input_circle():
     return t1
 
 
+lst = []
 for i in range(5):
     shape = input("도형의 종류를 입력하세요: ")
-    lst = []
     if shape == "사각형":
         t = tup_input_rect()
         lst.append(shape)
         lst.append(t)
         print(lst)
-        size = (t[0] - t[2]) * (t[1] - t[3])
+        size = (t[2] - t[0]) * (t[1] - t[3])
         print(size)
     elif shape == "삼각형":
         t = tup_input_tri()
         lst.append(shape)
         lst.append(t)
         print(lst)
+        size = math.sqrt()
     elif shape == "원":
         t = tup_input_circle()
         lst.append(shape)
         lst.append(t)
         print(lst)
+        size = t[2] * t[2] * math.pi
