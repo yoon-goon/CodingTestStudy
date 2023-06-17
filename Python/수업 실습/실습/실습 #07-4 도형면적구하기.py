@@ -9,6 +9,13 @@ def input_rectangle():
     return (x1, y1, x2, y2)
 
 
-def tup_rect():
+def tup_input_rect():
     t1 = tuple()
-    list = ()
+    lst = ["x1", "y1", "x2", "y2"]
+    for s in lst:
+        n = int(input(s + " 입력: "))
+        t1 += (n,)
+    return t1
+
+
+print(tup_input_rect())
