@@ -43,6 +43,10 @@ def tup_input_circle():
     return t1
 
 
+def distance(x1, y1, x2, y2):
+    return math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2))
+
+
 lst = []
 for i in range(5):
     shape = input("도형의 종류를 입력하세요: ")
