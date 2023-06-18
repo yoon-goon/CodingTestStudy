@@ -1,0 +1,4 @@
+우유,Food,3000
+수건,Bath,10000
+알뜰주걱,Kitchen,10430
+LED 체온계,Health,55000
