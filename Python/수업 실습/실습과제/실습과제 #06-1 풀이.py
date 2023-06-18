@@ -10,10 +10,10 @@ def createDivisors(n):
 # print(createDivisors(12))
 # print(createDivisors(16))
 
-def createDivisorsList(n1, n2):
+def createDivisorsList(n1, n2): # n1 부터 n2까지
     # lst = [None, None]
     lst = []
-    for i in range(n1):
+    for i in range(n1): # n1까지는 none으로 채우기
         lst.append(None)
     for i in range(n1, n2 + 1):
         subList = createDivisors(i)
@@ -42,12 +42,12 @@ def createDivisorsList(n1, n2):
 #                print(str(lst[i][j]) + ", ", end='')
 #            print(lst[i][len(lst[i]) - 1])
 
-def printList(lst):
+def printList(lst): # 출력 포맷
     for i in range(len(lst)):
         subList = lst[i]
-        if subList != None:
+        if subList != None: # None인경우 스킵
             for j in range(len(subList) - 1):
-                print(str(subList[j]) + ", ", end='')
+                print(str(subList[j]) + ", ", end='') #내부 리스트 한개씩 출력
             print(subList[len(subList) - 1])
 
 
@@ -56,6 +56,6 @@ def main():
     printList(lst)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # 모듈을 활용해서 직접 실행될 경우에만 실행되도록
     main()
 
