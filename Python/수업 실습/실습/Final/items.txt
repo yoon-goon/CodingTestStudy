@@ -2,3 +2,5 @@
 수건,Bath,10000
 알뜰주걱,Kitchen,10430
 LED 체온계,Health,55000
+체온계,health,94000
+코로나테스트기,health,6000
