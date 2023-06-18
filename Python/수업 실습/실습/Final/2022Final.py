@@ -60,14 +60,26 @@ def printItem(dic, itemName):
         print(f"상품 {itemName}이(가) 없습니다.")
     return
 
+def printCategory(dic, category):
+    pass
 
 
 
 def main(filename):
     d = readData(filename)
     print(d)
-    # print(d.keys())
-    item = printItem(d,input("검색어입력: ").lower())
+
+    control = input("명령:데이터 형식으로 입력하세요. ")
+    loc = control.find(":")
+    print(control[:loc])
+    if control[:loc] == "item":
+        item = printItem(d, input("검색어입력: ").lower())
+    elif control[:loc] == "category":
+        type = printCategory(d, input("카테고리: ").lower())
+    else:
+        pass
+
+
 
 
 main("items.txt")
