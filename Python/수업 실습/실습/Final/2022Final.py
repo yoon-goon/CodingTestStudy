@@ -64,7 +64,7 @@ def printCategory(dic, category):
     print(f"분류명 {category}에 해당하는 상품들:")
     found = 0
     for item, info in dic.items():
-        print(item,info)
+        #print(item,info)
         item_category = info[0]
         if item_category.lower() == category.lower():
             price = info[1]
@@ -83,8 +83,8 @@ def main(filename):
     control = input("명령:데이터 형식으로 입력하세요. ").lower()
     loc = control.find(":")
     inp = control[loc+1:]
-    print(control[:loc])
-    print(inp)
+    #print(control[:loc])
+    #print(inp)
     if control[:loc] == "item":
         item = printItem(d, inp)
     elif control[:loc] == "category":
