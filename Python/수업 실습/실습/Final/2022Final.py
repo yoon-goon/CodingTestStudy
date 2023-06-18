@@ -61,7 +61,18 @@ def printItem(dic, itemName):
     return
 
 def printCategory(dic, category):
-    pass
+    print(f"분류명 {category}에 해당하는 상품들:")
+    found = 0
+    for item, info in dic.items():
+        print(item,info)
+        item_category = info[0]
+        if item_category.lower() == category.lower():
+            price = info[1]
+            print(f"상품명: {item}, 분류: {item_category}, 가격: {price}")
+            found = 1
+    if found != 1:
+        print(f"분류항목 {category}이(가) 없습니다.")
+    return
 
 
 
@@ -69,13 +80,15 @@ def main(filename):
     d = readData(filename)
     print(d)
 
-    control = input("명령:데이터 형식으로 입력하세요. ")
+    control = input("명령:데이터 형식으로 입력하세요. ").lower()
     loc = control.find(":")
+    inp = control[loc+1:]
     print(control[:loc])
+    print(inp)
     if control[:loc] == "item":
-        item = printItem(d, input("검색어입력: ").lower())
+        item = printItem(d, inp)
     elif control[:loc] == "category":
-        type = printCategory(d, input("카테고리: ").lower())
+        type = printCategory(d, inp)
     else:
         pass
 
