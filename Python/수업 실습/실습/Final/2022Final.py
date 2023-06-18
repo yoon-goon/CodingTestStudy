@@ -60,11 +60,12 @@ def printItem(dic, itemName):
         print(f"상품 {itemName}이(가) 없습니다.")
     return
 
+
 def printCategory(dic, category):
     print(f"분류명 {category}에 해당하는 상품들:")
     found = 0
     for item, info in dic.items():
-        #print(item,info)
+        # print(item,info)
         item_category = info[0]
         if item_category.lower() == category.lower():
             price = info[1]
@@ -75,6 +76,23 @@ def printCategory(dic, category):
     return
 
 
+def printPriceInRange(dic, price1, price2):
+    found = 0
+    try:
+        price1, price2 = int(price1), int(price2)
+        for item, info in dic.items():
+            item_category = info[0]
+            price = int(info[1])
+            # print(price)
+            if price1 <= price <= price2:
+                print(f"상품명: {item}, 분류: {item_category}, 가격: {price}")
+                found = 1
+
+        if found != 1:
+            print(f"분류항목 {price1}~{price2}에 해당하는 상품이이(가) 없습니다.")
+    except ValueError:
+        print("정수가 아닌 문자열이 입력됬습니다.")
+
 
 def main(filename):
     d = readData(filename)
@@ -82,17 +100,20 @@ def main(filename):
 
     control = input("명령:데이터 형식으로 입력하세요. ").lower()
     loc = control.find(":")
-    inp = control[loc+1:]
-    #print(control[:loc])
-    #print(inp)
+    inp = control[loc + 1:]
+    if inp.find("~"):
+        middle = inp.find("~")
+        p1 = inp[:middle]
+        p2 = inp[middle + 1:]
+
+    # print(control[:loc])
+    # print(inp)
     if control[:loc] == "item":
-        item = printItem(d, inp)
+        printItem(d, inp)
     elif control[:loc] == "category":
-        type = printCategory(d, inp)
+        printCategory(d, inp)
     else:
-        pass
-
-
+        printPriceInRange(d, p1, p2)
 
 
 main("items.txt")
