@@ -49,11 +49,25 @@ def readData(filename):
 
 
 def printItem(dic, itemName):
-    pass
+    found = 0
+    # print(itemName)
+    for item in dic:
+        if itemName in item:
+            type, price = dic[item]
+            print(f"상품명: {item}, 분류: {type}, 가격: {price}")
+            found = 1
+    if found != 1:
+        print(f"상품 {itemName}이(가) 없습니다.")
+    return
+
 
 
 
 def main(filename):
-    print(readData(filename))
+    d = readData(filename)
+    print(d)
+    # print(d.keys())
+    item = printItem(d,input("검색어입력: ").lower())
+
 
 main("items.txt")
