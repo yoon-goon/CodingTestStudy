@@ -1,3 +1,11 @@
+'''
+파일이 없는
+경우와 문자열에서 실수로 변환하면서 오류가 발생
+할 수 있는 경우에 대해 예외 처리하는 코드를 추가
+'''
+
+
+
 def readFile(fileName):
     try:
         with open(fileName) as f:
