@@ -30,7 +30,7 @@ class FourGSmartPhone(SmartPhone):
         print(f"4G 네트워크를 사용해서 {phNum}으로 전화")
 
     def func(self):
-        print("func()")
+        print("func()출력")
 
 
 ph1 = SmartPhone("Cho", "2222-2222", 80)
