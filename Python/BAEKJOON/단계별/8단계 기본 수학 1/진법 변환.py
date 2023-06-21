@@ -1,6 +1,6 @@
 # https://www.acmicpc.net/problem/2745
 
 
+N, a = input().split()
 
-a = int(input())
-
+print(int(N, int(a)))
