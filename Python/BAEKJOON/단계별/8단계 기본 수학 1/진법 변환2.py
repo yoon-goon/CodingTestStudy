@@ -1,16 +1,15 @@
 # https://www.acmicpc.net/problem/11005
 
-N, a = map(int,input().split())  # N 진법
+N, a = map(int, input().split())  # a 진법
 
-lst = []
+lst = ''
 
 while N != 0:
     b = N % a
     if a >= 10:
-        lst.append(chr(b+55))
+        lst += chr(b + 55)
     else:
-        lst.append(str(b))
+        lst += str(b)
     N = N // a
 
-print(*lst)
-
+print(lst[::-1])
