@@ -6,7 +6,7 @@ lst = ''
 
 while N != 0:
     b = N % a
-    if a >= 10:
+    if b >= 10:
         lst += chr(b + 55)
     else:
         lst += str(b)
