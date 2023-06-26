@@ -2,8 +2,7 @@
 
 times = int(input())
 
-
-for - in range(times):
+for _ in range(times):
     output = []
     totalM = int(input())
     while totalM > 5:
@@ -13,4 +12,5 @@ for - in range(times):
         totalM = totalM % 10
         nickel = totalM // 5
         totalM = totalM % 5
-        
+        output = [quarter, dime, nickel, totalM]
+        print(*output)
