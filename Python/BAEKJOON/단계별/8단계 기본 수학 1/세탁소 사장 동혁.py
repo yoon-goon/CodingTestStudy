@@ -14,5 +14,6 @@ for totalM in moneylst:
         totalM = totalM % 10
         nickel = totalM // 5
         totalM = totalM % 5
-        output = [quarter, dime, nickel, totalM]
+        penni = totalM // 1
+        output = [quarter, dime, nickel, penni]
     print(*output)
