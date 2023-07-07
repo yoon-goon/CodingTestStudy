@@ -6,4 +6,7 @@ c = int(input())
 
 if a == 60 and b == a and c == a:
     print("Equilateral")
-elif a + b + c == 180 and 
+elif a + b + c == 180:
+    aset = set[a, b, c]
+    if len(aset) == 2:
+        print("Isosceles")
