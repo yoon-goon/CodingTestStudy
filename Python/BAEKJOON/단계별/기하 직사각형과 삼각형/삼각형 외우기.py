@@ -7,6 +7,14 @@ c = int(input())
 if a == 60 and b == a and c == a:
     print("Equilateral")
 elif a + b + c == 180:
-    aset = set[a, b, c]
+    aset = set()
+    a = str(a)
+    b = str(b)
+    c = str(c)
+    aset.update(a, b, c)
     if len(aset) == 2:
         print("Isosceles")
+    else:
+        print("Scalene")
+else:
+    print("Error")
