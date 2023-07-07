@@ -9,7 +9,6 @@ if a == 60 and b == a and c == a:
 elif a + b + c == 180:
     aset = set()
     aset.update([a, b, c])
-    print(aset)
     if len(aset) == 2:
         print("Isosceles")
     else:
