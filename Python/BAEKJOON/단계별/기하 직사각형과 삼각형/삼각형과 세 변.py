@@ -1,7 +1,6 @@
 # https://www.acmicpc.net/problem/5073
 
 
-
 while a == 0 and b == 0 and c == 0:
     a = int(input())
     b = int(input())
@@ -9,7 +8,7 @@ while a == 0 and b == 0 and c == 0:
 
     if a == b and b == a and c == a:
         print("Equilateral")
-    elif a + b + c == 180:
+    elif max(a, b, c) < a + b + c - max(a, b, c):
         aset = set()
         aset.update([a, b, c])
         if len(aset) == 2:
@@ -17,4 +16,4 @@ while a == 0 and b == 0 and c == 0:
         else:
             print("Scalene")
     else:
-        print("Error")
+        print("Invalid")
