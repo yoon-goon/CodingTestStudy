@@ -19,3 +19,17 @@ while a != 0 and b != 0 and c != 0:
             print("Scalene")
     else:
         print("Invalid")
+
+'''
+set를 이용한 풀이
+
+A, B, C = input().split()
+A, B, C = int(A), int(B), int(C)
+
+while A:
+    if(sum(L:=[A,B,C]))<=max(L)*2:print("Invalid")
+    else:print([0,"Equilateral","Isosceles","Scalene"][len(set(L))])
+    A, B, C = input().split()
+    A, B, C = int(A), int(B), int(C)
+    
+'''
