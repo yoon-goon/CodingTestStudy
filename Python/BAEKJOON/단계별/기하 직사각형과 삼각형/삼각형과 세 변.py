@@ -1,11 +1,10 @@
 # https://www.acmicpc.net/problem/5073
+import sys
 
 a, b, c = 1, 1, 1
 
 while a != 0 and b != 0 and c != 0:
-    a = int(input())
-    b = int(input())
-    c = int(input())
+    a, b, c = map(int, sys.stdin.readline().split())
 
     if a == b and b == a and c == a:
         print("Equilateral")
