@@ -12,5 +12,7 @@ alist.remove(maxnum)
 
 if sum(alist) > maxnum:
     print(sum(alist) + maxnum)
+    print("if")
 else:
-    print(sum(alist) + max(alist))
+    print(alist)
+    print(sum(alist)*2-1)
