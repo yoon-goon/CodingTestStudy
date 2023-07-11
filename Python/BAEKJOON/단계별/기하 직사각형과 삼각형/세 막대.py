@@ -14,3 +14,9 @@ if sum(alist) > maxnum:
     print(sum(alist) + maxnum)
 else:
     print(sum(alist) * 2 - 1)
+
+
+# 간단한 풀이
+li = sorted(map(int, input().split()))
+res = li[0] + li[1] + min(li[2], li[0]+li[1]-1)
+print(res)
