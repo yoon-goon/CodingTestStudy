@@ -3,10 +3,14 @@ import sys
 
 a, b, c = map(int, sys.stdin.readline().split())
 
-alist = [a,b,c]
+alist = [a, b, c]
 
 maxnum = max(alist)
 minnum = min(alist)
 
 alist.remove(maxnum)
 
+if sum(alist) > maxnum:
+    print(sum(alist) + maxnum)
+else:
+    print(sum(alist) + max(alist))
