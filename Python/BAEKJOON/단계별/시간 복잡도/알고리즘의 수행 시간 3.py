@@ -7,3 +7,9 @@ for i in range(n):
     for y in range(n):
         count0 += 1
 print(count0, "\n2")
+
+'''
+n = int(input())
+print(n * n, "\n2")
+
+'''
