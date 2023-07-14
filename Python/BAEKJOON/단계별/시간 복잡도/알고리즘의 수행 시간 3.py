@@ -4,7 +4,6 @@ n = int(input())
 count0 = 0
 
 for i in range(n):
-    count0 += 1
     for y in range(n):
         count0 += 1
 print(count0, "\n2")
