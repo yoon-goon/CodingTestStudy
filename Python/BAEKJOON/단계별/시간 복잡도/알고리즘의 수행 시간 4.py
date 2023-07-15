@@ -9,5 +9,7 @@ for i in range(n - 1):
         count += 1
 print(count // 2, "\n2")
 
+'''
 n = int(input())
 print((n - 1) * n // 2, "\n2")
+'''
