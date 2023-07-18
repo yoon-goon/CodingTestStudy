@@ -13,3 +13,12 @@ for i in range(n - 2):
 print(count, "\n3")
 
 print(n * n * n, "\n3")
+
+'''
+예제
+7
+
+---
+35
+3
+'''
