@@ -1,11 +1,7 @@
 # https://www.acmicpc.net/problem/2231
 
 N = int(input())
-f,all = 0,0
-
-while f != N:
-    all += 1
-    a = all//100
 
 
-    f =
+for i in range(1, n + 1):
+    num = sum(map(int,str(i)))
