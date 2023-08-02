@@ -25,15 +25,15 @@ for i in range(N - 7):  # 8*8크기의 체스판이므로 전체 보드의 인�
                     if board[x][y] != 'B':
                         a += 1
                     if board[x][y] != 'W':
-                        b += 2
+                        b += 1
                 else:
                     if board[x][y] != 'W':
                         a += 1
                     if board[x][y] != 'B':
-                        b += 2
+                        b += 1
 
         result_list.append(a)
         result_list.append(b)
 
-print(result_list)
+# print(result_list)
 print(min(result_list))
