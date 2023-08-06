@@ -9,4 +9,4 @@ for i in range(10000000):
     if '666' in str(i):
         list.append(i)
 
-print()
+print(list[n-1])
