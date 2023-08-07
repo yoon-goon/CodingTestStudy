@@ -11,4 +11,7 @@ while n >= 0:
     n -= 3
     bags += 1
 
-print(bags)
+if n < 0:
+    print(-1)
+else:
+    print(bags)
