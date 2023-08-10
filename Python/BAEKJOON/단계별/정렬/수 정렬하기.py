@@ -7,4 +7,4 @@ lst = []
 for _ in range(n):
     lst.append(int(sys.stdin.readline().strip()))
 
-print(sorted(lst))
+print(*sorted(lst), sep="\n")
