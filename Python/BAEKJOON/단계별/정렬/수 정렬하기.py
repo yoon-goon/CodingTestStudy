@@ -2,9 +2,9 @@
 import sys
 
 n = int(input())
-list = []
+lst = []
 
 for _ in range(n):
-    list.append(sys.stdin.readline())
+    lst.append(sys.stdin.readline().strip())
 
-print(list)
+print(sorted(lst))
