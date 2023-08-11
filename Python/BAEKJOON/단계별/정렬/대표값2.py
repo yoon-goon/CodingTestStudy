@@ -4,4 +4,6 @@ import sys
 lst = []
 
 for _ in range(5):
-    lst.append(sys.stdin.readline().strip())
+    lst.append(int(sys.stdin.readline().strip()))
+
+print(lst)
