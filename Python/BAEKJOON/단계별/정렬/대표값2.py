@@ -6,5 +6,4 @@ lst = []
 for _ in range(5):
     lst.append(int(sys.stdin.readline().strip()))
 
-
-print(sum(lst) / 5,sorted(lst)[3])
+print(int(sum(lst) / 5), "\n", sorted(lst)[2])
