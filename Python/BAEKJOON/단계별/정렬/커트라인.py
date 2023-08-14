@@ -4,5 +4,4 @@ import sys
 n, k = map(int, sys.stdin.readline().split())
 x = list(map(int, sys.stdin.readline().strip().split()))
 
-
-print(x)
+print(sorted(x, reverse=True))
