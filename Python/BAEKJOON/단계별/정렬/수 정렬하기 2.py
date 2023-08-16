@@ -6,7 +6,9 @@ n = int(input())
 lst = []
 
 for _ in range(n):
-    lst.append(sys.stdin.readline().strip())
+    lst.append(map(int, sys.stdin.readline().strip()))
+
+lst.sort()
 
 for i in range(n):
-    print(sorted(lst)[i])
+    print(lst[i])
