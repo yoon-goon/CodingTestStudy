@@ -8,4 +8,7 @@ for _ in range(n):
     a = int(input())
     lst[a] += 1
 
-print(lst)
+for i in range(10001):
+    if lst[i] != 0:
+        for j in range(lst[i]):
+            print(i)
