@@ -1,9 +1,9 @@
 # https://www.acmicpc.net/problem/1427
 
-num = int(input())
+num = input()
 lst = []
 
-for i in range(num):
+for i in num:
     lst.append(int(i))
 
-print(lst)
+print(sorted(lst))
