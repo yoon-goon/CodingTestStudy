@@ -6,4 +6,4 @@ lst = []
 for i in num:
     lst.append(int(i))
 
-print(sorted(lst, reverse=True))
+print(*sorted(lst, reverse=True), sep='')
