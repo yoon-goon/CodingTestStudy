@@ -3,11 +3,9 @@ import sys
 
 n = int(input())
 xlst = []
-ylst = []
 
 for _ in range(n):
     x, y = map(int, sys.stdin.readline().strip().split())
-    xlst.append(x)
-    ylst.append(y)
+    xlst.append([x, y])
 
-print(xlst,ylst)
+print(sorted(xlst))
