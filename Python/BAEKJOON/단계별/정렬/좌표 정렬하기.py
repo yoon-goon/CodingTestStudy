@@ -6,7 +6,8 @@ xlst = []
 ylst = []
 
 for _ in range(n):
-    x, y = map(int, sys.stdin.readline().strip())
+    x, y = map(int, sys.stdin.readline().strip().split())
     xlst.append(x)
     ylst.append(y)
 
+print(xlst,ylst)
