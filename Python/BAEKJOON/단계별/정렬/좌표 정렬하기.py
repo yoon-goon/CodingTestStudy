@@ -8,4 +8,7 @@ for _ in range(n):
     x, y = map(int, sys.stdin.readline().strip().split())
     lst.append([x, y])
 
-print(sorted(lst))
+lst.sort()
+
+for i in range(len(lst)):
+    print(*lst[i])
