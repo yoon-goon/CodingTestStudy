@@ -10,9 +10,9 @@ for _ in range(n):
         pass
     else:
         lst.append(x)
-print(lst)
 
-lst.sort(key=len())
+lst.sort()
+lst.sort(key=len)
 
 for i in lst:
     print(i)
