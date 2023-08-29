@@ -3,5 +3,10 @@ import sys
 
 n = input()
 own = list(map(int, sys.stdin.readline().split()))
+k = input()
+compare = list(map(int, sys.stdin.readline().split()))
+
+
 
 print(own)
+print(compare)
