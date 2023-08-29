@@ -1,12 +1,13 @@
 # https://www.acmicpc.net/problem/10815
 import sys
 
-n = input()
+input()
 own = list(map(int, sys.stdin.readline().split()))
-k = input()
+input()
 compare = list(map(int, sys.stdin.readline().split()))
 
-
-
-print(own)
-print(compare)
+for i in compare:
+    if i in own:
+        print("1 ", end='')
+    else:
+        print("0 ", end='')
