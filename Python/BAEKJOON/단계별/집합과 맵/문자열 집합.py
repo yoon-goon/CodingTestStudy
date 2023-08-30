@@ -9,7 +9,11 @@ count = 0
 for _ in range(n):
     own.append(sys.stdin.readline().strip())
 
-for i in range(m):
+for _ in range(m):
     compare.append(sys.stdin.readline().strip())
 
-print(own)
+for i in compare:
+    if i in own:
+        count += 1
+
+print(count)
