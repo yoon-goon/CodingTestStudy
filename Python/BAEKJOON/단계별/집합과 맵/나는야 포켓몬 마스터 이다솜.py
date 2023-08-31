@@ -9,4 +9,7 @@ for i in range(n):
 
 for y in range(m):
     x = sys.stdin.readline().strip()
-    print(x)
+    try:
+        print(poke[int(x) - 1])
+    except:
+        print(poke.index(x) + 1)
