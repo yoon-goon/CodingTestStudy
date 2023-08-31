@@ -2,13 +2,13 @@
 import sys
 
 n = int(input())
-lst = []
+log = set()
 
 for i in range(n):
     x, y = sys.stdin.readline().split()
     if y == "enter":
-        lst.append(x)
+        log.add(x)
     else:
-        lst.remove(x)
+        log.remove(x)
 
-print(*lst, sep='\n')
+print(*sorted(log, reverse=True), sep='\n')
