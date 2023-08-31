@@ -9,4 +9,6 @@ for i in range(n):
     if y == "enter":
         lst.append(x)
     else:
-        lst.pop(x)
+        lst.remove(x)
+
+print(lst)
