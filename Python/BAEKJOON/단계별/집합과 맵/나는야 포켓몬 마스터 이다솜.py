@@ -7,4 +7,6 @@ poke = []
 for i in range(n):
     poke.append(sys.stdin.readline().strip())
 
-print(poke)
+for y in range(m):
+    x = sys.stdin.readline().strip()
+    print(x)
