@@ -11,4 +11,4 @@ for i in range(n):
     else:
         lst.remove(x)
 
-print(lst)
+print(*lst, sep='\n')
