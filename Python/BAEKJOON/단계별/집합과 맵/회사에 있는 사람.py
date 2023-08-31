@@ -2,8 +2,11 @@
 import sys
 
 n = int(input())
+lst = []
 
 for i in range(n):
     x, y = sys.stdin.readline().split()
-    print(x, y)
-
+    if y == "enter":
+        lst.append(x)
+    else:
+        lst.pop(x)
