@@ -14,7 +14,7 @@ for i in own:
 
 print(*result)
 '''
-
+# dict 사용해 시간 단축
 int(sys.stdin.readline())
 own = list(map(int, sys.stdin.readline().split()))
 m = int(sys.stdin.readline())
@@ -27,8 +27,9 @@ for i in own:
         cnt[i] += 1
     else:
         cnt[i] = 1
+
 for i in compare:
     if i in cnt:
-        print(cnt[i])
+        print(cnt[i], end=' ')
     else:
-        print(0)
+        print(0, end=' ')
