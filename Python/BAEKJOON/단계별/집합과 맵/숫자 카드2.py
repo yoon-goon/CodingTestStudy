@@ -1,9 +1,9 @@
 # https://www.acmicpc.net/problem/10816
 import sys
 
-n = int(input())
+int(sys.stdin.readline())
 own = list(map(int, sys.stdin.readline().split()))
-m = int(input())
+m = int(sys.stdin.readline())
 compare = list(map(int, sys.stdin.readline().split()))
 result = [0] * m
 
