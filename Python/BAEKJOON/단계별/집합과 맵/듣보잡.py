@@ -17,6 +17,8 @@ for i in nohear:
         ans.append(i)
 '''
 
+ans = list(set(nohear) & set(nosee)) #  set의 & 연산자는 두 집합의 교집합을 반환
+
 print(len(ans))
 for i in sorted(ans):
     print(i)
