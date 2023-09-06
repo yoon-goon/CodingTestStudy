@@ -8,12 +8,13 @@ ans = []
 
 for _ in range(int(n)):
     nohear.append(sys.stdin.readline().strip())
-
 for _ in range(int(m)):
     nosee.append(sys.stdin.readline().strip())
 
-print(nohear,nosee)
-
 for i in nohear:
     if i in nosee:
-        print()
+        ans.append(i)
+
+print(len(ans))
+for i in sorted(ans):
+    print(i)
