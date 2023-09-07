@@ -13,3 +13,5 @@ print(list(set(answer)))
 ---> [1, 2, 3, 4, 5, 6]
 list()를 이용해 다시 대괄호로 변경 가능
 '''
+
+# ans = list(set(nohear) & set(nosee)) #  set의 & 연산자는 두 집합의 교집합을 반환
