@@ -7,4 +7,9 @@ a2, b2 = map(int, sys.stdin.readline().split())
 upper = a1 * b2 + a2 * b1
 lower = b1 * b2
 
-print(upper, lower)
+lcm = 1
+
+for i in range(min(upper, lower), 0, -1):  # 최대공약수
+    if (upper % i == 0) and (lower % i == 0):
+        print(upper // i, lower // i)
+        break
