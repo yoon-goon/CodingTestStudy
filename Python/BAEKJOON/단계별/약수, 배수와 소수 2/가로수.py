@@ -3,5 +3,10 @@ import sys
 
 n = int(sys.stdin.readline())
 lst = []
-for _ in range(n):
-    lst.append(sys.stdin.readline())
+a = int(sys.stdin.readline())
+for _ in range(n-1):
+    b = int(sys.stdin.readline())
+    lst.append(b-a)
+    a = b
+
+print(lst)
