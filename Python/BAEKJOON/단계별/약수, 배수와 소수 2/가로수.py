@@ -17,5 +17,10 @@ for _ in range(n-1):
 print(st)
 print(min(lst))
 
+i = min(st)
+final.add(i)
 while i <= max(st):
-    
+    i = i+min(lst)
+    final.add(i)
+
+print(final)
