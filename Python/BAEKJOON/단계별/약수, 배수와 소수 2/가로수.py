@@ -5,6 +5,7 @@ n = int(sys.stdin.readline())
 lst = []
 a = int(sys.stdin.readline())
 st = set()
+final = set()
 st.add(a)
 for _ in range(n-1):
     b = int(sys.stdin.readline())
@@ -15,3 +16,6 @@ for _ in range(n-1):
 
 print(st)
 print(min(lst))
+
+while i <= max(st):
+    
