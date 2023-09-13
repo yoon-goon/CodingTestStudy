@@ -19,8 +19,9 @@ print(min(lst))
 
 i = min(st)
 final.add(i)
-while i <= max(st):
+while i < max(st):
     i = i+min(lst)
     final.add(i)
 
 print(final)
+print(len(final)-len(st))
