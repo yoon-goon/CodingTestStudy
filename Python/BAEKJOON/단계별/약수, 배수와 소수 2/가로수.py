@@ -4,9 +4,14 @@ import sys
 n = int(sys.stdin.readline())
 lst = []
 a = int(sys.stdin.readline())
+st = set()
+st.add(a)
 for _ in range(n-1):
     b = int(sys.stdin.readline())
+    st.add(b)
     lst.append(b-a)
     a = b
 
-print(lst)
+
+print(st)
+print(min(lst))
