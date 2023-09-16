@@ -10,11 +10,11 @@ for _ in range(n):
         pass
     else:
         while b == 0:
-            for i in range(2, int(a ** 0.5) + 1):  # 루트
+            for i in range(2, int(a ** 0.5) + 1):
                 if a % i == 0:
+                    a += 1
                     pass
                 else:
                     print(a)
                     b = 1
                     break
-            a += 1
