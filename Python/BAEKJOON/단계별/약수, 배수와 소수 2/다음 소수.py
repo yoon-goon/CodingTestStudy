@@ -7,7 +7,7 @@ def prime(x):
         return False
     for i in range(2, int(x ** 0.5) + 1):
         if x % i == 0:
-            return False
+            return False # 소수가 아니므로 False 반환
     return True
 
 
