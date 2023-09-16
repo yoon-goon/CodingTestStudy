@@ -10,7 +10,9 @@ for _ in range(n):
     while b == 0:
         for i in range(2, int(a ** 0.5) + 1): #루트
             if a%i == 0:
+                a += 1
+
+            else:
                 print(a)
                 b = 1
-            else:
-                a += 1
+                break
