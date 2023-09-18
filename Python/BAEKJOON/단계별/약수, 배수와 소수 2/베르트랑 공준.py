@@ -17,11 +17,10 @@ for y in range(1, 246913):
         lst.append(1)
     else:
         lst.append(0)
-print(lst)
 
 n = int(sys.stdin.readline())  # n<x<=2
 while n != 0:
-    print(sum(lst[n-1:2 * n]))
+    print(sum(lst[n:2 * n])) # n-1이 아닌이유: 자신보다 커야함
     n = int(sys.stdin.readline())
 
 # n = int(sys.stdin.readline())  # n<x<=2
