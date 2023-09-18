@@ -1,6 +1,7 @@
 # https://www.acmicpc.net/problem/4948
 import sys
 
+
 def prime(x):
     if x < 2:  # 만약 2보다 작으면 소수가 아니므로 False 반환
         return False
@@ -9,14 +10,19 @@ def prime(x):
             return False
     return True
 
+
 lst = []
-for y in range(1,246913):
+for y in range(1, 246913):
     if prime(y):
         lst.append(1)
     else:
         lst.append(0)
 print(lst)
 
+n = int(sys.stdin.readline())  # n<x<=2
+while n != 0:
+    print(sum(lst[n-1:2 * n]))
+    n = int(sys.stdin.readline())
 
 # n = int(sys.stdin.readline())  # n<x<=2
 # while n != 0:
