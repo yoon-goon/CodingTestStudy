@@ -9,11 +9,20 @@ def prime(x):
             return False
     return True
 
-n = int(sys.stdin.readline())  # n<x<=2
-while n != 0:
-    num = 0
-    for i in range(n + 1, 2*n+1):
-        if prime(i):
-            num += 1
-    print(num)
-    n = int(sys.stdin.readline())
+lst = []
+for y in range(1,246913):
+    if prime(y):
+        lst.append(1)
+    else:
+        lst.append(0)
+print(lst)
+
+
+# n = int(sys.stdin.readline())  # n<x<=2
+# while n != 0:
+#     num = 0
+#     for i in range(n + 1, 2*n+1):
+#         if prime(i):
+#             num += 1
+#     print(num)
+#     n = int(sys.stdin.readline())
