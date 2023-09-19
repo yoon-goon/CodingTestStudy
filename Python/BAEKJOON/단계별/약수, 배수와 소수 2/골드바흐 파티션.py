@@ -1,7 +1,7 @@
 # https://www.acmicpc.net/problem/17103
 import sys
 
-input = sys.stdin.readline()
+input = sys.stdin.readline
 
 lst = [False, False] + [True] * 999999
 # 리스트에 0,1번에는 False, 2번부터는 True 대입.
@@ -10,4 +10,4 @@ lst = [False, False] + [True] * 999999
 T = int(input())
 
 for i in range(T):
-    n = int(input)
+    n = int(input())
