@@ -21,4 +21,3 @@ for y in range(T):
         if lst[x] and lst[n - x]:
             cnt += 1
     print(cnt)
-
