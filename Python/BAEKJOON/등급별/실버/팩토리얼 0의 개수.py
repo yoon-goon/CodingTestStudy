@@ -8,7 +8,6 @@ def fac(n):
 
 n = int(input())
 num = str(fac(n))
-print(num)
 ans = 0
 
 for i in num:
