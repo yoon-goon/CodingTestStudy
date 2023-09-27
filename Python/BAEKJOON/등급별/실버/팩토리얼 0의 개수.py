@@ -7,12 +7,12 @@ def fac(n):
 
 
 n = int(input())
-num = fac(n)
+num = str(fac(n))
 print(num)
 ans = 0
 
-for i in range(len(num)):
-    if num[i] == 0:
+for i in num:
+    if i == str(0):
         ans += 1
 
 print(ans)
