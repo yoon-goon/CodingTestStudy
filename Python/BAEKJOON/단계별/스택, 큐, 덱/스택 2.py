@@ -6,10 +6,13 @@ n = int(input())
 stack = []
 
 for i in range(n):
-    a = int(sys.stdin.readline())
-    if a == 1:
-        x = int(sys.stdin.readline())
-        stack.append(x)
-    elif a == 2:
-        print(stack[-1])
-
+    a = list(map(int, sys.stdin.readline()))
+    if a[0] == 1:
+        stack.append(a[1])
+    elif a[0] == 2:
+        if len(stack) == 0:
+            print(-1)
+        else:
+            print(stack.pop())
+    elif a[0] == 3:
+        
