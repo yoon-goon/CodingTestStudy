@@ -15,4 +15,15 @@ for i in range(n):
         else:
             print(stack.pop())
     elif a[0] == 3:
-        
+        print(len(stack))
+    elif a[0] == 4:
+        if len(a) == 0:
+            print(1)
+        else:
+            print(0)
+    elif a[0] == 5:
+        if len(stack) == 0:
+            print(-1)
+        else:
+            print(stack[-1])
+
