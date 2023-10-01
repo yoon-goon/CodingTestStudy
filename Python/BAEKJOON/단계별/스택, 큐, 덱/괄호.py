@@ -7,15 +7,17 @@ for _ in range(t):
     r = 0
     l = 0
     a = sys.stdin.readline().strip()
-    print(a)
     for i in a:
-        if r >= 0:
+        if r >= l:
             if i == "(":
                 r += 1
             else:
                 l += 1
+        else:
+            l = 'invalid'
+            break
 
-    print(r, l)
+    # print(r, l)
     if r == l:
         print('YES')
     else:
