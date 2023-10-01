@@ -6,7 +6,8 @@ t = int(input())
 for _ in range(t):
     r = 0
     l = 0
-    a = sys.stdin.readline()
+    a = sys.stdin.readline().strip()
+    print(a)
     for i in a:
         if r >= 0:
             if i == "(":
@@ -14,6 +15,7 @@ for _ in range(t):
             else:
                 l += 1
 
+    print(r, l)
     if r == l:
         print('YES')
     else:
