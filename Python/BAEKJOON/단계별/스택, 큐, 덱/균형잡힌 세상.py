@@ -8,3 +8,9 @@ while True:
 
     if T[0] == '.':
         break
+
+    for i in T:
+        if i == '[' or i == '(':
+            lst.append(i)
+        elif i == ']':
+
