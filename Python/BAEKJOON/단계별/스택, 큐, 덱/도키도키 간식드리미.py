@@ -15,7 +15,7 @@ while x:
         a += 1
     else:
         stack.append(x.popleft())
-    while stack and stack[-1] == a:
+    while stack and stack[-1] == a: # 뒷 순서부터 나감
         stack.pop()
         a += 1
 
