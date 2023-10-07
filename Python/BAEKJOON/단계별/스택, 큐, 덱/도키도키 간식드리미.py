@@ -5,25 +5,24 @@ from collections import deque
 #  스택, 큐 동시에 사용
 
 n = int(input())
-x = deque(map(int,sys.stdin.readline().split()))
+x = deque(map(int, sys.stdin.readline().split()))
 stack = deque()
 a = 1
 
-while x: # x 에 있는 동안
-    if x and x[0] == a:
-        x.popleft() # 줄서잇는 순서로 먼저 나감으로
+while x:  # x 에 있는 동안
+    if x and x[0] == a: # x에 존재 and x[0]체크
+        x.popleft()  # 줄서잇는 순서로 먼저 나감으로
         a += 1
     else:
         stack.append(x.popleft())
-    while stack and stack[-1] == a: # 뒷 순서부터 나감
+    while stack and stack[-1] == a:  # stack에 존재 and [-1]체크, 뒷 순서부터 나감
         stack.pop()
         a += 1
 
-if stack: # stack에 남아있다면
+if stack:  # stack에 남아있다면
     print('Sad')
 else:
     print('Nice')
-
 
 '''
 n = int(input())
