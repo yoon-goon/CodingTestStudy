@@ -2,23 +2,48 @@
 import sys
 from collections import deque
 
+#  스택, 큐 동시에 사용
+
+n = int(input())
+x = deque(map(int,sys.stdin.readline().split()))
+stack = deque()
+a = 1
+
+while x:
+    if x and x[0] == a:
+        x.popleft() # 줄서잇는 순서로 먼저 나감으로
+        a += 1
+    else:
+        stack.append(x.popleft())
+    while stack and stack[-1] == a:
+        stack.pop()
+        a += 1
+
+if stack:
+    print('Sad')
+else:
+    print('Nice')
+
+
+'''
 n = int(input())
 x = list(map(int,sys.stdin.readline().split()))
 a = 1
 que = deque()
 line = []
+ans = 'Nice'
 
 for i in x:
     if i == a:
         line.append(i)
         a += 1
-    elif len(que) > 0:
-        if que[-1] == a:
-            line.append(i)
-            que.pop()
-            a += 1
+
+
     else:
         que.append(i)
+
+print(line)
+print(que)
 
 for _ in range(len(que)):
     b = que.pop()
@@ -26,12 +51,12 @@ for _ in range(len(que)):
         line.append(b)
         a += 1
     else:
-        print("Sad")
-        break
+
+
 
 print(line)
 print(que)
 
-if len(line) == n:
-    print("Nice")
+print(ans)
 
+'''
