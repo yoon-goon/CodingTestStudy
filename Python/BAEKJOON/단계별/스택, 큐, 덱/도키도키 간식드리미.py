@@ -9,7 +9,7 @@ x = deque(map(int,sys.stdin.readline().split()))
 stack = deque()
 a = 1
 
-while x:
+while x: # x 에 있는 동안
     if x and x[0] == a:
         x.popleft() # 줄서잇는 순서로 먼저 나감으로
         a += 1
@@ -19,7 +19,7 @@ while x:
         stack.pop()
         a += 1
 
-if stack:
+if stack: # stack에 남아있다면
     print('Sad')
 else:
     print('Nice')
