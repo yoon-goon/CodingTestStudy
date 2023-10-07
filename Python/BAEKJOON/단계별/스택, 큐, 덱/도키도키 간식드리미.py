@@ -16,5 +16,14 @@ for i in x:
     else:
         que.append(i)
 
+for _ in range(len(que)):
+    b = que.pop()
+    if a == b:
+        line.append(b)
+        a += 1
+    else:
+        print("Sad")
+
+
+
 print(line)
-print(que)
