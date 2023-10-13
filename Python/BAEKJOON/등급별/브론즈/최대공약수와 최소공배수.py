@@ -2,7 +2,7 @@
 
 a,b = list(map(int,input().split()))
 
-def GCD(x,y) # 최소공배수(Greatest Common Divisor)
+def GCD(x,y): # 최소공배수(Greatest Common Divisor)
 
     while(y):
         x,y = y,x%y
