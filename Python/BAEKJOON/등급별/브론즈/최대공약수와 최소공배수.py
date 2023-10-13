@@ -9,4 +9,10 @@ def GCD(x,y):
     return x
 
 
+def LCM(x,y):
+    result = (x*y)//GCD(x,y)
+    return result
+
+
 print(GCD(a,b))
+print(LCM(a,b))
