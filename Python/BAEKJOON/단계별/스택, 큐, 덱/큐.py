@@ -12,4 +12,11 @@ que = []
 
 for _ in range(n):
     a = list(sys.stdin.readline().split())
+    if a[0] == 'push':
+        que.append(a[1])
+    elif a[0] == 'pop':
+        if que:
+            print(que.pop(0))
+        else:
+            print(-1)
 
