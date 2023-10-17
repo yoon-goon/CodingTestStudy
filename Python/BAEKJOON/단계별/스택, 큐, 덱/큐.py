@@ -19,4 +19,20 @@ for _ in range(n):
             print(que.pop(0))
         else:
             print(-1)
-
+    elif a[0] == 'size':
+        print(len(que))
+    elif a[0] == 'empty':
+        if que:
+            print(0)
+        else:
+            print(1)
+    elif a[0] == 'front':
+        if que:
+            print(que[0])
+        else:
+            print(-1)
+    elif a[0] == 'back':
+        if que:
+            print(que[-1])
+        else:
+            print(-1)
