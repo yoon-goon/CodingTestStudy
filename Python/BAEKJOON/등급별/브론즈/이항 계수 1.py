@@ -11,6 +11,6 @@ def facto(x):
 
 n, k = map(int, sys.stdin.readline().split())
 
-print(facto(n) // (facto(k) * facto(n - k)))
+print(int(facto(n) / (facto(k) * facto(n - k)))) # https://ko.wikipedia.org/wiki/이항_계수
 
 
