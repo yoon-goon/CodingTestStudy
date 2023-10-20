@@ -11,4 +11,6 @@ def facto(x):
 
 n, k = map(int, sys.stdin.readline().split())
 
-print(n, k)
+print(facto(n) // (facto(k) * facto(n - k)))
+
+
