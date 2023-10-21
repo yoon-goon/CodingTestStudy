@@ -8,3 +8,10 @@ lst = []
 for i in range(k):
     lst.append(int(sys.stdin.readline()))
 
+#이진탐색을 위한 세팅
+start = 1
+end = max(lst)
+
+while start <= end:
+    mid = (start+end) // 2
+    lines = 0
