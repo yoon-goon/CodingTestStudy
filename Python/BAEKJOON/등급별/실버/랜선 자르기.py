@@ -14,7 +14,18 @@ end = max(lst)
 
 while start <= end:
     mid = (start+end) // 2
+    print("mid",mid)
     lines = 0
     for y in lst:
         lines += (y//mid)
-        print(lines)
+
+    if lines >= k: #
+        start = mid + 1
+        print(start)
+        print(mid)
+    else:
+        end = mid - 1
+        print(end)
+        print(mid)
+
+print(end)
