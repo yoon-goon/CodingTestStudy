@@ -1,9 +1,10 @@
 # https://www.acmicpc.net/problem/1003
 import sys
 
-def fibo(x):
+
+def fibo(x,a,b):
     if x == 0:
-        print(0)
+        a += 1
         return 0
     elif x == 1:
         print(1)
@@ -15,4 +16,7 @@ def fibo(x):
 
 t = int(input())
 for _ in range(t):
+    zero = 0
+    one = 0
     n = int(sys.stdin.readline())
+    fibo(n,zero,one)
