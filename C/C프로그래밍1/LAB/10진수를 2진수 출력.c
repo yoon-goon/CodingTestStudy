@@ -25,8 +25,8 @@ int main(void)
     ((num & mask) == 0)? printf("0"):printf("1");
     mask = mask >> 1;
     ((num & mask) == 0)? printf("0"):printf("1");
-    mask = mask >> 1;
-    
+
+
     return 0;
 
 }
