@@ -4,9 +4,9 @@ a = int(input())
 b = int(input())
 c = int(input())
 
-num = a*b*c
+num = a * b * c
 
-lst = [0,0,0,0,0,0,0,0,0,0]
+lst = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 for i in str(num):
     if i == '0':
@@ -30,4 +30,4 @@ for i in str(num):
     else:
         lst[9] += 1
 
-print(*lst,sep="\n")
+print(*lst, sep="\n")
