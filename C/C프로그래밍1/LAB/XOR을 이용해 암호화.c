@@ -14,7 +14,7 @@ int main(void)
 
     ori = enc ^ key;
     printf("복호화된 문자 = %c\n",ori);
-    
+
     return 0;
 
 }
