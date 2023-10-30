@@ -16,7 +16,12 @@ n
 
 lst = [0, 1, 2]
 
-for i in range(3, n + 1):
-    lst.append(lst[i - 2] + lst[i - 1])
+if n == 0:
+    lst = [0]
+elif n == 1:
+    lst = [1]
+else:
+    for i in range(3, n + 1):
+        lst.append(lst[i - 2] + lst[i - 1])
 
 print(lst[-1] % 10007)
