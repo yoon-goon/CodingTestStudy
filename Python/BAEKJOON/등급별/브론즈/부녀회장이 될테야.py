@@ -12,6 +12,7 @@ for _ in range(t):
     # print(lst)
     for y in range(k):
         for j in range(1, n):  # 1층 1호면 1명, 1층 2호면 1+2, 1층 3호면 1+2+3
+            # print(lst[j],lst[j-1])
             lst[j] += lst[j - 1]
 
     print(lst[-1])
