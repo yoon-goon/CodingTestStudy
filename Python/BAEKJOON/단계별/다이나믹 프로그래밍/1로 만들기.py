@@ -10,7 +10,7 @@ for i in range(2, x + 1):
     print(dp)
 
     if i % 2 == 0: # 2로 나눠떨어지면 2로 한 번 나눠줬으니 1을 더해서 (2로 나눈 정수의 연산 횟수 + 1)
-        dp[i] = min(dp[i], dp[i // 2] + 1)
+        dp[i] = min(dp[i], dp[i // 2] + 1) # 이 값이 현재의 dp[i]보다 작다면, dp[i]를 이 값으로 업데이트
     if i % 3 == 0:
         dp[i] = min(dp[i], dp[i // 3] + 1)
 
