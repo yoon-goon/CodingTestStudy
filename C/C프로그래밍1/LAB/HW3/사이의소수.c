@@ -6,11 +6,10 @@ int main() {
     scanf("%d",&num);
 
 
-    for(int i=1;i==num;i++)
+    for(int i=1;i<=num;i++)
     {
-        printf("%d",i);
         subcnt = 0;
-        for(int y=1;y==i;y++){
+        for(int y=1;y<=i;y++){
             if(i%y==0){
                 subcnt++;
             }
