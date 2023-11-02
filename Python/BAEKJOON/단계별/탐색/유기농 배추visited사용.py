@@ -1,5 +1,6 @@
 # https://www.acmicpc.net/problem/1012
 import sys
+sys.setrecursionlimit(10**6) # 재귀 깊이 제한
 
 input = sys.stdin.readline
 
@@ -21,8 +22,8 @@ t = int(input())
 
 for _ in range(t):
     m, n, k = map(int, input().split())
-    graph = [[0] * 51 for _ in range(51)]  # 최대가 50까지라했으나 +1하고 사용할거기 때문
-    visit = [[0] * 51 for _ in range(51)]
+    graph = [[0] * (m + 2) for _ in range(n + 2)]  # 동적으로 배열 크기를 할당합니다.
+    visit = [[0] * (m + 2) for _ in range(n + 2)]
 
     for _ in range(k):
         x, y = map(int, input().split())
