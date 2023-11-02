@@ -15,7 +15,7 @@ int main() {
     while(1){
         strike = 0, ball = 0;
         trycnt++;
-        printf("%d %d %d\n",c1,c2,c3);
+        //printf("%d %d %d\n",c1,c2,c3);
         printf("3숫자를 띄어쓰기로 구분해서 중복없이 입력하세요.(예시: 2 4 5)");
         scanf("%d %d %d",&u1,&u2,&u3);
         if(u1==c1) strike++;
