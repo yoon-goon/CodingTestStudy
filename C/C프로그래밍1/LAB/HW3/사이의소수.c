@@ -15,11 +15,8 @@ int main() {
             }
         }
         if(subcnt==2){
-            cnt++;
+            printf("%d ",i);
         }
     }
-
-    printf("%d",cnt);
-
     return 0;
 }
