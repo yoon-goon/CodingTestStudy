@@ -19,7 +19,7 @@ int main()
 
             printf("\n몇번째 좌석을 예약하시겠습니까? ");
             scanf("%d",&num);
-            
+
             if (arr[num-1] == 0){
                 arr[num-1] = 1;
                 printf("예약되었습니다.\n");
