@@ -6,13 +6,13 @@ int main()
 {
 
     int freq[SIZE] = {0};
-    for(int i;i<10000;i++){
+    for(int i = 0;i<10000;i++){
         ++freq[rand()%6];
     }
 
     printf("====================\n숫자 빈도\n====================\n");
 
-    for(int i;i<SIZE;i++){
+    for(int i = 0;i<SIZE;i++){
         printf("%d %3d\n",i+1,freq[i]);
     }
 
