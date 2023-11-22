@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-is_multiple(int n, int m){
+int is_multiple(int n, int m){
     if(n%m==0){
         return 1;
     }
