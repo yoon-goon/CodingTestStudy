@@ -4,7 +4,7 @@ import sys
 t = int(input())
 
 for _ in range(t):
-    n = sys.stdin.readline()
+    n = int(sys.stdin.readline())
     dp = [0] * (n + 1)
 
     if n >= 1:
@@ -18,3 +18,8 @@ for _ in range(t):
         dp[i] = dp[i - 1] + dp[i - 2] + dp[i - 3]
 
     print(dp[n])
+
+'''
+피보나치 수열과 비슷함
+기본값을 설정해준 이후론 공식에 따라가면 됨
+'''
