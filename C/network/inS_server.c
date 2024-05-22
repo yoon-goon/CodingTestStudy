@@ -47,12 +47,13 @@ int main(void) {
 			exit(1);
 		}
 
-		if (buf[0] == 'q' || buf[0] == 'Q') {
+		if (strcmp(buf, "c") == 0 || strcmp(buf, "C") == 0) {
+			sprintf(buf, "%d", cnt); // 버퍼에 cnt 변환하여 클라이언트 전달
+			printf("[Message cnt Response (cnt: %s)\n", buf);
+		}
+		else if (strcmp(buf, "q") == 0 || strcmp(buf, "Q") == 0) {
 			printf("[Client Disconnected]\n");
 			break;
-		}
-		else if (buf[0] == 'c' || buf[0] == 'C') {
-			sprintf(buf, "[Message cnt Response: (cnt : %d)]", cnt);
 		}
 		else {
 			cnt++;

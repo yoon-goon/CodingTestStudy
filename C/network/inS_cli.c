@@ -29,28 +29,38 @@ int main(void) {
 	while (1) {
 		printf("Input message: ");
 		fgets(buf, sizeof(buf), stdin);
-		buf[strcspn(buf, "\n")] = 0; // Remove the newline character
+		buf[strcspn(buf, "\n")] = 0; // 개행문자 삭제
 
 		if (write(sd, buf, strlen(buf) + 1) == -1) {
 			perror("write");
 			exit(1);
 		}
 
-		if (buf[0] == 'q' || buf[0] == 'Q') {
+		if (strcmp(buf, "q") == 0 || strcmp(buf, "Q") == 0) {
 			printf("[Disconnection Request]\n");
 			break;
-		} 
-		else if (buf[0] == 'c' || buf[0] == 'C') {
+		}
+		else if (strcmp(buf, "c") == 0 || strcmp(buf, "C") == 0) {
 			printf("[Message Cnt Request]\n");
-		}
 
-		memset(buf, 0, sizeof(buf));
-		if (read(sd, buf, sizeof(buf)) == -1) {
-			perror("read");
-			exit(1);
-		}
+			memset(buf, 0, sizeof(buf)); // 버퍼 초기화
+			if (read(sd, buf, sizeof(buf)) == -1) { // 서버로부터 데이터를 읽어들여 버퍼 buf에 저장
+				perror("read");
+				exit(1);
+			}
 
-		printf("[Text From Server: %s ]\n", buf);
+			printf("[Text From Server: %s ]\n", buf);
+		}
+		else {
+			// 서버 응답 대기
+			memset(buf, 0, sizeof(buf));
+			if (read(sd, buf, sizeof(buf)) == -1) {
+				perror("read");
+				exit(1);
+			}
+
+			printf("[Text From Server: %s ]\n", buf);
+		}
 	}
 	close(sd);
 
