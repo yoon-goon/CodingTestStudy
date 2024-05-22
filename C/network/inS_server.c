@@ -49,7 +49,7 @@ int main(void) {
 
 		if (strcmp(buf, "c") == 0 || strcmp(buf, "C") == 0) {
 			sprintf(buf, "%d", cnt); // 버퍼에 cnt 변환하여 클라이언트 전달
-			printf("[Message cnt Response (cnt: %s)\n", buf);
+			printf("[Message cnt Response (cnt: %s) ]\n", buf);
 		}
 		else if (strcmp(buf, "q") == 0 || strcmp(buf, "Q") == 0) {
 			printf("[Client Disconnected]\n");
